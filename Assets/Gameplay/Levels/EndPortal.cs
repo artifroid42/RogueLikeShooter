@@ -9,7 +9,7 @@ namespace RLS.Gameplay.Levels
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent<PlayerController>(out PlayerController l_playerController))
+            if(other.TryGetComponent<PlayerController.PlayerMovementController>(out PlayerController.PlayerMovementController l_playerController))
             {
                 OnPlayerEnteredPortal?.Invoke();
             }

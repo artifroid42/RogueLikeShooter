@@ -4,13 +4,13 @@ namespace RLS.Gameplay.DungeonFlow
 {
     public class GameState : DungeonGameState
     {
-        private PlayerController m_currentPlayer = null;
+        private PlayerController.PlayerMovementController m_currentPlayer = null;
         private Levels.Stage m_currentStage = null;
 
         public override void EnterState()
         {
             base.EnterState();
-            m_currentPlayer = FindObjectOfType<PlayerController>();
+            m_currentPlayer = FindObjectOfType<PlayerController.PlayerMovementController>();
             m_currentStage = FindObjectOfType<Levels.Stage>();
 
             m_currentPlayer.transform.position = m_currentStage.SpawningPosition.position;
