@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48eca2de2fee5a442bf36171c7656cef, type: 3}
   m_Name: AllLanguagesData
   m_EditorClassIdentifier: 
-  m_languagesData: []
+  m_languagesData:
+  - {fileID: 11400000, guid: 017e675a152e2684aa506d34a56a60d4, type: 2}
+  - {fileID: 11400000, guid: b784fa2cff1185c4c9b519978b3d5f39, type: 2}
+  - {fileID: 11400000, guid: 05fc3f981cff94c418ef963ccbbc4614, type: 2}

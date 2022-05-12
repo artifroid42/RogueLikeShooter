@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2abba0fcb92c7e49b70250c427b8439, type: 3}
+  m_Name: Pirate - Stage01 - StageData
+  m_EditorClassIdentifier: 
+  m_stageScene:
+    m_AssetGUID: 351361a7d83add544adc6c6737d94059
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
