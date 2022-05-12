@@ -1,0 +1,57 @@
+LANGUAGE_SHORTNAME	EN	FR	ES
+LANGUAGE_NAME	English	Français	Español
+PROJECT_NAME	Time Time	Time Time	Time Time
+LOADING_SCENE	Loading...	Chargement...	Cargando...
+GENERIC_PLAY	Play	Jouer	Jugar
+GENERIC_OPTIONS	Options	Options	Opciones
+GENERIC_CREDITS	Credits	Crédits	Créditos
+GENERIC_AND	and	et	y
+GENERIC_KEEP_PLAYING	Keep playing	Continuer à jouer	Seguir jugando
+GENERIC_QUIT_GAME	Quit game	Quitter le jeu	Salir del juego
+GENERIC_BACK_TO_MENU	Back to menu	Retour au menu	volver al menú principal
+TIME_PLAYED	Time played :	Temps de jeu :	Tiempo jugado :
+			
+HOURS	hours	heures	horas
+HOUR	hour 	heure	hora
+MINUTES	minutes	minutes	minutos
+MINUTE	minute	minute	minuto
+HAVE_NOT_PLAYED_YET	Have not played it	Pas encore joué	No han jugado todavía
+GENERATE_RANDOM_NAME	Generate random name	Générer un nom aléatoire	GENERATE_RANDOM_NAME
+CREATE_NEW_CHARACTER	Create new character	Créer un nouveau personnage	Crear nuevo personaje
+OPTIONS_GAMEPLAY	Gameplay	Jouabilité	Jugabilidad
+OPTIONS_CONFIGURATION	Configuration	Configuration	Configuración
+OPTIONS_CAMERA_SENSIBILITY	Camera Sensibility	Sensibilité de la caméra	Sensibilidad de la cámara
+OPTIONS_SOUND_VOLUME	Sound Volume	Volume du son	volumen de sonido
+OPTIONS_SFX_SOUND_VOLUME	Sound effects Volume	Volume des effets	Efectos de sonido Volumen
+OPTIONS_MUSIC_SOUND_VOLUME	Music Volume	Volume des musiques	Volumen de la música
+OPTIONS_LANGUAGE	Language	Langue	Idioma
+GENERIC_YES	Yes	Oui	Sí
+GENERIC_NO	No	Non	No
+GENERIC_NEXT	Next	Suivant	próximo
+GENERIC_PREVIOUS	Previous	Précédent	Anterior
+GENERIC_BACK	Back	Retour	Atrás
+GENERIC_CONFIRM	Confirm	Confirmer	Confirmar
+YOU_ARE_DEAD	You are dead !	Vous êtes mort !	Estás muerto !
+DAMAGE_TYPE_PHYSICAL	physical	physiques	físico
+DAMAGE_TYPE_MAGICAL	magical	magiques	mágico
+ACTION_PRESS	Press	Appuier sur	Presionar
+			
+GAMEPLAYMODE_TEST1_NAMEKEY	Test 1	Test 1	Test 1
+GAMEPLAYMODE_TEST1_DESCRIPTION	This is the game mode : "Test 1"	Ceci est le mode de jeu : "Test 1"	Este es el modo de juego: "Prueba 1"
+GAMEPLAYMODE_TEST2_NAMEKEY	Test 2	Test 2	Test 2
+GAMEPLAYMODE_TEST2_DESCRIPTION	This is the game mode : "Test 2"	Ceci est le mode de jeu : "Test 2"	Este es el modo de juego: "Prueba 2"
+			
+			
+GAMEPLAYMODE_SELECTION_TITLE	Game Mode Selection	Sélection du Mode de Jeu	Selección del modo de juego
+CLASS_SELECTION_TITLE	Class Selection	Sélection de Classe	Selección de clases
+			
+GENERIC_PAUSE	Pause	Pause	Pausa
+			
+PLAYERVSAI_BUTTON_ADDAI	Add an AI	Ajouter une IA	Agrega una AI
+PLAYERVSAI_BUTTON_REMOVEAI	Remove last AI	Supprimer la dernière IA	Eliminar la última ai
+			
+			
+MAINMENU_PLAY	Play	Jouer	
+MAINMENU_OPTIONS	Options	Options	
+MAINMENU_QUIT	Quit	Quitter	
+GENERIC_PLAYER	Player	Joueur	

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ed075f4170b48478a42393b1c793b4, type: 3}
+  m_Name: LanguageData2
+  m_EditorClassIdentifier: 
+  m_languageDictionary:
+    m_keys:
+    - LANGUAGE_SHORTNAME
+    - LANGUAGE_NAME
+    - PROJECT_NAME
+    - LOADING_SCENE
+    - GENERIC_PLAY
+    - GENERIC_OPTIONS
+    - GENERIC_CREDITS
+    - GENERIC_AND
+    - GENERIC_KEEP_PLAYING
+    - GENERIC_QUIT_GAME
+    - GENERIC_BACK_TO_MENU
+    - TIME_PLAYED
+    - HOURS
+    - HOUR
+    - MINUTES
+    - MINUTE
+    - HAVE_NOT_PLAYED_YET
+    - GENERATE_RANDOM_NAME
+    - CREATE_NEW_CHARACTER
+    - OPTIONS_GAMEPLAY
+    - OPTIONS_CONFIGURATION
+    - OPTIONS_CAMERA_SENSIBILITY
+    - OPTIONS_SOUND_VOLUME
+    - OPTIONS_SFX_SOUND_VOLUME
+    - OPTIONS_MUSIC_SOUND_VOLUME
+    - OPTIONS_LANGUAGE
+    - GENERIC_YES
+    - GENERIC_NO
+    - GENERIC_NEXT
+    - GENERIC_PREVIOUS
+    - GENERIC_BACK
+    - GENERIC_CONFIRM
+    - YOU_ARE_DEAD
+    - DAMAGE_TYPE_PHYSICAL
+    - DAMAGE_TYPE_MAGICAL
+    - ACTION_PRESS
+    - GAMEPLAYMODE_TEST1_NAMEKEY
+    - GAMEPLAYMODE_TEST1_DESCRIPTION
+    - GAMEPLAYMODE_TEST2_NAMEKEY
+    - GAMEPLAYMODE_TEST2_DESCRIPTION
+    - GAMEPLAYMODE_SELECTION_TITLE
+    - CLASS_SELECTION_TITLE
+    - GENERIC_PAUSE
+    - PLAYERVSAI_BUTTON_ADDAI
+    - PLAYERVSAI_BUTTON_REMOVEAI
+    - MAINMENU_PLAY
+    - MAINMENU_OPTIONS
+    - MAINMENU_QUIT
+    - GENERIC_PLAYER
+    m_values:
+    - ES
+    - "Espa\xF1ol"
+    - Time Time
+    - Cargando...
+    - Jugar
+    - Opciones
+    - "Cr\xE9ditos"
+    - y
+    - Seguir jugando
+    - Salir del juego
+    - "volver al men\xFA principal"
+    - 'Tiempo jugado :'
+    - horas
+    - hora
+    - minutos
+    - minuto
+    - "No han jugado todav\xEDa"
+    - GENERATE_RANDOM_NAME
+    - Crear nuevo personaje
+    - Jugabilidad
+    - "Configuraci\xF3n"
+    - "Sensibilidad de la c\xE1mara"
+    - volumen de sonido
+    - Efectos de sonido Volumen
+    - "Volumen de la m\xFAsica"
+    - Idioma
+    - "S\xED"
+    - No
+    - "pr\xF3ximo"
+    - Anterior
+    - "Atr\xE1s"
+    - Confirmar
+    - "Est\xE1s muerto !"
+    - "f\xEDsico"
+    - "m\xE1gico"
+    - Presionar
+    - Test 1
+    - 'Este es el modo de juego: "Prueba 1"'
+    - Test 2
+    - 'Este es el modo de juego: "Prueba 2"'
+    - "Selecci\xF3n del modo de juego"
+    - "Selecci\xF3n de clases"
+    - Pausa
+    - Agrega una AI
+    - "Eliminar la \xFAltima ai"
+    - 
+    - 
+    - 
+    - 
