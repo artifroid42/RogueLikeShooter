@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f1a9f58eed20d478e9bb25eb043840, type: 3}
-  m_Name: GameConfigurationData
+  m_Script: {fileID: 11500000, guid: e918de9e1980aca46845a69c84ecffb2, type: 3}
+  m_Name: TestingStageListData
   m_EditorClassIdentifier: 
-  m_stageListData: {fileID: 11400000, guid: 73d7eba75805054449a8813f432d0a40, type: 2}
+  m_stageData:
+  - StageData: {fileID: 11400000, guid: 89cb5eba400d8d141894888182e1ead7, type: 2}
+    SpawnWeight: 1

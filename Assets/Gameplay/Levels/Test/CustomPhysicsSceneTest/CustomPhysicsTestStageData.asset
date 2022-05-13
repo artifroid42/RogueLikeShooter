@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82f1a9f58eed20d478e9bb25eb043840, type: 3}
-  m_Name: GameConfigurationData
+  m_Script: {fileID: 11500000, guid: a2abba0fcb92c7e49b70250c427b8439, type: 3}
+  m_Name: CustomPhysicsTestStageData
   m_EditorClassIdentifier: 
-  m_stageListData: {fileID: 11400000, guid: 73d7eba75805054449a8813f432d0a40, type: 2}
+  m_stageScene:
+    m_AssetGUID: 916eaf2dcec93664d9c7eb76d5d17156
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
