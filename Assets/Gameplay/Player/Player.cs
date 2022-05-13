@@ -22,6 +22,7 @@ namespace RLS.Gameplay.Player
         public PlayerUIManager UIManager { get => m_UIManager; set => m_UIManager = value; }
 
         public Action<float> OnExpChanged;
+        public Action<int> OnLevelChanged;
 
         public float CurrentExpAmount 
         { 
@@ -34,12 +35,21 @@ namespace RLS.Gameplay.Player
             }
         }
 
+        public int CurrentLevel 
+        { 
+            get => m_currentLevel;
+            set
+            {
+                m_currentLevel = value;
+                OnLevelChanged?.Invoke(m_currentLevel);
+            }
+        }
+
+        public float ExpAmountForNextLevel => m_expAmountForNextLevel;
+
         public void InitPlayer()
         {
-            m_currentLevel = GetStartLevel();
-
-            
-
+            CurrentLevel = GetStartLevel();
             CurrentExpAmount = 0;
         }
 
@@ -59,7 +69,7 @@ namespace RLS.Gameplay.Player
 
         private void CheckForNextLevel()
         {
-            float levelRatio = (float)m_currentLevel / (float)m_playerStatsData.MaxLevel;
+            float levelRatio = (float)CurrentLevel / (float)m_playerStatsData.MaxLevel;
             m_expAmountForNextLevel = m_playerStatsData.ExperienceLevelProgression.Evaluate(levelRatio) * m_playerStatsData.ExpAmountForLevelMax;
 
             if (CurrentExpAmount >= m_expAmountForNextLevel)
@@ -72,8 +82,7 @@ namespace RLS.Gameplay.Player
 
         private void LevelUp()
         {
-            m_currentLevel++;
-            CurrentExpAmount = 0;
+            CurrentLevel++;
             CheckForNextLevel();
         }
 

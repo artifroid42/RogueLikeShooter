@@ -21,6 +21,7 @@ namespace RLS.Gameplay.DungeonFlow
         {
             base.RegisterEvents();
             m_currentStage.EndPortal.OnPlayerEnteredPortal += OnPlayerEnteredEndPortal;
+            m_currentPlayer.UIManager.RegisterEvents();
         }
 
         internal override void SetUpDependencies()
@@ -33,8 +34,7 @@ namespace RLS.Gameplay.DungeonFlow
         {
             base.EnterState();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
-
-            m_currentPlayer.InitPlayer();
+            m_currentPlayer.UIManager.RefreshPlayerInfos();
         }
 
         private void OnPlayerEnteredEndPortal()
@@ -47,6 +47,7 @@ namespace RLS.Gameplay.DungeonFlow
         internal override void UnregisterEvents()
         {
             m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
+            m_currentPlayer.UIManager.UnregisterEvents();
             base.UnregisterEvents();
         }
 

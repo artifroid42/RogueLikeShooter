@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace RLS.Gameplay.Player.UI
 {
@@ -8,7 +9,10 @@ namespace RLS.Gameplay.Player.UI
     {
         [SerializeField]
         private ExpBar m_expBar;
+        [SerializeField]
+        private TextMeshProUGUI m_playerLevelText;
 
         public ExpBar ExpBar => m_expBar;
+        public TextMeshProUGUI PlayerLevelText => m_playerLevelText; 
     }
 }

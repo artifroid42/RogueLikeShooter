@@ -21,6 +21,8 @@ namespace RLS.Gameplay.DungeonFlow
         private Levels.LevelManager m_levelManager = null;
         public Levels.LevelManager LevelManager => m_levelManager;
 
+        private Player.Player m_currentPlayer = null;
+
         public override IEnumerator LoadAsync()
         {
             m_levelManager.LoadNextStage();
@@ -32,6 +34,9 @@ namespace RLS.Gameplay.DungeonFlow
             base.EnterStateMachine();
             m_levelManager.OnLoadingEnded += OnLevelLoadingEnded;
             m_levelManager.OnLoadingStarted += OnLevelLoadingStarted;
+
+            m_currentPlayer = FindObjectOfType<Player.Player>();
+            m_currentPlayer.InitPlayer();
         }
 
         internal override void ExitStateMachine()
