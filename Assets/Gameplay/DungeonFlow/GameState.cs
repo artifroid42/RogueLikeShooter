@@ -12,6 +12,7 @@ namespace RLS.Gameplay.DungeonFlow
             base.RegisterReferences();
             m_currentPlayer = FindObjectOfType<Player.PlayerMovementController>();
             m_currentStage = FindObjectOfType<Levels.Stage>();
+            
         }
 
         internal override void RegisterEvents()

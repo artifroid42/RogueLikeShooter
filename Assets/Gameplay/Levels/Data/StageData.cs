@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -12,30 +13,43 @@ namespace RLS.Gameplay.Levels.Data
     {
         [SerializeField]
         private AssetReference m_stageScene = null;
+        [SerializeField]
+        private AssetReference m_cameraSettingsScene = null;
 
         public Action<AsyncOperationHandle<SceneInstance>> OnStageLoaded = null;
         public Action OnStageUnloaded = null;
 
         public void LoadStage()
         {
-            Addressables.LoadSceneAsync(m_stageScene, LoadSceneMode.Additive).Completed += HandleStageLoaded;
+            MOtter.MOtt.GM.StartCoroutine(LoadingStageRoutine());
         }
 
-        private void HandleStageLoaded(AsyncOperationHandle<SceneInstance> obj)
+        private IEnumerator LoadingStageRoutine()
         {
-            if(obj.Status == AsyncOperationStatus.Succeeded)
+            var obj = Addressables.LoadSceneAsync(m_stageScene, LoadSceneMode.Additive);
+            while(!obj.IsDone)
+            {
+                yield return null;
+            }
+            if (obj.Status == AsyncOperationStatus.Succeeded)
             {
                 OnStageLoaded?.Invoke(obj);
             }
         }
 
+
         public void UnloadStage(AsyncOperationHandle<SceneInstance> a_handle)
         {
-            Addressables.UnloadSceneAsync(a_handle).Completed += HandleStageUnloaded;
+            MOtter.MOtt.GM.StartCoroutine(UnloadStageRoutine(a_handle));
         }
 
-        private void HandleStageUnloaded(AsyncOperationHandle<SceneInstance> obj)
+        private IEnumerator UnloadStageRoutine(AsyncOperationHandle<SceneInstance> a_handle)
         {
+            var obj = Addressables.UnloadSceneAsync(a_handle);
+            while(!obj.IsDone)
+            {
+                yield return null;
+            }
             OnStageUnloaded?.Invoke();
         }
     }

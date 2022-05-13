@@ -38,6 +38,7 @@ namespace RLS.Gameplay.Player
         private Vector2 m_cameraSensitivity = new Vector2(60f, 60f);
         [SerializeField]
         private Vector2 m_cameraClamping = new Vector2(-60, 60);
+        private float m_yCamValue = 0f;
 
         private void Start()
         {
@@ -108,22 +109,21 @@ namespace RLS.Gameplay.Player
 
         private void apply_rotation()
         {
-            transform.Rotate(Vector3.up * m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime);
-            m_cameraTarget.Rotate(Vector3.right * -m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime);
+            /*var eulerTemp = transform.localEulerAngles;
+            eulerTemp.y += m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime;
+            transform.localEulerAngles = eulerTemp;*/
 
-            if(m_cameraTarget.localEulerAngles.x < 360f + m_cameraClamping.x && m_cameraTarget.localEulerAngles.x > 180f)
-            {
-                var eulerTemp = m_cameraTarget.localEulerAngles;
-                eulerTemp.x = 360f + m_cameraClamping.x;
-                m_cameraTarget.localEulerAngles = eulerTemp;
-            }
+            transform.Rotate(Vector3.up, m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime);
+            /*
+            eulerTemp = m_cameraTarget.localEulerAngles;
+            eulerTemp.x += -m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime;
+            m_cameraTarget.localEulerAngles = eulerTemp;*/
 
-            else if (m_cameraTarget.localEulerAngles.x > m_cameraClamping.y && m_cameraTarget.localEulerAngles.x < 180f)
-            {
-                var eulerTemp = m_cameraTarget.localEulerAngles;
-                eulerTemp.x = m_cameraClamping.y;
-                m_cameraTarget.localEulerAngles = eulerTemp;
-            }
+            Debug.Log(m_yCamValue);
+           
+            m_yCamValue += -m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime;
+            m_yCamValue = Mathf.Clamp(m_yCamValue, m_cameraClamping.x, m_cameraClamping.y);
+            m_cameraTarget.rotation = Quaternion.LookRotation(Mathf.Sin(-m_yCamValue * Mathf.Deg2Rad) * transform.up + Mathf.Cos(-m_yCamValue * Mathf.Deg2Rad) * transform.forward);
         }
 
         private void Update()
