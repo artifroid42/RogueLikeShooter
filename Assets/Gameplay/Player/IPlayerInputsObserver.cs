@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RLS.Gameplay.PlayerController
+namespace RLS.Gameplay.Player
 {
     public interface IPlayerInputsObserver
     {

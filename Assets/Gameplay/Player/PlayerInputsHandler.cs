@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RLS.Gameplay.PlayerController
+namespace RLS.Gameplay.Player
 {
     public class PlayerInputsHandler : MonoBehaviour
     {
