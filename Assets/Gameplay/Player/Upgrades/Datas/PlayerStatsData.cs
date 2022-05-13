@@ -18,12 +18,15 @@ namespace RLS.Gameplay.Player.Upgrades
         [SerializeField]
         private int m_maxLevel = 30;
         [SerializeField]
-        private float m_expAmountForLevelMax = 10000;
+        private float m_expAmountForLevelMax = 10000f;
 
         public ClassStatsData NinjaStatsData => m_ninjaStatsData;
         public ClassStatsData PirateStatsData => m_pirateStatsData;
         public ClassStatsData ScifiStatsData => m_scifiStatsData;
         public AnimationCurve ExperienceLevelProgression => m_experienceLevelProgression;
+        public float ExpAmountForLevelMax => m_expAmountForLevelMax; 
         public int MaxLevel => m_maxLevel;
+
+
     }
 }

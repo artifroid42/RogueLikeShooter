@@ -4,14 +4,17 @@ namespace RLS.Gameplay.DungeonFlow
 {
     public class GameState : DungeonGameState
     {
-        private Player.PlayerMovementController m_currentPlayer = null;
+        private Player.Player m_currentPlayer = null;
         private Levels.Stage m_currentStage = null;
 
         internal override void RegisterReferences()
         {
             base.RegisterReferences();
-            m_currentPlayer = FindObjectOfType<Player.PlayerMovementController>();
+            m_currentPlayer = FindObjectOfType<Player.Player>();
             m_currentStage = FindObjectOfType<Levels.Stage>();
+
+            var playerPanel = GetPanel<Player.UI.PlayerPanel>();
+            m_currentPlayer.UIManager.Init(playerPanel);
         }
 
         internal override void RegisterEvents()
@@ -30,6 +33,8 @@ namespace RLS.Gameplay.DungeonFlow
         {
             base.EnterState();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
+
+            m_currentPlayer.InitPlayer();
         }
 
         private void OnPlayerEnteredEndPortal()
