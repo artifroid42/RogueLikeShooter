@@ -1,4 +1,5 @@
 using RLS.Utils;
+using System;
 using UnityEngine;
 
 namespace RLS.Gameplay.Combat
@@ -12,6 +13,16 @@ namespace RLS.Gameplay.Combat
         [SerializeField]
         private int m_maxLifePoints = 100;
         private int m_lifePoints = 0;
+        public int MaxLifePoints => m_maxLifePoints;
+        public int LifePoints => m_lifePoints;
+
+        public Action<CombatController> OnDamageTaken = null;
+        public Action<CombatController> OnDied = null;
+
+        private void Start()
+        {
+            m_lifePoints = m_maxLifePoints;
+        }
 
         public void SetTeam(ushort a_teamIndex)
         {
@@ -33,6 +44,7 @@ namespace RLS.Gameplay.Combat
                 default:
                     break;
             }
+            OnDamageTaken?.Invoke(this);
             m_maxLifePoints = a_maxLifePoints;
             
         }
@@ -42,9 +54,11 @@ namespace RLS.Gameplay.Combat
             if(a_source == null || a_source.TeamIndex != m_teamIndex)
             {
                 m_lifePoints -= a_damageToDeal;
+                OnDamageTaken?.Invoke(this);
                 if(m_lifePoints < 0)
                 {
                     HandleDeath();
+                    OnDied?.Invoke(this);
                 }
             }
         }
