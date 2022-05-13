@@ -31,11 +31,16 @@ namespace RLS.Gameplay.PlayerController
 
         public void HandleMovementInput(Vector2 a_moveInputs) 
         {
-            m_movementDirection = new Vector3(a_moveInputs.x, 0f, a_moveInputs.y);
+            m_movementDirection = transform.forward * a_moveInputs.y + transform.right * a_moveInputs.x;
             if(m_movementDirection.sqrMagnitude > 1f)
             {
                 m_movementDirection.Normalize();
             }
+        }
+
+        public void HandleLookAroundInput(Vector2 a_lookAroundInputs) 
+        {
+            m_lookAroundValues = a_lookAroundInputs;
         }
 
         private void apply_movement()
@@ -51,7 +56,7 @@ namespace RLS.Gameplay.PlayerController
         private void apply_rotation()
         {
             transform.Rotate(Vector3.up * m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime);
-            m_cameraTarget.Rotate(Vector3.right * m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime);
+            m_cameraTarget.Rotate(Vector3.right * -m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime);
         }
 
         private void Update()
