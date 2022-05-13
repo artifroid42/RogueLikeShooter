@@ -585,6 +585,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4442282105204086190, guid: 7815bdbeeec142241bc1dd95b178d67d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4442282105758602816, guid: 7815bdbeeec142241bc1dd95b178d67d, type: 3}
       propertyPath: m_Name
       value: MainCanvas

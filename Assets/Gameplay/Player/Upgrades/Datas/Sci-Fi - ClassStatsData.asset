@@ -21,3 +21,5 @@ MonoBehaviour:
   m_attackIncrement: 10
   m_attackSpeedIncrement: 10
   m_moveSpeedIncrement: 10
+  m_class: 2
+  m_classSprite: {fileID: 21300000, guid: 88cf5c8acb91df84db34954d220bc68e, type: 3}
