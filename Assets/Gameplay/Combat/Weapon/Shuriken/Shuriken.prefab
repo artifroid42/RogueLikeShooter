@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 603691250453922805}
   - component: {fileID: 3484134281682648648}
   - component: {fileID: 507439141616159892}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shuriken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8574fd6f1efc3354e85564801bffeac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 12
+  m_speed: 20
   m_lifeTime: 10
 --- !u!114 &603691250453922805
 MonoBehaviour:
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5192912603257944204}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,6 +135,10 @@ PrefabInstance:
     - target: {fileID: 193634, guid: 2ab04f1ae8c6cf44ebc104d722d22baf, type: 3}
       propertyPath: m_Name
       value: SM_Wep_Shuriken_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 193634, guid: 2ab04f1ae8c6cf44ebc104d722d22baf, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 454322, guid: 2ab04f1ae8c6cf44ebc104d722d22baf, type: 3}
       propertyPath: m_RootOrder

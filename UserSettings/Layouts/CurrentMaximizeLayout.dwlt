@@ -224,9 +224,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
+      m_SelectedIDs: 1a3de9ff
       m_LastClickedID: 0
-      m_ExpandedIDs: 82aeecff2ef6ecff38f6ecffd017edff3693edff4293edff4c93edffb09fedffaea3edff14bdedff622deefffa55eeffaa69efff5477efffc2dfefff6ee9efff5e51f0ff5a65f0ff1002f2ffb02bf2ffbc2bf2ffaa4ff2ff385cf2ff9871f2ff5673f2ffaee2f3ff8ae4f3ff203cf4ff40dff4ffc234f7fff23ef7ffca9bf8ff72a2f9ff74a2f9ff64b3f9ff66b3f9ff28c7f9ff2ac7f9ffcc4dfbffd64dfbffd84dfbff8264fbff2e6afbff026efbff4075fbff4479fbffca7dfbff847ffbff8e7ffbff907ffbffc883fbff8c85fbff8e85fbff108dfbff1a8dfbff1c8dfbffeec8fbffd2dafbff80dcfbff8adcfbff8cdcfbffdef3fbff3cf9fbff3ef9fbffde3dfcff7af9fcff72fffcfffc7cfdff0285feffb496feff12fbffffec190400982d0500d63105007c46050076490500be6e0500fc720500d673050014780500dcce05007ed1050018d305004af205009c1d060002200600
+      m_ExpandedIDs: 2c3ae9ff1a3de9ff7c22eaff8622eaffea2eeaffc033eaff6e88eaff1cb5eaff501febff3888ebff5c89ebff82aeecff2ef6ecff38f6ecffd017edff3693edff4293edff4c93edffb09fedffaea3edff14bdedff622deefffa55eeffaa69efff5477efffc2dfefff6ee9efff5e51f0ff5a65f0ff1002f2ffb02bf2ffbc2bf2ffaa4ff2ff385cf2ff9871f2ff5673f2ffaee2f3ff8ae4f3ff203cf4ff40dff4ffc234f7fff23ef7ffca9bf8ff72a2f9ff74a2f9ff64b3f9ff66b3f9ff28c7f9ff2ac7f9ffcc4dfbffd64dfbffd84dfbff8264fbff2e6afbff026efbff4075fbff4479fbffca7dfbff847ffbff8e7ffbff907ffbffc883fbff8c85fbff8e85fbff108dfbff1a8dfbff1c8dfbffeec8fbffd2dafbff80dcfbff8adcfbff8cdcfbffdef3fbff3cf9fbff3ef9fbffde3dfcff7af9fcff72fffcfffc7cfdff0285feffb496feff12fbffffec190400982d0500d63105007c46050076490500be6e0500fc720500d673050014780500dcce05007ed1050018d305004af205009c1d060002200600
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 26408
+  controlID: 29454
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -357,7 +357,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: 
+    m_NameFilter: default cam
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -369,21 +369,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Gameplay/Ennemy
+    - Assets/Gameplay/Levels/Pirate
     m_Globs: []
-    m_OriginalText: 
+    m_OriginalText: default cam
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Gameplay/Ennemy
+  - Assets/Gameplay/Levels/Pirate
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Megascar\Documents\GitHub\RogueLikeShooter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: a8d30500
-    m_LastClickedID: 381864
+    scrollPos: {x: 0, y: 242.63997}
+    m_SelectedIDs: 08730000
+    m_LastClickedID: 29448
     m_ExpandedIDs: 00000000e0720000e2720000e4720000e6720000e8720000ea720000ec72000046bf000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -437,8 +437,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: 1a3de9ff
+    m_LastClickedInstanceID: -1491686
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -594,6 +594,28 @@ MonoBehaviour:
       id: unity-search-toolbar
       index: 1
       layout: 1
+    - dockPosition: 1
+      containerId: overlay-toolbar__top
+      floating: 0
+      collapsed: 0
+      displayed: 0
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 0
+      id: Scene View/Open Tile Palette
+      index: 2
+      layout: 4
+    - dockPosition: 1
+      containerId: overlay-toolbar__top
+      floating: 0
+      collapsed: 0
+      displayed: 0
+      snapOffset: {x: 0, y: 0}
+      snapOffsetDelta: {x: 0, y: 0}
+      snapCorner: 0
+      id: Scene View/Tilemap Focus
+      index: 3
+      layout: 4
     - dockPosition: 0
       containerId: overlay-container--left
       floating: 0
@@ -747,9 +769,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 38.62502, y: 4.4320226, z: 111.87788}
+    m_Target: {x: 0.10298964, y: 1.73698, z: 9.073925}
     speed: 2
-    m_Value: {x: 38.62502, y: 4.4320226, z: 111.87788}
+    m_Value: {x: 0.10298964, y: 1.73698, z: 9.073925}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -796,9 +818,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.03856316, y: 0.1924524, z: -0.0075718607, w: 0.9805336}
+    m_Target: {x: 0.015605519, y: -0.98166704, z: 0.09216187, w: 0.1661921}
     speed: 2
-    m_Value: {x: 0.03856261, y: 0.19244967, z: -0.007571753, w: 0.9805197}
+    m_Value: {x: 0.015605304, y: -0.9816536, z: 0.092160605, w: 0.16618982}
   m_Size:
     m_Target: 3.1897488
     speed: 2
@@ -868,7 +890,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 50}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
-    m_Text: Debug
+    m_Text: Inspector
     m_Image: {fileID: -440750813802333266, guid: 0000000000000000d000000000000000, type: 0}
     m_Tooltip: 
   m_Pos:
@@ -890,7 +912,7 @@ MonoBehaviour:
   m_LastInspectedObjectInstanceID: -1
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
-  m_InspectorMode: 1
+  m_InspectorMode: 0
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewWindow: {fileID: 0}
