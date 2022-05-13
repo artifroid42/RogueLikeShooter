@@ -24,10 +24,12 @@ namespace RLS.Gameplay.Player
             if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
             {
                 var newShuriken = Instantiate(m_shurikenPrefab, m_shurikenSource.position, Quaternion.LookRotation(hitInfo.point - m_shurikenSource.position));
+                newShuriken.GetComponent<Combat.DamageDealer>().SetOwner(this);
             }
             else
             {
                 var newShuriken = Instantiate(m_shurikenPrefab, m_shurikenSource.position, transform.rotation);
+                newShuriken.GetComponent<Combat.DamageDealer>().SetOwner(this);
             }
         }
     }
