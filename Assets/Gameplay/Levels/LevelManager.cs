@@ -1,6 +1,4 @@
-using RLS.Utils;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -10,7 +8,7 @@ namespace RLS.Gameplay.Levels
     public class LevelManager : MonoBehaviour
     {
         [SerializeField]
-        private List<Data.StageData> m_stageDatas = null;
+        private Data.GameConfigurationData m_gameConfiguration = null;
 
         public Action OnLoadingStarted = null;
         public Action OnLoadingEnded = null;
@@ -58,7 +56,7 @@ namespace RLS.Gameplay.Levels
         private void load_next_stage()
         {
             Debug.Log("Loading Next Stage");
-            m_currentStageData = m_stageDatas.PickRandom();
+            m_currentStageData = m_gameConfiguration.StageListData.GetRandomStageData();
 
             m_currentStageData.OnStageLoaded += OnStageLoaded;
             m_currentStageData.LoadStage();
