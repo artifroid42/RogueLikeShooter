@@ -15,6 +15,7 @@ namespace RLS.Gameplay.Levels
 
         private Data.StageData m_currentStageData = null;
         private AsyncOperationHandle<SceneInstance> m_currentSceneHandle = default;
+        private AsyncOperationHandle<SceneInstance> m_currentCamSceneHandle = default;
 
         private bool m_isLoadingAStage = false;
 
@@ -37,8 +38,8 @@ namespace RLS.Gameplay.Levels
             if (m_currentStageData != null)
             {
                 Debug.Log("Unloading Current Stage");
-                m_currentStageData.OnStageUnloaded += OnCurrentStageUnloaded;
-                m_currentStageData.UnloadStage(m_currentSceneHandle);
+                m_currentStageData.OnStageUnloaded += HandleCurrentStageUnloaded;
+                m_currentStageData.UnloadStage(m_currentSceneHandle, m_currentCamSceneHandle);
             }
             else
             {
@@ -46,10 +47,10 @@ namespace RLS.Gameplay.Levels
             }
         }
 
-        private void OnCurrentStageUnloaded()
+        private void HandleCurrentStageUnloaded()
         {
             Debug.Log("Current Stage Unloaded");
-            m_currentStageData.OnStageUnloaded -= OnCurrentStageUnloaded;
+            m_currentStageData.OnStageUnloaded -= HandleCurrentStageUnloaded;
             load_next_stage();
         }
 
@@ -58,15 +59,16 @@ namespace RLS.Gameplay.Levels
             Debug.Log("Loading Next Stage");
             m_currentStageData = m_gameConfiguration.StageListData.GetRandomStageData();
 
-            m_currentStageData.OnStageLoaded += OnStageLoaded;
+            m_currentStageData.OnStageLoaded += HandleStageLoaded;
             m_currentStageData.LoadStage();
         }
 
-        private void OnStageLoaded(AsyncOperationHandle<SceneInstance> obj)
+        private void HandleStageLoaded(AsyncOperationHandle<SceneInstance> obj, AsyncOperationHandle<SceneInstance> obj2)
         {
-            m_currentStageData.OnStageLoaded -= OnStageLoaded;
+            m_currentStageData.OnStageLoaded -= HandleStageLoaded;
             Debug.Log("Stage Loaded");
             m_currentSceneHandle = obj;
+            m_currentCamSceneHandle = obj2;
             UnityEngine.SceneManagement.SceneManager.SetActiveScene(m_currentSceneHandle.Result.Scene);
             m_isLoadingAStage = false;
             OnLoadingEnded?.Invoke();
