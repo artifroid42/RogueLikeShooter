@@ -12,6 +12,8 @@ namespace RLS.Gameplay.Player
         [SerializeField]
         private Transform m_topHead = null;
 
+        public Transform CameraTarget => m_cameraTarget;
+
         [Header("Gameplay Params")]
         [SerializeField]
         private float m_speed = 5f;

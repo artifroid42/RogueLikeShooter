@@ -16,7 +16,7 @@ namespace RLS.Gameplay.Levels.Data
         [SerializeField]
         private AssetReference m_cameraSettingsScene = null;
 
-        public Action<AsyncOperationHandle<SceneInstance>> OnStageLoaded = null;
+        public Action<AsyncOperationHandle<SceneInstance>, AsyncOperationHandle<SceneInstance>> OnStageLoaded = null;
         public Action OnStageUnloaded = null;
 
         public void LoadStage()
@@ -31,22 +31,32 @@ namespace RLS.Gameplay.Levels.Data
             {
                 yield return null;
             }
-            if (obj.Status == AsyncOperationStatus.Succeeded)
+            var obj2 = Addressables.LoadSceneAsync(m_cameraSettingsScene, LoadSceneMode.Additive);
+            while (!obj2.IsDone)
             {
-                OnStageLoaded?.Invoke(obj);
+                yield return null;
+            }
+            if (obj.Status == AsyncOperationStatus.Succeeded && obj2.Status == AsyncOperationStatus.Succeeded)
+            {
+                OnStageLoaded?.Invoke(obj, obj2);
             }
         }
 
 
-        public void UnloadStage(AsyncOperationHandle<SceneInstance> a_handle)
+        public void UnloadStage(AsyncOperationHandle<SceneInstance> a_handle, AsyncOperationHandle<SceneInstance> a_handle2)
         {
-            MOtter.MOtt.GM.StartCoroutine(UnloadStageRoutine(a_handle));
+            MOtter.MOtt.GM.StartCoroutine(UnloadStageRoutine(a_handle, a_handle2));
         }
 
-        private IEnumerator UnloadStageRoutine(AsyncOperationHandle<SceneInstance> a_handle)
+        private IEnumerator UnloadStageRoutine(AsyncOperationHandle<SceneInstance> a_handle, AsyncOperationHandle<SceneInstance> a_handle2)
         {
             var obj = Addressables.UnloadSceneAsync(a_handle);
             while(!obj.IsDone)
+            {
+                yield return null;
+            }
+            obj = Addressables.UnloadSceneAsync(a_handle2);
+            while (!obj.IsDone)
             {
                 yield return null;
             }
