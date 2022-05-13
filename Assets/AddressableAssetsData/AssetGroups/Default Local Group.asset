@@ -29,6 +29,10 @@ MonoBehaviour:
     m_Address: Assets/Gameplay/Levels/Sci-fi/Sci-Fi - LD - 1.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 916eaf2dcec93664d9c7eb76d5d17156
+    m_Address: Assets/Gameplay/Levels/Test/CustomPhysicsSceneTest/CustomPhysicsSceneTest.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9ce86c5de9db08b449705939733d9896, type: 2}
   m_SchemaSet:
