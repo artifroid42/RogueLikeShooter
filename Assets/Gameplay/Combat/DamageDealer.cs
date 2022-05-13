@@ -46,6 +46,10 @@ namespace RLS.Gameplay.Combat
             if(other.TryGetComponent<CombatController>(out CombatController l_combatController))
             {
                 l_combatController.TakeDamage(m_damageToDeal, m_owner);
+                if(l_combatController != null && (m_owner == null || m_owner.TeamIndex == l_combatController.TeamIndex))
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

@@ -35,15 +35,6 @@ namespace MOtter.Utils
         {
             if (cameraTransform != null)
                 m_cameraTransform = cameraTransform;
-            else
-                StartCoroutine(WaitForMainCamera());
-        }
-
-        private IEnumerator WaitForMainCamera()
-        {
-            while (Camera.main == null)
-                yield return null;
-            m_cameraTransform = Camera.main.transform;
         }
 
         private void Update()
@@ -74,6 +65,10 @@ namespace MOtter.Utils
                     }
 
                 }
+            }
+            else
+            {
+                m_cameraTransform = Camera.main?.transform;
             }
         }
     }
