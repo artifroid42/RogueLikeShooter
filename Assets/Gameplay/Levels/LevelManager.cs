@@ -21,7 +21,7 @@ namespace RLS.Gameplay.Levels
 
         public void LoadNextStage()
         {
-            Debug.Log("Asking to load next stage");
+            Debug.LogError("Asking to load next stage");
             if (m_isLoadingAStage)
             {
                 Debug.LogError("Already loading a stage !");
@@ -37,7 +37,7 @@ namespace RLS.Gameplay.Levels
         {
             if (m_currentStageData != null)
             {
-                Debug.Log("Unloading Current Stage");
+                Debug.LogError("Unloading Current Stage");
                 m_currentStageData.OnStageUnloaded += HandleCurrentStageUnloaded;
                 m_currentStageData.UnloadStage(m_currentSceneHandle, m_currentCamSceneHandle);
             }
@@ -49,14 +49,14 @@ namespace RLS.Gameplay.Levels
 
         private void HandleCurrentStageUnloaded()
         {
-            Debug.Log("Current Stage Unloaded");
+            Debug.LogError("Current Stage Unloaded");
             m_currentStageData.OnStageUnloaded -= HandleCurrentStageUnloaded;
             load_next_stage();
         }
 
         private void load_next_stage()
         {
-            Debug.Log("Loading Next Stage");
+            Debug.LogError("Loading Next Stage");
             m_currentStageData = m_gameConfiguration.StageListData.GetRandomStageData();
 
             m_currentStageData.OnStageLoaded += HandleStageLoaded;
@@ -66,7 +66,7 @@ namespace RLS.Gameplay.Levels
         private void HandleStageLoaded(AsyncOperationHandle<SceneInstance> obj, AsyncOperationHandle<SceneInstance> obj2)
         {
             m_currentStageData.OnStageLoaded -= HandleStageLoaded;
-            Debug.Log("Stage Loaded");
+            Debug.LogError("Stage Loaded");
             m_currentSceneHandle = obj;
             m_currentCamSceneHandle = obj2;
             UnityEngine.SceneManagement.SceneManager.SetActiveScene(m_currentSceneHandle.Result.Scene);

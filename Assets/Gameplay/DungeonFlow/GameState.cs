@@ -1,5 +1,7 @@
 
 
+using UnityEngine;
+
 namespace RLS.Gameplay.DungeonFlow
 {
     public class GameState : DungeonGameState
@@ -27,14 +29,24 @@ namespace RLS.Gameplay.DungeonFlow
         internal override void SetUpDependencies()
         {
             base.SetUpDependencies();
-            m_currentPlayer.transform.position = m_currentStage.SpawningPosition.position;
-            m_currentPlayer.transform.rotation = m_currentStage.SpawningPosition.rotation;
+            m_currentPlayer.transform.SetPositionAndRotation(m_currentStage.SpawningPosition.position, m_currentStage.SpawningPosition.rotation);
         }
         public override void EnterState()
         {
             base.EnterState();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
             m_currentPlayer.UIManager.RefreshPlayerInfos();
+
+            Debug.LogError("ENTER GAME STATE");
+        }
+
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            if(m_currentPlayer.transform.position.y < -100f)
+            {
+                m_currentPlayer.transform.SetPositionAndRotation(m_currentStage.SpawningPosition.position, m_currentStage.SpawningPosition.rotation);
+            }
         }
 
         private void OnPlayerEnteredEndPortal()
@@ -54,6 +66,7 @@ namespace RLS.Gameplay.DungeonFlow
         public override void ExitState()
         {
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
+            Debug.LogError("EXIT GAME STATE");
             base.ExitState();
         }
     }
