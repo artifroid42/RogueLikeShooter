@@ -18,6 +18,7 @@ namespace RLS.Gameplay.DungeonFlow
             var playerPanel = GetPanel<Player.UI.PlayerPanel>();
             var debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();
             m_currentPlayer.UIManager.Init(playerPanel, debugPlayerPanel);
+            
         }
 
         internal override void RegisterEvents()
@@ -35,7 +36,7 @@ namespace RLS.Gameplay.DungeonFlow
         public override void EnterState()
         {
             base.EnterState();
-            
+            Cursor.lockState = CursorLockMode.Locked;
             m_currentPlayer.UIManager.RefreshPlayerInfos();
             
             Debug.LogError("ENTER GAME STATE");
