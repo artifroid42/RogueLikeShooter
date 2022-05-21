@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RLS.Gameplay.DungeonFlow
 {
-    public class DungeonGameMode : MainFlowMachine
+    public class DungeonGameMode : PauseableFlowMachine
     {
         [Header("States Refs")]
         [SerializeField]
