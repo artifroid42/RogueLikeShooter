@@ -66,7 +66,7 @@ namespace RLS.Gameplay.Levels
         private void HandleStageLoaded(AsyncOperationHandle<SceneInstance> obj, AsyncOperationHandle<SceneInstance> obj2)
         {
             m_currentStageData.OnStageLoaded -= HandleStageLoaded;
-            Debug.LogError("Stage Loaded");
+            Debug.LogError($"Stage Loaded |scene loaded :{obj.Result.Scene.isLoaded} && cam scene loaded {obj2.Result.Scene.isLoaded}");
             m_currentSceneHandle = obj;
             m_currentCamSceneHandle = obj2;
             UnityEngine.SceneManagement.SceneManager.SetActiveScene(m_currentSceneHandle.Result.Scene);

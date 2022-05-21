@@ -1,6 +1,6 @@
-
-
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RLS.Gameplay.DungeonFlow
 {
@@ -16,7 +16,8 @@ namespace RLS.Gameplay.DungeonFlow
             m_currentStage = FindObjectOfType<Levels.Stage>();
 
             var playerPanel = GetPanel<Player.UI.PlayerPanel>();
-            m_currentPlayer.UIManager.Init(playerPanel);
+            var debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();
+            m_currentPlayer.UIManager.Init(playerPanel, debugPlayerPanel);
         }
 
         internal override void RegisterEvents()
@@ -29,24 +30,49 @@ namespace RLS.Gameplay.DungeonFlow
         internal override void SetUpDependencies()
         {
             base.SetUpDependencies();
-            m_currentPlayer.transform.SetPositionAndRotation(m_currentStage.SpawningPosition.position, m_currentStage.SpawningPosition.rotation);
+            m_reposingCoroutine = StartCoroutine(ReposingPlayer(m_currentPlayer.GetComponent<Player.PlayerMovementController>()));
         }
         public override void EnterState()
         {
             base.EnterState();
-            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
+            
             m_currentPlayer.UIManager.RefreshPlayerInfos();
-
+            
             Debug.LogError("ENTER GAME STATE");
+
+            for(int i = 0; i < SceneManager.sceneCount; ++i)
+            {
+                Debug.LogError($"{SceneManager.GetSceneAt(i).name}");
+            }
         }
 
         public override void UpdateState()
         {
             base.UpdateState();
-            if(m_currentPlayer.transform.position.y < -100f)
+            //Debug.LogError($"{m_currentPlayer.transform.position}");
+            if (m_currentPlayer.transform.position.y < -100f)
             {
-                m_currentPlayer.transform.SetPositionAndRotation(m_currentStage.SpawningPosition.position, m_currentStage.SpawningPosition.rotation);
+                if(m_reposingCoroutine == null)
+                {
+                    m_reposingCoroutine = StartCoroutine(ReposingPlayer(m_currentPlayer.GetComponent<Player.PlayerMovementController>()));
+                }
             }
+            
+        }
+
+        private Coroutine m_reposingCoroutine = null;
+        private IEnumerator ReposingPlayer(Player.PlayerMovementController a_player)
+        {
+            a_player.DeactivateMovement();
+            a_player.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
+            yield return null;
+            a_player.transform.position = m_currentStage.SpawningPosition.position;
+            a_player.transform.rotation = m_currentStage.SpawningPosition.rotation;
+            Debug.LogError(m_currentPlayer.transform.position);
+            yield return null;
+            a_player.ActivateMovement();
+            a_player.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
+            m_reposingCoroutine = null;
         }
 
         private void OnPlayerEnteredEndPortal()
@@ -65,6 +91,7 @@ namespace RLS.Gameplay.DungeonFlow
 
         public override void ExitState()
         {
+            m_currentPlayer.GetComponent<Player.PlayerMovementController>().DeactivateMovement();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
             Debug.LogError("EXIT GAME STATE");
             base.ExitState();

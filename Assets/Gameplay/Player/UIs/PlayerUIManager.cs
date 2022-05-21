@@ -10,10 +10,13 @@ namespace RLS.Gameplay.Player.UI
         private PlayerPanel m_playerPanel;
         private Player m_player;
 
+        private Debug.PlayerDebugPanel m_debugPanel = null;
 
-        public void Init(PlayerPanel a_playerPanel)
+
+        public void Init(PlayerPanel a_playerPanel, Debug.PlayerDebugPanel a_debugPanel)
         {
             m_playerPanel = a_playerPanel;
+            m_debugPanel = a_debugPanel;
         }
 
         public void RefreshPlayerInfos()
@@ -52,6 +55,11 @@ namespace RLS.Gameplay.Player.UI
         public void SetExpBarValue(float a_expRatio)
         {
             m_playerPanel.ExpBar.SetValue(a_expRatio);
+        }
+
+        private void Update()
+        {
+            m_debugPanel?.UpdatePositionDisplay(transform.position);
         }
     }
 }

@@ -36,6 +36,7 @@ namespace RLS.Gameplay.Levels.Data
             {
                 yield return null;
             }
+            yield return null;
             if (obj.Status == AsyncOperationStatus.Succeeded && obj2.Status == AsyncOperationStatus.Succeeded)
             {
                 OnStageLoaded?.Invoke(obj, obj2);
@@ -60,6 +61,7 @@ namespace RLS.Gameplay.Levels.Data
             {
                 yield return null;
             }
+            yield return null;
             OnStageUnloaded?.Invoke();
         }
     }

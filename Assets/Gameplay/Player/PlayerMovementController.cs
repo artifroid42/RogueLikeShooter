@@ -42,6 +42,8 @@ namespace RLS.Gameplay.Player
         private Vector2 m_cameraClamping = new Vector2(-60, 60);
         private float m_yCamValue = 0f;
 
+        private bool m_canMove = false;
+
         private void Start()
         {
             GetComponent<PlayerInputsHandler>()?.RegisterNewObserver(this);
@@ -50,6 +52,19 @@ namespace RLS.Gameplay.Player
         private void OnDestroy()
         {
             GetComponent<PlayerInputsHandler>()?.UnregisterObserver(this);
+        }
+
+        public void ActivateMovement()
+        {
+            m_verticalVelocity = 0f;
+            m_canMove = true;
+            Debug.LogError("Activate Movements");
+        }
+
+        public void DeactivateMovement()
+        {
+            m_canMove = false;
+            Debug.LogError("Deactivate Movements");
         }
 
         public void HandleMovementInput(Vector2 a_moveInputs) 
@@ -67,7 +82,9 @@ namespace RLS.Gameplay.Player
         }
 
         public void HandleJumpInput() 
-        { 
+        {
+            if (!m_canMove) return;
+
             if(Time.time - m_lastJumpTime > m_jumpCooldown && m_isGrounded)
             {
                 Jump();
@@ -111,15 +128,8 @@ namespace RLS.Gameplay.Player
 
         private void apply_rotation()
         {
-            /*var eulerTemp = transform.localEulerAngles;
-            eulerTemp.y += m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime;
-            transform.localEulerAngles = eulerTemp;*/
-
             transform.Rotate(Vector3.up, m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime);
-            /*
-            eulerTemp = m_cameraTarget.localEulerAngles;
-            eulerTemp.x += -m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime;
-            m_cameraTarget.localEulerAngles = eulerTemp;*/
+
 
             Debug.Log(m_yCamValue);
            
@@ -130,11 +140,12 @@ namespace RLS.Gameplay.Player
 
         private void Update()
         {
-            
             check_if_grounded();
-            apply_rotation();
-            apply_movement();
-            
+            if (m_canMove)
+            {
+                apply_rotation();
+                apply_movement();
+            }
         }
 
         private void FixedUpdate()

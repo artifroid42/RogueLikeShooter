@@ -60,6 +60,7 @@ namespace RLS.Gameplay.Player
 
         public void DeactivateInputs()
         {
+            if (m_actions == null) return;
             m_actions.Gameplay.Jump.performed -= Jump_performed;
             m_actions.Gameplay.Attack.started -= Attack_started;
             m_actions.Gameplay.Attack.canceled -= Attack_canceled;
