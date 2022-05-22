@@ -20,6 +20,7 @@ namespace RLS.Gameplay.PauseMenu
         {
             base.RegisterEvents();
             m_panel.KeepPlayingButton.onClick.AddListener(ResumeGame);
+            m_panel.OptionsButton.onClick.AddListener(SeeOptions);
             m_panel.BackToMenuButton.onClick.AddListener(GoBackToMenu);
             m_panel.QuitGameButton.onClick.AddListener(QuitGame);
         }
@@ -28,6 +29,7 @@ namespace RLS.Gameplay.PauseMenu
         {
             base.UnregisterEvents();
             m_panel.KeepPlayingButton.onClick.RemoveListener(ResumeGame);
+            m_panel.OptionsButton.onClick.RemoveListener(SeeOptions);
             m_panel.BackToMenuButton.onClick.RemoveListener(GoBackToMenu);
             m_panel.QuitGameButton.onClick.RemoveListener(QuitGame);
         }
@@ -41,6 +43,11 @@ namespace RLS.Gameplay.PauseMenu
         {
             Time.timeScale = 1;
             m_mainMenuLevelData.LoadLevel();
+        }
+
+        public void SeeOptions()
+        {
+            m_pauseGamemode.SwitchToNextState();
         }
 
         public void QuitGame()
