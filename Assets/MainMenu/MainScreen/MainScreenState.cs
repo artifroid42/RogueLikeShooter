@@ -20,12 +20,14 @@ namespace RLS.MainMenu.MainScreen
         {
             base.RegisterEvents();
             m_panel.PlayButton.onClick.AddListener(PlayGame);
+            m_panel.OptionsButton.onClick.AddListener(SeeOptions);
             m_panel.QuitButton.onClick.AddListener(QuitGame);
         }
 
         internal override void UnregisterEvents()
         {
             m_panel.PlayButton.onClick.RemoveListener(PlayGame);
+            m_panel.OptionsButton.onClick.RemoveListener(SeeOptions);
             m_panel.QuitButton.onClick.RemoveListener(QuitGame);
             base.UnregisterEvents();
         }
@@ -33,6 +35,11 @@ namespace RLS.MainMenu.MainScreen
         public void PlayGame()
         {
             m_dungeonLevelData.LoadLevel();
+        }
+
+        public void SeeOptions()
+        {
+            m_gamemode.SwitchToNextState();
         }
 
         public void QuitGame()

@@ -35,6 +35,15 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""b1bd29e0-5721-4df2-8fe9-7948c8a44e51"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -101,6 +110,39 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""TitleScreenPress"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a2f465a4-a82c-4e79-a5ca-3fe0ec54096f"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a80b345-77f9-4dad-a244-3921911c2b69"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""32d9aafd-048b-4ddb-b0c6-9a92d83bc66b"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""Back"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -312,45 +354,6 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
-        },
-        {
-            ""name"": ""Menu"",
-            ""id"": ""79dfd219-6693-424d-b53f-a257a8782bf7"",
-            ""actions"": [
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""54730785-4b25-4427-a1b9-5b44f0b1d57a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""83e6ffc2-3a62-48c4-9f33-8fc37c6dadf4"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""MouseAndKeyboard"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1e5fac4a-74ff-4813-a5c8-2f5d83c70ab1"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
         }
     ],
     ""controlSchemes"": [
@@ -386,6 +389,7 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         // MainMenu
         m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
         m_MainMenu_TitleScreenPress = m_MainMenu.FindAction("TitleScreenPress", throwIfNotFound: true);
+        m_MainMenu_Back = m_MainMenu.FindAction("Back", throwIfNotFound: true);
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
@@ -393,9 +397,6 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_LookAround = m_Gameplay.FindAction("LookAround", throwIfNotFound: true);
-        // Menu
-        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Pause = m_Menu.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -456,11 +457,13 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MainMenu;
     private IMainMenuActions m_MainMenuActionsCallbackInterface;
     private readonly InputAction m_MainMenu_TitleScreenPress;
+    private readonly InputAction m_MainMenu_Back;
     public struct MainMenuActions
     {
         private @PlayerInputsActions m_Wrapper;
         public MainMenuActions(@PlayerInputsActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @TitleScreenPress => m_Wrapper.m_MainMenu_TitleScreenPress;
+        public InputAction @Back => m_Wrapper.m_MainMenu_Back;
         public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -473,6 +476,9 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                 @TitleScreenPress.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnTitleScreenPress;
                 @TitleScreenPress.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnTitleScreenPress;
                 @TitleScreenPress.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnTitleScreenPress;
+                @Back.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnBack;
             }
             m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
             if (instance != null)
@@ -480,6 +486,9 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                 @TitleScreenPress.started += instance.OnTitleScreenPress;
                 @TitleScreenPress.performed += instance.OnTitleScreenPress;
                 @TitleScreenPress.canceled += instance.OnTitleScreenPress;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
             }
         }
     }
@@ -549,39 +558,6 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
-
-    // Menu
-    private readonly InputActionMap m_Menu;
-    private IMenuActions m_MenuActionsCallbackInterface;
-    private readonly InputAction m_Menu_Pause;
-    public struct MenuActions
-    {
-        private @PlayerInputsActions m_Wrapper;
-        public MenuActions(@PlayerInputsActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Pause => m_Wrapper.m_Menu_Pause;
-        public InputActionMap Get() { return m_Wrapper.m_Menu; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
-        public void SetCallbacks(IMenuActions instance)
-        {
-            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
-            {
-                @Pause.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnPause;
-            }
-            m_Wrapper.m_MenuActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
-            }
-        }
-    }
-    public MenuActions @Menu => new MenuActions(this);
     private int m_GamepadSchemeIndex = -1;
     public InputControlScheme GamepadScheme
     {
@@ -603,6 +579,7 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
     public interface IMainMenuActions
     {
         void OnTitleScreenPress(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
     }
     public interface IGameplayActions
     {
@@ -611,9 +588,5 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnLookAround(InputAction.CallbackContext context);
-    }
-    public interface IMenuActions
-    {
-        void OnPause(InputAction.CallbackContext context);
     }
 }
