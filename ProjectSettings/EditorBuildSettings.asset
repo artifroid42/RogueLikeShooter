@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Root/Root.unity
     guid: 0589e52ff9be48a489ed36b3513a627f
   - enabled: 1
+    path: Assets/MainMenu/MainMenu.unity
+    guid: b220ae538a38cb44287cb465fe062072
+  - enabled: 1
     path: Assets/Gameplay/DungeonFlow/DungeonGameplay.unity
     guid: 74dfc7af8b13fab4da22036b272f5bd9
   m_configObjects:

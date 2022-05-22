@@ -290,6 +290,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Menu",
+            "id": "79dfd219-6693-424d-b53f-a257a8782bf7",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "54730785-4b25-4427-a1b9-5b44f0b1d57a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "83e6ffc2-3a62-48c4-9f33-8fc37c6dadf4",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseAndKeyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e5fac4a-74ff-4813-a5c8-2f5d83c70ab1",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

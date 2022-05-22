@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace RLS.Gameplay.DungeonFlow
 {
-    public class GameState : DungeonGameState
+    public class GameState : DungeonGameState, Player.IPlayerInputsObserver
     {
         private Player.Player m_currentPlayer = null;
         private Levels.Stage m_currentStage = null;
@@ -26,6 +26,9 @@ namespace RLS.Gameplay.DungeonFlow
             base.RegisterEvents();
             m_currentStage.EndPortal.OnPlayerEnteredPortal += OnPlayerEnteredEndPortal;
             m_currentPlayer.UIManager.RegisterEvents();
+            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
+            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().RegisterNewObserver(this);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         internal override void SetUpDependencies()
@@ -36,7 +39,6 @@ namespace RLS.Gameplay.DungeonFlow
         public override void EnterState()
         {
             base.EnterState();
-            Cursor.lockState = CursorLockMode.Locked;
             m_currentPlayer.UIManager.RefreshPlayerInfos();
             
             Debug.LogError("ENTER GAME STATE");
@@ -61,6 +63,25 @@ namespace RLS.Gameplay.DungeonFlow
             
         }
 
+        internal override void UnregisterEvents()
+        {
+            Cursor.lockState = CursorLockMode.None;
+            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().UnregisterObserver(this);
+            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
+            m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
+            m_currentPlayer.UIManager.UnregisterEvents();
+            base.UnregisterEvents();
+        }
+
+        public override void ExitState()
+        {
+            m_currentPlayer.GetComponent<Player.PlayerMovementController>().DeactivateMovement();
+            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
+            Debug.LogError("EXIT GAME STATE");
+            base.ExitState();
+        }
+
+        #region Utils
         private Coroutine m_reposingCoroutine = null;
         private IEnumerator ReposingPlayer(Player.PlayerMovementController a_player)
         {
@@ -80,22 +101,21 @@ namespace RLS.Gameplay.DungeonFlow
         {
             m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
             m_gamemode.LevelManager.LoadNextStage();
-            
+
+        }
+        #region Handling Pause
+        public void HandlePauseInput()
+        {
+            StartCoroutine(WaitAFrameToPause());
         }
 
-        internal override void UnregisterEvents()
+        private IEnumerator WaitAFrameToPause()
         {
-            m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
-            m_currentPlayer.UIManager.UnregisterEvents();
-            base.UnregisterEvents();
+            yield return null;
+            if (!m_gamemode.IsPaused)
+                m_gamemode.Pause();
         }
-
-        public override void ExitState()
-        {
-            m_currentPlayer.GetComponent<Player.PlayerMovementController>().DeactivateMovement();
-            m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
-            Debug.LogError("EXIT GAME STATE");
-            base.ExitState();
-        }
+        #endregion
+        #endregion
     }
 }

@@ -27,6 +27,9 @@ namespace RLS.Gameplay.PauseMenu
         internal override void UnregisterEvents()
         {
             base.UnregisterEvents();
+            m_panel.KeepPlayingButton.onClick.RemoveListener(ResumeGame);
+            m_panel.BackToMenuButton.onClick.RemoveListener(GoBackToMenu);
+            m_panel.QuitGameButton.onClick.RemoveListener(QuitGame);
         }
 
         public void ResumeGame()
@@ -36,7 +39,8 @@ namespace RLS.Gameplay.PauseMenu
 
         public void GoBackToMenu()
         {
-
+            Time.timeScale = 1;
+            m_mainMenuLevelData.LoadLevel();
         }
 
         public void QuitGame()

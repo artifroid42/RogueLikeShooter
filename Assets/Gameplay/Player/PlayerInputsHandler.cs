@@ -19,7 +19,6 @@ namespace RLS.Gameplay.Player
             m_actions.Gameplay.Pause.performed += Pause_performed;
         }
 
-
         public void RegisterNewObserver(IPlayerInputsObserver a_newObserver)
         {
             m_observers.Add(a_newObserver);
