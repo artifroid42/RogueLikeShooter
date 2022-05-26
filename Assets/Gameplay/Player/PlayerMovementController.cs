@@ -130,9 +130,9 @@ namespace RLS.Gameplay.Player
 
         private void apply_rotation()
         {
-            transform.Rotate(Vector3.up, m_lookAroundValues.x * m_cameraSensitivity.x * Time.deltaTime);
+            transform.Rotate(Vector3.up, m_lookAroundValues.x * m_cameraSensitivity.x * MOtter.MOtt.SAVE.CameraSensitivity * Time.deltaTime);
            
-            m_yCamValue += -m_lookAroundValues.y * m_cameraSensitivity.y * Time.deltaTime;
+            m_yCamValue += -m_lookAroundValues.y * MOtter.MOtt.SAVE.CameraSensitivity * m_cameraSensitivity.y * Time.deltaTime;
             m_yCamValue = Mathf.Clamp(m_yCamValue, m_cameraClamping.x, m_cameraClamping.y);
             m_cameraTarget.rotation = Quaternion.LookRotation(Mathf.Sin(-m_yCamValue * Mathf.Deg2Rad) * transform.up + Mathf.Cos(-m_yCamValue * Mathf.Deg2Rad) * transform.forward);
         }

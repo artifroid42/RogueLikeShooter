@@ -14,6 +14,7 @@ namespace RLS.Options
         internal override void SetUpDependencies()
         {
             base.SetUpDependencies();
+            m_panel.CamSensitivitySlider.value = MOtter.MOtt.SAVE.CameraSensitivity;
             m_panel.SfxVolumeSlider.value = MOtter.MOtt.SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.SFX);
             m_panel.MusicVolumeSlider.value = MOtter.MOtt.SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.Music);
         }
@@ -21,6 +22,7 @@ namespace RLS.Options
         internal override void RegisterEvents()
         {
             base.RegisterEvents();
+            m_panel.CamSensitivitySlider.onValueChanged.AddListener(HandleCamSensitivityValueChanged);
             m_panel.SfxVolumeSlider.onValueChanged.AddListener(HandleSFXValueChanged);
             m_panel.MusicVolumeSlider.onValueChanged.AddListener(HandleMusicValueChanged);
             m_panel.LocalizationWidget.OnPreviousArrowPressed += HandlePreviousArrowPressed;
@@ -33,11 +35,16 @@ namespace RLS.Options
         internal override void UnregisterEvents()
         {
             base.UnregisterEvents();
+            m_panel.CamSensitivitySlider.onValueChanged.RemoveListener(HandleCamSensitivityValueChanged);
             m_panel.SfxVolumeSlider.onValueChanged.RemoveListener(HandleSFXValueChanged);
             m_panel.MusicVolumeSlider.onValueChanged.RemoveListener(HandleMusicValueChanged);
             m_panel.LocalizationWidget.OnPreviousArrowPressed -= HandlePreviousArrowPressed;
             m_panel.LocalizationWidget.OnNextArrowPressed -= HandleNextArrowPressed;
             m_panel.BackButton.onClick.RemoveListener(HandleBackButtonPressed);
+        }
+        private void HandleCamSensitivityValueChanged(float arg0)
+        {
+            MOtter.MOtt.SAVE.CameraSensitivity = m_panel.CamSensitivitySlider.value;
         }
 
         private void HandleNextArrowPressed()
@@ -63,6 +70,12 @@ namespace RLS.Options
         protected virtual void HandleBackButtonPressed()
         {
             MOtter.MOtt.GM.GetCurrentMainStateMachine<MainFlowMachine>().SwitchToPreviousState();
+        }
+
+        public override void ExitState()
+        {
+            MOtter.MOtt.SAVE.SaveSaveDataManager();
+            base.ExitState();
         }
     }
 }

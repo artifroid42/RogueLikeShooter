@@ -17,8 +17,8 @@ namespace MOtter.Save
         public string FileName = "SaveData.dat";
 
         public List<SaveDataElement> SaveDataList = new List<SaveDataElement>();
-        public float CameraSensitivity = 15f;
-
+        public float CameraSensitivity = 1f;
+        public int LanguageIndex = 0;
         public float SFXSoundSensitivity = 0.5f;
         public float MusicSoundSensitivity = 0.5f;
 
@@ -33,6 +33,7 @@ namespace MOtter.Save
             LoadFromJson(jsonContent);
             MOtt.SOUND.SetVolume(SFXSoundSensitivity, SoundManagement.ESoundCategoryName.SFX);
             MOtt.SOUND.SetVolume(MusicSoundSensitivity, SoundManagement.ESoundCategoryName.Music);
+            MOtt.LANG.SwitchLanguage(LanguageIndex);
         }
 
         public string ToJson()
@@ -49,7 +50,7 @@ namespace MOtter.Save
         {
             SFXSoundSensitivity = MOtt.SOUND.GetVolume(SoundManagement.ESoundCategoryName.SFX);
             MusicSoundSensitivity = MOtt.SOUND.GetVolume(SoundManagement.ESoundCategoryName.Music);
-
+            LanguageIndex = MOtt.LANG.CurrentLanguageIndex;
             WriteToFile(FileName, ToJson());
         }
 

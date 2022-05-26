@@ -16,6 +16,7 @@ namespace MOtter.Localization
 
         #region Language Management
         private int m_currentLanguageIndex = 0;
+        public int CurrentLanguageIndex => m_currentLanguageIndex;
         private Dictionary<string, int> m_indexesOfLanguagesShortNames = new Dictionary<string, int>();
         [SerializeField]
         private AllLanguagesData m_allLanguagesData = null;
