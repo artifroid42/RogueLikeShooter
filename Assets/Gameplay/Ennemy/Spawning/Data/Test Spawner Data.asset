@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e918de9e1980aca46845a69c84ecffb2, type: 3}
-  m_Name: TestingStageListData
+  m_Script: {fileID: 11500000, guid: 7521f1da69ff5054ab35ec71bdd8ed0d, type: 3}
+  m_Name: Test Spawner Data
   m_EditorClassIdentifier: 
-  m_stageData:
-  - StageData: {fileID: 11400000, guid: 76db153585ac87644b6f56321b670aea, type: 2}
-    SpawnWeight: 1
+  m_ennemiesPrefabs:
+  - EnnemyPrefab: {fileID: 590177365636424826, guid: 69cd4226ae06a054c9dfe418e2905855, type: 3}
+    SpawningWeight: 1
