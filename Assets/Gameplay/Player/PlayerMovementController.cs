@@ -58,12 +58,14 @@ namespace RLS.Gameplay.Player
         {
             m_verticalVelocity = 0f;
             m_canMove = true;
+            m_characterController.enabled = true;
             Debug.LogError("Activate Movements");
         }
 
         public void DeactivateMovement()
         {
             m_canMove = false;
+            m_characterController.enabled = false;
             Debug.LogError("Deactivate Movements");
         }
 

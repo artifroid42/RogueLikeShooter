@@ -14,7 +14,7 @@ namespace RLS.Gameplay.Ennemy.Spawning
         {
             var ennemyPrefab = m_ennemyToSpawnData.GetRandomEnnemy();
 
-            m_ennemy = Instantiate(ennemyPrefab, transform.position, Quaternion.identity, transform);
+            m_ennemy = Instantiate(ennemyPrefab, transform.position, transform.rotation, transform);
         }
     }
     

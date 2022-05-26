@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Test Spawner Data
   m_EditorClassIdentifier: 
   m_ennemiesPrefabs:
+  - EnnemyPrefab: {fileID: 3832014798688534846, guid: 97299657a1b88b545825f9edb31629bb, type: 3}
+    SpawningWeight: 1
   - EnnemyPrefab: {fileID: 6834788468426035347, guid: 41e6e584edfc38c4c8b34af8f06ca00d, type: 3}
     SpawningWeight: 1

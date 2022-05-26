@@ -326,6 +326,7 @@ MonoBehaviour:
   m_defaultState: {fileID: 5315065285381485211}
   m_agent: {fileID: 8628033037785468276}
   m_combatController: {fileID: 7687743872940352151}
+  m_animationsHandler: {fileID: 0}
   m_attackingPlayerState: {fileID: 5036727770266623093}
   m_gettingCloseToPlayerState: {fileID: 4724523464544527453}
   m_walkingAroundState: {fileID: 5315065285381485211}
@@ -334,9 +335,9 @@ MonoBehaviour:
   m_sightLayerMask:
     serializedVersion: 2
     m_Bits: 81
-  m_sightMaxDistance: 30
+  m_sightMaxDistance: 60
   m_ratioWidthAngle: 0.97
-  m_distanceToAttack: 10
+  m_distanceToAttack: 25
   m_durationToStopFollowingPlayerAfterLosingSightOnHim: 2
   m_durationToLookAtAfterBeingHit: 1
   m_projectileSource: {fileID: 3355578733319413620}

@@ -12,8 +12,11 @@ namespace RLS.Gameplay.Ennemy
         private NavMeshAgent m_agent = null;
         [SerializeField]
         private MonsterCombatController m_combatController = null;
+        [SerializeField]
+        private EnnemyAnimationsHandler m_animationsHandler = null;
         public NavMeshAgent Agent => m_agent;
         public MonsterCombatController CombatController => m_combatController;
+        public EnnemyAnimationsHandler AnimationsHandler => m_animationsHandler;
 
         [Header("States Refs")]
         [SerializeField]

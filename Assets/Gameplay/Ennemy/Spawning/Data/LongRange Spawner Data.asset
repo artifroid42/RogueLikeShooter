@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7521f1da69ff5054ab35ec71bdd8ed0d, type: 3}
+  m_Name: LongRange Spawner Data
+  m_EditorClassIdentifier: 
+  m_ennemiesPrefabs:
+  - EnnemyPrefab: {fileID: 6834788468426035347, guid: 41e6e584edfc38c4c8b34af8f06ca00d, type: 3}
+    SpawningWeight: 1
