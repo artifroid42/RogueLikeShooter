@@ -43,7 +43,7 @@ namespace RLS.Gameplay.Combat
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent<CombatController>(out CombatController l_combatController))
+            if(CanDoDamage && other.TryGetComponent<CombatController>(out CombatController l_combatController))
             {
                 l_combatController.TakeDamage(m_damageToDeal, m_owner);
                 if(l_combatController != null && (m_owner == null || m_owner.TeamIndex == l_combatController.TeamIndex))
@@ -53,4 +53,17 @@ namespace RLS.Gameplay.Combat
             }
         }
     }
+
+#if UNITY_EDITOR
+    [UnityEditor.CustomEditor(typeof(DamageDealer))]
+    public class DamageDealerEditor : UnityEditor.Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            GUILayout.Label($"Can do damage : {(target as DamageDealer).CanDoDamage}");
+
+        }
+    }
+#endif
 }

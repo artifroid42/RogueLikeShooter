@@ -19,7 +19,7 @@ namespace RLS.Gameplay.Combat
         public Action<CombatController> OnDamageTaken = null;
         public Action<CombatController> OnDied = null;
 
-        private void Start()
+        protected virtual void Start()
         {
             m_lifePoints = m_maxLifePoints;
         }
@@ -55,7 +55,7 @@ namespace RLS.Gameplay.Combat
             {
                 m_lifePoints -= a_damageToDeal;
                 OnDamageTaken?.Invoke(this);
-                if(m_lifePoints < 0)
+                if(m_lifePoints <= 0)
                 {
                     HandleDeath();
                     OnDied?.Invoke(this);

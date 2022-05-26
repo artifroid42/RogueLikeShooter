@@ -9,15 +9,18 @@ namespace RLS.Gameplay.Ennemy
         [Header("Components Refs")]
         [SerializeField]
         private NavMeshAgent m_agent = null;
+        [SerializeField]
+        private MonsterCombatController m_combatController = null;
         public NavMeshAgent Agent => m_agent;
+        public MonsterCombatController CombatController => m_combatController;
 
         [Header("States Refs")]
         [SerializeField]
-        private AttackingPlayerMonsterState m_attackingPlayerState = null;
+        private TreeBehaviourState m_attackingPlayerState = null;
         [SerializeField]
-        private GettingCloserToPlayerMonsterState m_gettingCloseToPlayerState = null;
+        private TreeBehaviourState m_gettingCloseToPlayerState = null;
         [SerializeField]
-        private WalkingAroundMonsterState m_walkingAroundState = null;
+        private TreeBehaviourState m_walkingAroundState = null;
 
         [Header("Sight")]
         [SerializeField]
@@ -32,14 +35,20 @@ namespace RLS.Gameplay.Ennemy
         [Header("Params")]
         [SerializeField]
         private float m_distanceToAttack = 3f;
+        [SerializeField]
+        private float m_durationToStopFollowingPlayerAfterLosingSightOnHim = 2f;
+        private float m_lastTimePlayerSeen = 0f;
 
         private DungeonFlow.DungeonGameMode m_gamemode = null;
-        private Player.Player m_closestPlayer = null;
+        public Player.Player ClosestPlayer { private set; get; } = null;
+
+        public Vector3 SpawnPosition { private set; get; } = default;
 
         internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
             m_gamemode = MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>();
+            SpawnPosition = transform.position;
         }
 
         protected override void ProcessChoice()
@@ -64,7 +73,7 @@ namespace RLS.Gameplay.Ennemy
 
         protected bool is_seeing_a_player()
         {
-            m_closestPlayer = null;
+            ClosestPlayer = null;
             float minDistanceToAPlayer = float.MaxValue;
             for (int i = 0; i < m_gamemode.Players.Count; ++i)
             {
@@ -83,23 +92,27 @@ namespace RLS.Gameplay.Ennemy
                         {
                             if(hitInfo.collider.GetComponent<Player.Player>() == m_gamemode.Players[i])
                             {
-                                m_closestPlayer = m_gamemode.Players[i];
+                                ClosestPlayer = m_gamemode.Players[i];
                                 minDistanceToAPlayer = distanceToThisPlayer;
+                                m_lastTimePlayerSeen = Time.time;
                             }
                         }
                     }
-                    if(m_closestPlayer == m_gamemode.Players[i])
+                    if(ClosestPlayer == m_gamemode.Players[i])
                     {
                         continue;
                     }
                 }
             }
-            return m_closestPlayer != null;
+            return ClosestPlayer != null || Time.time - m_lastTimePlayerSeen < m_durationToStopFollowingPlayerAfterLosingSightOnHim;
         }
 
         protected bool is_close_enough_to_attack()
         {
-            return Vector3.Distance(m_closestPlayer.transform.position, transform.position) < m_distanceToAttack; 
+            if (ClosestPlayer != null)
+                return Vector3.Distance(ClosestPlayer.transform.position, transform.position) < m_distanceToAttack;
+            else
+                return false;
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+using RLS.Gameplay.Combat;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +13,7 @@ namespace RLS.Gameplay.DungeonFlow
 
         private List<Ennemy.MonsterAI> m_ennemies = new List<Ennemy.MonsterAI>();
 
+        #region Life Cycle
         internal override void RegisterReferences()
         {
             base.RegisterReferences();
@@ -56,18 +57,6 @@ namespace RLS.Gameplay.DungeonFlow
             m_ennemies?.ForEach(x => x.EnterStateMachine());
         }
 
-        private void spawning_ennemies()
-        {
-            m_ennemies.Clear();
-
-            var spawners = FindObjectsOfType<Ennemy.Spawning.EnnemySpawner>();
-            for(int i = 0; i < spawners.Length; ++i)
-            {
-                spawners[i].InstantiateRandomEnnemy();
-                m_ennemies.Add(spawners[i].Ennemy);
-            }
-        }
-
         public override void UpdateState()
         {
             base.UpdateState();
@@ -101,8 +90,10 @@ namespace RLS.Gameplay.DungeonFlow
             Debug.LogError("EXIT GAME STATE");
             base.ExitState();
         }
+        #endregion
 
         #region Utils
+        #region Reposing Players
         private Coroutine m_reposingCoroutine = null;
         private IEnumerator ReposingPlayer(Player.PlayerMovementController a_player)
         {
@@ -124,6 +115,7 @@ namespace RLS.Gameplay.DungeonFlow
             m_gamemode.LevelManager.LoadNextStage();
 
         }
+        #endregion
         #region Handling Pause
         public void HandlePauseInput()
         {
@@ -135,6 +127,26 @@ namespace RLS.Gameplay.DungeonFlow
             yield return null;
             if (!m_gamemode.IsPaused)
                 m_gamemode.Pause();
+        }
+        #endregion
+        #region Ennemies Management
+        private void spawning_ennemies()
+        {
+            m_ennemies.Clear();
+
+            var spawners = FindObjectsOfType<Ennemy.Spawning.EnnemySpawner>();
+            for (int i = 0; i < spawners.Length; ++i)
+            {
+                spawners[i].InstantiateRandomEnnemy();
+                m_ennemies.Add(spawners[i].Ennemy);
+                spawners[i].Ennemy.GetComponent<CombatController>().OnDied += OnEnnemyDied;
+            }
+        }
+
+        private void OnEnnemyDied(CombatController a_combatController)
+        {
+            a_combatController.OnDied -= OnEnnemyDied;
+            m_ennemies.Remove(a_combatController.GetComponent<Ennemy.MonsterAI>());
         }
         #endregion
         #endregion
