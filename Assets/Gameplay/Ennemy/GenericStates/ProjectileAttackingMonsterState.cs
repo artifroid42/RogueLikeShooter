@@ -14,7 +14,7 @@ namespace RLS.Gameplay.Ennemy.LongRange
 
             var projectile = Instantiate(m_projectilePrefab, Owner.ProjectileSource.transform.position, Quaternion.identity);
             if (Owner.ClosestPlayer != null)
-                projectile.transform.forward = (Owner.ClosestPlayer.transform.position - Owner.ProjectileSource.transform.position);
+                projectile.transform.forward = (Owner.ClosestPlayer.SeeablePositions[0].position - Owner.ProjectileSource.transform.position);
             else
                 projectile.transform.rotation = Owner.ProjectileSource.rotation;
             var damageDealer = projectile.GetComponent<Combat.DamageDealer>();
