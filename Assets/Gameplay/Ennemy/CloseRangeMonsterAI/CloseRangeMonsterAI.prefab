@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_teamIndex: 5
-  m_maxLifePoints: 100
+  m_maxLifePoints: 25
 --- !u!114 &2705808933606735800
 MonoBehaviour:
   m_ObjectHideFlags: 0
