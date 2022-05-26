@@ -1,4 +1,5 @@
 using RLS.Gameplay.AIs;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,6 +22,8 @@ namespace RLS.Gameplay.Ennemy
         private TreeBehaviourState m_gettingCloseToPlayerState = null;
         [SerializeField]
         private TreeBehaviourState m_walkingAroundState = null;
+        [SerializeField]
+        private TreeBehaviourState m_rotatingTowardLastControllerThatHitMe = null;
 
         [Header("Sight")]
         [SerializeField]
@@ -38,6 +41,9 @@ namespace RLS.Gameplay.Ennemy
         [SerializeField]
         private float m_durationToStopFollowingPlayerAfterLosingSightOnHim = 2f;
         private float m_lastTimePlayerSeen = 0f;
+        [SerializeField]
+        private float m_durationToLookAtAfterBeingHit = 1f;
+        public float DurationToLookAtAfterBeingHit => m_durationToLookAtAfterBeingHit;
 
         private DungeonFlow.DungeonGameMode m_gamemode = null;
         public Player.Player ClosestPlayer { private set; get; } = null;
@@ -67,8 +73,20 @@ namespace RLS.Gameplay.Ennemy
             }
             else
             {
-                RequestState(m_walkingAroundState);
+                if(has_been_hit_recently())
+                {
+                    RequestState(m_rotatingTowardLastControllerThatHitMe);
+                }
+                else
+                {
+                    RequestState(m_walkingAroundState);
+                }
             }
+        }
+
+        private bool has_been_hit_recently()
+        {
+            return Time.time - CombatController.LastTimeControllerHitMe < DurationToLookAtAfterBeingHit;
         }
 
         protected bool is_seeing_a_player()

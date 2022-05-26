@@ -19,6 +19,10 @@ namespace RLS.Gameplay.Combat
         public Action<CombatController> OnDamageTaken = null;
         public Action<CombatController> OnDied = null;
 
+        public CombatController LastControllerToHitMe { protected set; get; } = null;
+        public float LastTimeControllerHitMe { protected set; get; } = 0f;
+
+
         protected virtual void Start()
         {
             m_lifePoints = m_maxLifePoints;
@@ -55,6 +59,13 @@ namespace RLS.Gameplay.Combat
             {
                 m_lifePoints -= a_damageToDeal;
                 OnDamageTaken?.Invoke(this);
+
+                if(a_source != null)
+                {
+                    LastControllerToHitMe = a_source;
+                    LastTimeControllerHitMe = Time.time;
+                }
+
                 if(m_lifePoints <= 0)
                 {
                     HandleDeath();

@@ -12,7 +12,11 @@ namespace RLS.Gameplay.Ennemy.LongRange
         {
             base.TryToAttack();
 
-            var projectile = Instantiate(m_projectilePrefab, Owner.ProjectileSource.transform.position, Owner.ProjectileSource.rotation);
+            var projectile = Instantiate(m_projectilePrefab, Owner.ProjectileSource.transform.position, Quaternion.identity);
+            if (Owner.ClosestPlayer != null)
+                projectile.transform.forward = (Owner.ClosestPlayer.transform.position - Owner.ProjectileSource.transform.position);
+            else
+                projectile.transform.rotation = Owner.ProjectileSource.rotation;
             var damageDealer = projectile.GetComponent<Combat.DamageDealer>();
             damageDealer.SetOwner(Owner.CombatController);
             damageDealer.CanDoDamage = true;
