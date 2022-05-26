@@ -8,6 +8,7 @@ namespace RLS.Gameplay.Player
 {
     public class Player : MonoBehaviour
     {
+        [Header("Components Refs")]
         [SerializeField]
         private Upgrades.PlayerStatsData m_playerStatsData;
         [SerializeField]
@@ -15,6 +16,12 @@ namespace RLS.Gameplay.Player
 
         private int m_currentLevel;
 
+        [Header("Sight Pos")]
+        [SerializeField]
+        private Transform[] m_seeablePositions = null;
+        public Transform[] SeeablePositions => m_seeablePositions;
+
+        [Header("Params")]
         [SerializeField]
         private float m_currentExpAmount;
         private float m_expAmountForNextLevel;

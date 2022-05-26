@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +10,8 @@ namespace RLS.Gameplay.DungeonFlow
     {
         private Player.Player m_currentPlayer = null;
         private Levels.Stage m_currentStage = null;
+
+        private List<Ennemy.MonsterAI> m_ennemies = new List<Ennemy.MonsterAI>();
 
         internal override void RegisterReferences()
         {
@@ -40,12 +44,27 @@ namespace RLS.Gameplay.DungeonFlow
         {
             base.EnterState();
             m_currentPlayer.UIManager.RefreshPlayerInfos();
-            
+
+            spawning_ennemies();
+
             Debug.LogError("ENTER GAME STATE");
 
             for(int i = 0; i < SceneManager.sceneCount; ++i)
             {
                 Debug.LogError($"{SceneManager.GetSceneAt(i).name}");
+            }
+            m_ennemies?.ForEach(x => x.EnterStateMachine());
+        }
+
+        private void spawning_ennemies()
+        {
+            m_ennemies.Clear();
+
+            var spawners = FindObjectsOfType<Ennemy.Spawning.EnnemySpawner>();
+            for(int i = 0; i < spawners.Length; ++i)
+            {
+                spawners[i].InstantiateRandomEnnemy();
+                m_ennemies.Add(spawners[i].Ennemy);
             }
         }
 
@@ -60,7 +79,7 @@ namespace RLS.Gameplay.DungeonFlow
                     m_reposingCoroutine = StartCoroutine(ReposingPlayer(m_currentPlayer.GetComponent<Player.PlayerMovementController>()));
                 }
             }
-            
+            m_ennemies?.ForEach(x => x.DoUpdate());
         }
 
         internal override void UnregisterEvents()
@@ -75,6 +94,8 @@ namespace RLS.Gameplay.DungeonFlow
 
         public override void ExitState()
         {
+            m_ennemies?.ForEach(x => x.ExitStateMachine());
+
             m_currentPlayer.GetComponent<Player.PlayerMovementController>().DeactivateMovement();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
             Debug.LogError("EXIT GAME STATE");

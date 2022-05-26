@@ -1,5 +1,6 @@
 using MOtter.StatesMachine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLS.Gameplay.DungeonFlow
@@ -22,6 +23,7 @@ namespace RLS.Gameplay.DungeonFlow
         public Levels.LevelManager LevelManager => m_levelManager;
 
         private Player.Player m_currentPlayer = null;
+        public List<Player.Player> Players { private set; get; } = null;
 
         public override IEnumerator LoadAsync()
         {
@@ -37,6 +39,9 @@ namespace RLS.Gameplay.DungeonFlow
 
             m_currentPlayer = FindObjectOfType<Player.Player>();
             m_currentPlayer.InitPlayer();
+
+            Players = new List<Player.Player>();
+            Players.Add(m_currentPlayer);
         }
 
         internal override void ExitStateMachine()

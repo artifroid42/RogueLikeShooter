@@ -9,10 +9,6 @@ namespace RLS.Gameplay.Ennemy.Spawning
         private MonsterAI m_ennemy = null;
         public MonsterAI Ennemy => m_ennemy;
 
-        private void Start()
-        {
-            InstantiateRandomEnnemy();
-        }
 
         public void InstantiateRandomEnnemy()
         {
