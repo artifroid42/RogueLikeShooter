@@ -2,18 +2,20 @@ using UnityEngine;
 
 namespace RLS.Gameplay.Ennemy
 {
-    public class EnnemyAnimationsHandler : MonoBehaviour
+    public class EnnemyAnimationsHandler : Character.Animations.CharacterAnimationsHandler
     {
-        private int ATTACK_TRIGGER = Animator.StringToHash("Attack");
+        private int SWORD_ATTACK_TRIGGER = Animator.StringToHash("SwordAttack");
+        private int SPELL_ATTACK_TRIGGER = Animator.StringToHash("SpellAttack");
 
-        [SerializeField]
-        private Animator m_animator = null;
-
-        public void Attack()
+        public void SwordAttack()
         {
-            m_animator.SetTrigger(ATTACK_TRIGGER);
+            m_animator.SetTrigger(SWORD_ATTACK_TRIGGER);
         }
 
+        public void CastSpell()
+        {
+            m_animator.SetTrigger(SPELL_ATTACK_TRIGGER);
+        }
 
     }
 }

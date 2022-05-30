@@ -3,11 +3,13 @@ namespace RLS.Gameplay.Ennemy.CloseRange
 {
     public class CloseRangeAttackingMonsterState : AGenericAttackingPlayerMonsterState<CloseRangeMonsterAI>
     {
-        protected override void TryToAttack()
+        protected override bool TryToAttack()
         {
-            base.TryToAttack();
-            Owner.AnimationsHandler.Attack();
+            if (Owner.WeaponDamageDealer.CanDoDamage)
+                return false;
+            Owner.AnimationsHandler.SwordAttack();
             Owner.WeaponDamageDealer.CanDoDamage = true;
+            return true;
         }
     }
 }

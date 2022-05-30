@@ -9,9 +9,8 @@ namespace RLS.Gameplay.Ennemy.LongRange
         [SerializeField]
         private FireBall m_projectilePrefab = null;
 
-        protected override void TryToAttack()
+        protected override bool TryToAttack()
         {
-            base.TryToAttack();
             var projectile = Pooling.PoolingManager.Instance.GetPoolingSystem<FireBallPoolingSystem>().
                 GetObject(m_projectilePrefab,
                 Owner.ProjectileSource.transform.position,
@@ -20,9 +19,11 @@ namespace RLS.Gameplay.Ennemy.LongRange
                 projectile.transform.forward = (Owner.ClosestPlayer.SeeablePositions[0].position - Owner.ProjectileSource.transform.position);
             else
                 projectile.transform.rotation = Owner.ProjectileSource.rotation;
+            Owner.AnimationsHandler.CastSpell();
             var damageDealer = projectile.GetComponent<Combat.DamageDealer>();
             damageDealer.SetOwner(Owner.CombatController);
             damageDealer.CanDoDamage = true;
+            return true;
         }
     }
 }

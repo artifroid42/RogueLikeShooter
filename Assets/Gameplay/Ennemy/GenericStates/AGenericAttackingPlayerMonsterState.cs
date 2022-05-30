@@ -32,8 +32,8 @@ namespace RLS.Gameplay.Ennemy
             update_rotation();
             if (Time.time - m_timeOfLastAttack > m_attackCooldown)
             {
-                TryToAttack();
-                m_timeOfLastAttack = Time.time;
+                if (TryToAttack())
+                    m_timeOfLastAttack = Time.time;
             }
         }
 
@@ -45,9 +45,9 @@ namespace RLS.Gameplay.Ennemy
             Owner.transform.forward = Vector3.Lerp(Owner.transform.forward, m_targettedForward, m_rotationSmoothness * Time.deltaTime);
         }
 
-        protected virtual void TryToAttack()
+        protected virtual bool TryToAttack()
         {
-
+            return false;
         }
     }
     public abstract class AGenericAttackingPlayerMonsterState : AGenericAttackingPlayerMonsterState<MonsterAI>
