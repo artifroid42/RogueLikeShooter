@@ -9,11 +9,14 @@ namespace RLS.Gameplay.Player
         private Combat.Weapon.Shuriken m_shurikenPrefab = null;
         [SerializeField]
         private Transform m_shurikenSource = null;
+        private Player m_player = null;
+
 
         protected override void Start()
         {
             base.Start();
             GetComponent<PlayerInputsHandler>()?.RegisterNewObserver(this);
+            m_player = GetComponent<Player>();
         }
 
         private void OnDestroy()
@@ -43,6 +46,7 @@ namespace RLS.Gameplay.Player
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
             }
+            m_player.AnimationsHandler.ThrowShuriken();
         }
     }
 }

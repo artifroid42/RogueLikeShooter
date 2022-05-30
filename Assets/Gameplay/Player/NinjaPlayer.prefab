@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 574431527}
   - component: {fileID: 3157961856507274194}
   - component: {fileID: -8591298311520561762}
+  - component: {fileID: 5982569908568156060}
   m_Layer: 0
   m_Name: NinjaPlayer
   m_TagString: Untagged
@@ -83,6 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf9f94983ce3644fa86736dc2b58897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_animationHandler: {fileID: 5982569908568156060}
   m_seeablePositions:
   - {fileID: 5166181558521296363}
   - {fileID: 2327484567987499437}
@@ -153,6 +155,21 @@ MonoBehaviour:
   m_maxLifePoints: 100
   m_shurikenPrefab: {fileID: 5192912602141883991, guid: e5f135aa64c771942997499c25368440, type: 3}
   m_shurikenSource: {fileID: 7389395843871711903}
+--- !u!114 &5982569908568156060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316349343042930649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c72d6eb49accf41a471e63bb62da43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 1316349343320920905}
+  m_movementSmoothness: 6
+  m_maxSpeed: 5
 --- !u!1 &1316349343311377083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,7 +2826,7 @@ Animator:
   m_GameObject: {fileID: 1316349343311491587}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2ba66718d3169ae42a05d8facf302228, type: 3}
-  m_Controller: {fileID: 9100000, guid: 05a69e6265a6c7a46acb4c5d4961811c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 365119a3ee62c544ebbaf42019895f37, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

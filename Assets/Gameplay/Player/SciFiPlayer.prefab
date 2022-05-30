@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 5470672298810301047}
   - component: {fileID: 6933554319426590850}
   - component: {fileID: 4840851509890657998}
+  - component: {fileID: 185469101642403948}
   m_Layer: 0
   m_Name: SciFiPlayer
   m_TagString: Untagged
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf9f94983ce3644fa86736dc2b58897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_animationHandler: {fileID: 185469101642403948}
   m_seeablePositions:
   - {fileID: 2490538038138486247}
   - {fileID: 2987858123678350058}
@@ -246,6 +248,21 @@ MonoBehaviour:
   m_maxLifePoints: 100
   m_shurikenPrefab: {fileID: 5192912602141883991, guid: e5f135aa64c771942997499c25368440, type: 3}
   m_shurikenSource: {fileID: 3271815815102323151}
+--- !u!114 &185469101642403948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462427663665593481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c72d6eb49accf41a471e63bb62da43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 8851026871246199134}
+  m_movementSmoothness: 6
+  m_maxSpeed: 5
 --- !u!1 &6757180856430295622
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,7 +689,7 @@ Animator:
   m_GameObject: {fileID: 8851026871253494422}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c8c20564eb982f84a96a0d4d8e357cc5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 05a69e6265a6c7a46acb4c5d4961811c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 365119a3ee62c544ebbaf42019895f37, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

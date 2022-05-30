@@ -36,7 +36,9 @@ namespace RLS.Character.Animations
         {
             if (Time.timeScale == 0) return;
 
-            m_deltaPos = transform.InverseTransformVector(transform.position - m_lastPos);
+            m_deltaPos = Vector3.Lerp(m_deltaPos,
+                transform.InverseTransformVector(transform.position - m_lastPos),
+                Time.deltaTime * m_movementSmoothness);
 
             Debug.Log($"{m_deltaPos}");
             m_lastPos = transform.position;
