@@ -1,3 +1,4 @@
+using RLS.Gameplay.Combat.Weapon;
 using UnityEngine;
 
 namespace RLS.Gameplay.Ennemy.LongRange
@@ -6,13 +7,15 @@ namespace RLS.Gameplay.Ennemy.LongRange
     {
         [Header("Refs")]
         [SerializeField]
-        private Combat.Weapon.Projectile m_projectilePrefab = null;
+        private FireBall m_projectilePrefab = null;
 
         protected override void TryToAttack()
         {
             base.TryToAttack();
-
-            var projectile = Instantiate(m_projectilePrefab, Owner.ProjectileSource.transform.position, Quaternion.identity);
+            var projectile = Pooling.PoolingManager.Instance.GetPoolingSystem<FireBallPoolingSystem>().
+                GetObject(m_projectilePrefab,
+                Owner.ProjectileSource.transform.position,
+                Quaternion.identity);
             if (Owner.ClosestPlayer != null)
                 projectile.transform.forward = (Owner.ClosestPlayer.SeeablePositions[0].position - Owner.ProjectileSource.transform.position);
             else

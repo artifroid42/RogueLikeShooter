@@ -10,7 +10,7 @@ namespace RLS.Gameplay.Combat.Weapon
         private float m_lifeTime = 10f;
         private float m_timeOfStart = 0f;
 
-        private void Start()
+        private void OnEnable()
         {
             m_timeOfStart = Time.time;
         }
@@ -20,13 +20,13 @@ namespace RLS.Gameplay.Combat.Weapon
             transform.position += transform.forward * m_speed * Time.deltaTime;
             if(Time.time - m_timeOfStart > m_lifeTime)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

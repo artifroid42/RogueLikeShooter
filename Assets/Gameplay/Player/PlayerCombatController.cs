@@ -1,3 +1,4 @@
+using RLS.Gameplay.Combat.Weapon;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
@@ -24,14 +25,20 @@ namespace RLS.Gameplay.Player
         {
             if(Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
             {
-                var newShuriken = Instantiate(m_shurikenPrefab, m_shurikenSource.position, Quaternion.LookRotation(hitInfo.point - m_shurikenSource.position));
+                var newShuriken = Pooling.PoolingManager.Instance.GetPoolingSystem<ShurikenPoolingSystem>().
+                    GetObject(m_shurikenPrefab, 
+                    m_shurikenSource.position, 
+                    Quaternion.LookRotation(hitInfo.point - m_shurikenSource.position));
                 var damageDealer = newShuriken.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
             }
             else
             {
-                var newShuriken = Instantiate(m_shurikenPrefab, m_shurikenSource.position, GetComponent<PlayerMovementController>().CameraTarget.rotation);
+                var newShuriken = Pooling.PoolingManager.Instance.GetPoolingSystem<ShurikenPoolingSystem>().
+                    GetObject(m_shurikenPrefab,
+                    m_shurikenSource.position,
+                    GetComponent<PlayerMovementController>().CameraTarget.rotation);
                 var damageDealer = newShuriken.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
