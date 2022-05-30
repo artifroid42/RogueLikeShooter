@@ -40,7 +40,6 @@ namespace RLS.Character.Animations
                 transform.InverseTransformVector(transform.position - m_lastPos),
                 Time.deltaTime * m_movementSmoothness);
 
-            Debug.Log($"{m_deltaPos}");
             m_lastPos = transform.position;
         }
     }
