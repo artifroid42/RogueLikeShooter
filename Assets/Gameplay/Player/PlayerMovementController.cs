@@ -19,10 +19,11 @@ namespace RLS.Gameplay.Player
         private float m_speed = 5f;
         [SerializeField]
         private float m_jumpCooldown = 1f;
-        private float m_lastJumpTime = 0f;
+        protected float JumpCooldown => m_jumpCooldown;
+        protected float m_lastJumpTime = 0f;
 
-        private Vector3 m_movementDirection = default;
-        private Vector2 m_lookAroundValues = default;
+        protected Vector3 m_movementDirection = default;
+        protected Vector2 m_lookAroundValues = default;
 
         [Header("Custom Physics Params")]
         [SerializeField]
@@ -30,19 +31,19 @@ namespace RLS.Gameplay.Player
         [SerializeField]
         private float m_jumpSpeed = 6f;
 
-        private bool m_isGrounded = false;
-        private bool m_isHeadTouchingCeiling = false;
+        protected bool m_isGrounded = false;
+        protected bool m_isHeadTouchingCeiling = false;
 
-        private float m_verticalVelocity = 0f;
+        protected float m_verticalVelocity = 0f;
 
         [Header("Camera Settings")]
         [SerializeField]
         private Vector2 m_cameraSensitivity = new Vector2(60f, 60f);
         [SerializeField]
         private Vector2 m_cameraClamping = new Vector2(-60, 60);
-        private float m_yCamValue = 0f;
+        protected float m_yCamValue = 0f;
 
-        private bool m_canMove = false;
+        protected bool m_canMove = false;
 
         private void Start()
         {
@@ -83,7 +84,7 @@ namespace RLS.Gameplay.Player
             m_lookAroundValues = a_lookAroundInputs;
         }
 
-        public void HandleJumpInput() 
+        public virtual void HandleJumpInput() 
         {
             if (!m_canMove) return;
 
@@ -153,7 +154,7 @@ namespace RLS.Gameplay.Player
         }
 
         #region Specific Generic Actions
-        protected void Jump()
+        protected virtual void Jump()
         {
             m_verticalVelocity = m_jumpSpeed;
         }

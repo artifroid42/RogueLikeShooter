@@ -9,6 +9,8 @@ namespace RLS.Gameplay.Player
         private Combat.Weapon.Shuriken m_shurikenPrefab = null;
         [SerializeField]
         private Transform m_shurikenSource = null;
+
+
         private Player m_player = null;
 
 

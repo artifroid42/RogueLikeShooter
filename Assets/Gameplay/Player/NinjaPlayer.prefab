@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1316349343042930650}
   - component: {fileID: 3262712536083724164}
   - component: {fileID: 4821283550271304148}
-  - component: {fileID: 574431527}
+  - component: {fileID: 1910997721847482814}
   - component: {fileID: 3157961856507274194}
   - component: {fileID: -8591298311520561762}
   - component: {fileID: 5982569908568156060}
@@ -106,7 +106,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &574431527
+--- !u!114 &1910997721847482814
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1316349343042930649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dc7e77efebdf32449ee15d85e4ab150, type: 3}
+  m_Script: {fileID: 11500000, guid: a22e63a5bf8c2fd4694670bce8d4c143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterController: {fileID: 4821283550271304148}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_jumpSpeed: 10
   m_cameraSensitivity: {x: 30, y: 30}
   m_cameraClamping: {x: -60, y: 60}
+  m_numberOfJumps: 2
 --- !u!114 &3157961856507274194
 MonoBehaviour:
   m_ObjectHideFlags: 0
