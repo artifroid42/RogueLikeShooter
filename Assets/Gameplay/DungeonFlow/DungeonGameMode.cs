@@ -17,13 +17,15 @@ namespace RLS.Gameplay.DungeonFlow
         [SerializeField]
         private LoseState m_loseState = null;
 
-        [Header("Manager Refs")]
+        [Header("Scene Refs")]
         [SerializeField]
         private Levels.LevelManager m_levelManager = null;
         public Levels.LevelManager LevelManager => m_levelManager;
 
-        private Player.Player m_currentPlayer = null;
-        public List<Player.Player> Players { private set; get; } = null;
+        [SerializeField]
+        private Player.PlayerSpirit m_playerSpirit = null;
+
+        public List<Player.PlayerSpirit> Players { private set; get; } = null;
 
         public override IEnumerator LoadAsync()
         {
@@ -37,11 +39,10 @@ namespace RLS.Gameplay.DungeonFlow
             m_levelManager.OnLoadingEnded += OnLevelLoadingEnded;
             m_levelManager.OnLoadingStarted += OnLevelLoadingStarted;
 
-            m_currentPlayer = FindObjectOfType<Player.Player>();
-            m_currentPlayer.InitPlayer();
+            m_playerSpirit.InitPlayer();
 
-            Players = new List<Player.Player>();
-            Players.Add(m_currentPlayer);
+            Players = new List<Player.PlayerSpirit>();
+            Players.Add(m_playerSpirit);
         }
 
         internal override void ExitStateMachine()

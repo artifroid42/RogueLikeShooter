@@ -1,12 +1,10 @@
 #if UNITY_EDITOR
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player.Upgrades
 {
-    [CustomEditor(typeof(Player))]
+    [CustomEditor(typeof(PlayerSpirit))]
     public class PlayerUpgradesEditor : Editor
     {
         public override void OnInspectorGUI()
@@ -14,7 +12,7 @@ namespace RLS.Gameplay.Player.Upgrades
             base.OnInspectorGUI();
             if(GUILayout.Button("Earn Exp"))
             {
-                (target as Player).EarnExp(100f);
+                (target as PlayerSpirit).EarnExp(100f);
             }
         }
     }

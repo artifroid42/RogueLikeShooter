@@ -19,10 +19,9 @@ namespace RLS.Gameplay.DungeonFlow
             base.RegisterReferences();
             m_currentPlayer = FindObjectOfType<Player.Player>();
             m_currentStage = FindObjectOfType<Levels.Stage>();
-
             var playerPanel = GetPanel<Player.UI.PlayerPanel>();
             var debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();
-            m_currentPlayer.UIManager.Init(playerPanel, debugPlayerPanel);
+            m_gamemode.Players[0].UIManager.Init(playerPanel, debugPlayerPanel);
             
         }
 
@@ -30,7 +29,7 @@ namespace RLS.Gameplay.DungeonFlow
         {
             base.RegisterEvents();
             m_currentStage.EndPortal.OnPlayerEnteredPortal += OnPlayerEnteredEndPortal;
-            m_currentPlayer.UIManager.RegisterEvents();
+            m_gamemode.Players[0].UIManager.RegisterEvents();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().RegisterNewObserver(this);
             Cursor.lockState = CursorLockMode.Locked;
@@ -39,12 +38,13 @@ namespace RLS.Gameplay.DungeonFlow
         internal override void SetUpDependencies()
         {
             base.SetUpDependencies();
+            m_gamemode.Players[0].HandleGameLevelChanged();
             m_reposingCoroutine = StartCoroutine(ReposingPlayer(m_currentPlayer.GetComponent<Player.PlayerMovementController>()));
         }
         public override void EnterState()
         {
             base.EnterState();
-            m_currentPlayer.UIManager.RefreshPlayerInfos();
+            m_gamemode.Players[0].UIManager.RefreshPlayerInfos();
 
             spawning_ennemies();
 
@@ -77,7 +77,7 @@ namespace RLS.Gameplay.DungeonFlow
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().UnregisterObserver(this);
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
             m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
-            m_currentPlayer.UIManager.UnregisterEvents();
+            m_gamemode.Players[0].UIManager.UnregisterEvents();
             base.UnregisterEvents();
         }
 

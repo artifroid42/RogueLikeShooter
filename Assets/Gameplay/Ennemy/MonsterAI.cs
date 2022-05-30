@@ -98,28 +98,28 @@ namespace RLS.Gameplay.Ennemy
             float minDistanceToAPlayer = float.MaxValue;
             for (int i = 0; i < m_gamemode.Players.Count; ++i)
             {
-                Vector3 localPlayerDir = transform.InverseTransformPoint(m_gamemode.Players[i].transform.position).normalized;
+                Vector3 localPlayerDir = transform.InverseTransformPoint(m_gamemode.Players[i].CurrentPlayer.transform.position).normalized;
                 RaycastHit hitInfo;
-                float distanceToThisPlayer = Vector3.Distance(m_gamemode.Players[i].transform.position, transform.position);
+                float distanceToThisPlayer = Vector3.Distance(m_gamemode.Players[i].CurrentPlayer.transform.position, transform.position);
                 if (distanceToThisPlayer < m_sightMaxDistance
                     && distanceToThisPlayer < minDistanceToAPlayer
                     && localPlayerDir.z > 0 
                     && Mathf.Abs(localPlayerDir.x) < m_ratioWidthAngle)
                 {
-                    for(int j = 0; j < m_gamemode.Players[i].SeeablePositions.Length; ++j)
+                    for(int j = 0; j < m_gamemode.Players[i].CurrentPlayer.SeeablePositions.Length; ++j)
                     {
-                        var sightDir = (m_gamemode.Players[i].SeeablePositions[j].transform.position - m_sightSource.position).normalized;
+                        var sightDir = (m_gamemode.Players[i].CurrentPlayer.SeeablePositions[j].transform.position - m_sightSource.position).normalized;
                         if (Physics.Raycast(m_sightSource.position, sightDir, out hitInfo, m_sightMaxDistance, m_sightLayerMask))
                         {
-                            if(hitInfo.collider.GetComponent<Player.Player>() == m_gamemode.Players[i])
+                            if(hitInfo.collider.GetComponent<Player.Player>() == m_gamemode.Players[i].CurrentPlayer)
                             {
-                                ClosestPlayer = m_gamemode.Players[i];
+                                ClosestPlayer = m_gamemode.Players[i].CurrentPlayer;
                                 minDistanceToAPlayer = distanceToThisPlayer;
                                 m_lastTimePlayerSeen = Time.time;
                             }
                         }
                     }
-                    if(ClosestPlayer == m_gamemode.Players[i])
+                    if(ClosestPlayer == m_gamemode.Players[i].CurrentPlayer)
                     {
                         continue;
                     }

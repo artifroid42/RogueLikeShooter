@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player.UI
@@ -8,7 +5,7 @@ namespace RLS.Gameplay.Player.UI
     public class PlayerUIManager : MonoBehaviour
     {
         private PlayerPanel m_playerPanel;
-        private Player m_player;
+        private PlayerSpirit m_player;
 
         private Debug.PlayerDebugPanel m_debugPanel = null;
 
@@ -27,7 +24,7 @@ namespace RLS.Gameplay.Player.UI
 
         public void RegisterEvents()
         {
-            m_player = FindObjectOfType<Player>();
+            m_player = FindObjectOfType<PlayerSpirit>();
 
             m_player.OnExpChanged += HandleExpChanged;
             m_player.OnLevelChanged += HandleLevelChanged;
