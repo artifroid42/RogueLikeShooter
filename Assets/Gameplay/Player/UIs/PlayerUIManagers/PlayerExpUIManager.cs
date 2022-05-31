@@ -1,3 +1,5 @@
+using RLS.Gameplay.Player.UI.Debug;
+using System;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player.UI
@@ -27,5 +29,6 @@ namespace RLS.Gameplay.Player.UI
         {
             m_debugPanel?.UpdatePositionDisplay(transform.position);
         }
+
     }
 }

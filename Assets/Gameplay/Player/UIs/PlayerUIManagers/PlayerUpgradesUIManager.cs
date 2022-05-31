@@ -1,3 +1,4 @@
+using RLS.Gameplay.Player.UI.Debug;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,14 +8,9 @@ namespace RLS.Gameplay.Player.UI
 {
     public class PlayerUpgradesUIManager : APlayerUIManager
     {
-        internal void RegisterEvents()
+        public override void Init(PlayerPanel a_playerPanel, PlayerDebugPanel a_debugPanel)
         {
-            
-        }
-
-        internal void UnregisterEvents()
-        {
-            
+            base.Init(a_playerPanel, a_debugPanel);
         }
     }
 

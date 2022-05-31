@@ -13,14 +13,17 @@ namespace RLS.Gameplay.DungeonFlow
 
         private List<Ennemy.MonsterAI> m_ennemies = new List<Ennemy.MonsterAI>();
 
+        private Player.UI.PlayerPanel m_playerPanel;
+        private Player.UI.Debug.PlayerDebugPanel m_debugPlayerPanel;
+
         #region Life Cycle
         internal override void RegisterReferences()
         {
             base.RegisterReferences();
             m_currentPlayer = FindObjectOfType<Player.Player>();
             m_currentStage = FindObjectOfType<Levels.Stage>();
-            var playerPanel = GetPanel<Player.UI.PlayerPanel>();
-            var debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();           
+            m_playerPanel = GetPanel<Player.UI.PlayerPanel>();
+            m_debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();           
         }
 
         internal override void RegisterEvents()
@@ -42,8 +45,8 @@ namespace RLS.Gameplay.DungeonFlow
         public override void EnterState()
         {
             base.EnterState();
-            var player = m_gamemode.Players[0];
-            player.PlayerUIManagersManager.ExpUIManager.RefreshPlayerInfos(player.CurrentLevel, player.CurrentExpAmount, player.ExpAmountForNextLevel);
+            var playerExpManager = m_gamemode.Players[0].PlayerExpManager;
+            m_gamemode.Players[0].PlayerUIManagersManager.ExpUIManager.RefreshPlayerInfos(playerExpManager.CurrentLevel, playerExpManager.CurrentExpAmount, playerExpManager.ExpAmountForNextLevel);
 
             spawning_ennemies();
 

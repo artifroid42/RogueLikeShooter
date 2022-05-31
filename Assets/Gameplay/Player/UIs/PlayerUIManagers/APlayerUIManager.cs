@@ -9,13 +9,10 @@ namespace RLS.Gameplay.Player.UI
         protected PlayerPanel m_playerPanel;
         protected Debug.PlayerDebugPanel m_debugPanel;
 
-        protected virtual void Init(PlayerPanel a_playerPanel, Debug.PlayerDebugPanel a_debugPanel)
+        public virtual void Init(PlayerPanel a_playerPanel, Debug.PlayerDebugPanel a_debugPanel)
         {
             m_playerPanel = a_playerPanel;
             m_debugPanel = a_debugPanel;
         }
-
-
     }
-
 }

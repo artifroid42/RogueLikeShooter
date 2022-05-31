@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_expBar: {fileID: 1764486813824350634}
   m_playerLevelText: {fileID: 5229410091589970316}
+  m_classUpgradesModule: {fileID: 5955015527714644087}
 --- !u!1 &7505214497682132483
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +529,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c424fb1cdd55c344950e421a7111f34, type: 3}
+--- !u!114 &5955015527714644087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2454459311573960941, guid: 6c424fb1cdd55c344950e421a7111f34, type: 3}
+  m_PrefabInstance: {fileID: 8118735238015346842}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdc450af48863d48a0a2103415712d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6623832106761862264 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3118494921267860706, guid: 6c424fb1cdd55c344950e421a7111f34, type: 3}

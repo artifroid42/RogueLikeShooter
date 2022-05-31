@@ -21,10 +21,15 @@ namespace RLS.Gameplay.Player.Upgrades
         [SerializeField]
         private PositionTween m_classUpgradesTween;
 
+        private bool m_isClassSelectionActive = false;
+        private bool m_isClassUpgradesActive = false;
+
         public void Init()
         {
             m_classSelection.SetActive(true);
             m_classUpgrades.SetActive(false);
+            m_isClassSelectionActive = true;
+            m_isClassUpgradesActive = false;
         }
     }
 }
