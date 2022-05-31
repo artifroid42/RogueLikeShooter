@@ -189,6 +189,15 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""SecondaryAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a41dbbd-52bb-47f2-be33-cc8c33ba85b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""LookAround"",
                     ""type"": ""Value"",
                     ""id"": ""7b64423c-e31b-4bc0-b33c-1a7bd7da87fa"",
@@ -472,6 +481,28 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""action"": ""SixUpgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ab1bd1e-bf82-43a6-aac5-9d1ae9aec088"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d91a92f-b18d-44be-8f00-d41f54f37695"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -516,6 +547,7 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
+        m_Gameplay_SecondaryAttack = m_Gameplay.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Gameplay_LookAround = m_Gameplay.FindAction("LookAround", throwIfNotFound: true);
         m_Gameplay_OneUpgrade = m_Gameplay.FindAction("OneUpgrade", throwIfNotFound: true);
         m_Gameplay_TwoUpgrade = m_Gameplay.FindAction("TwoUpgrade", throwIfNotFound: true);
@@ -627,6 +659,7 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Attack;
+    private readonly InputAction m_Gameplay_SecondaryAttack;
     private readonly InputAction m_Gameplay_LookAround;
     private readonly InputAction m_Gameplay_OneUpgrade;
     private readonly InputAction m_Gameplay_TwoUpgrade;
@@ -642,6 +675,7 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
+        public InputAction @SecondaryAttack => m_Wrapper.m_Gameplay_SecondaryAttack;
         public InputAction @LookAround => m_Wrapper.m_Gameplay_LookAround;
         public InputAction @OneUpgrade => m_Wrapper.m_Gameplay_OneUpgrade;
         public InputAction @TwoUpgrade => m_Wrapper.m_Gameplay_TwoUpgrade;
@@ -670,6 +704,9 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
+                @SecondaryAttack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSecondaryAttack;
+                @SecondaryAttack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSecondaryAttack;
+                @SecondaryAttack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSecondaryAttack;
                 @LookAround.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
                 @LookAround.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
                 @LookAround.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
@@ -707,6 +744,9 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @SecondaryAttack.started += instance.OnSecondaryAttack;
+                @SecondaryAttack.performed += instance.OnSecondaryAttack;
+                @SecondaryAttack.canceled += instance.OnSecondaryAttack;
                 @LookAround.started += instance.OnLookAround;
                 @LookAround.performed += instance.OnLookAround;
                 @LookAround.canceled += instance.OnLookAround;
@@ -761,6 +801,7 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnSecondaryAttack(InputAction.CallbackContext context);
         void OnLookAround(InputAction.CallbackContext context);
         void OnOneUpgrade(InputAction.CallbackContext context);
         void OnTwoUpgrade(InputAction.CallbackContext context);

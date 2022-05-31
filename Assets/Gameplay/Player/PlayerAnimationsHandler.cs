@@ -16,5 +16,10 @@ namespace RLS.Gameplay.Player
         {
             m_animator.SetTrigger(SWORD_ATTACK_TRIGGER);
         }
+
+        public void ThrowExplosiveBarrel()
+        {
+            m_animator.SetTrigger(SHURIKEN_THROW_TRIGGER);
+        }
     }
 }

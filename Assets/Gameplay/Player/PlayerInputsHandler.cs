@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +17,8 @@ namespace RLS.Gameplay.Player
             m_actions.Gameplay.Jump.performed += Jump_performed;
             m_actions.Gameplay.Attack.started += Attack_started;
             m_actions.Gameplay.Attack.canceled += Attack_canceled;
+            m_actions.Gameplay.SecondaryAttack.started += SecondaryAttack_started;
+            m_actions.Gameplay.SecondaryAttack.canceled += SecondaryAttack_canceled;
             m_actions.Gameplay.Pause.performed += Pause_performed;
 
             m_actions.Gameplay.OneUpgrade.performed += OneUpgrade_performed;
@@ -28,6 +29,7 @@ namespace RLS.Gameplay.Player
             m_actions.Gameplay.SixUpgrade.performed += SixUpgrade_performed;
         }
 
+
         public void RegisterNewObserver(IPlayerInputsObserver a_newObserver)
         {
             m_observers.Add(a_newObserver);
@@ -36,19 +38,27 @@ namespace RLS.Gameplay.Player
         {
             m_observers.Remove(a_observer);
         }
-        private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        private void SecondaryAttack_canceled(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleSecondaryAttackCanceledInput());
+        }
+        private void SecondaryAttack_started(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleSecondaryAttackStartedInput());
+        }
+        private void Pause_performed(InputAction.CallbackContext obj)
         {
             m_observers?.ForEach(x => x.HandlePauseInput());
         }
-        private void Attack_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        private void Attack_canceled(InputAction.CallbackContext obj)
         {
             m_observers?.ForEach(x => x.HandleAttackCanceledInput());
         }
-        private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        private void Attack_started(InputAction.CallbackContext obj)
         {
             m_observers?.ForEach(x => x.HandleAttackStartedInput());
         }
-        private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        private void Jump_performed(InputAction.CallbackContext obj)
         {
             m_observers?.ForEach(x => x.HandleJumpInput());
         }
@@ -96,6 +106,8 @@ namespace RLS.Gameplay.Player
             m_actions.Gameplay.Jump.performed -= Jump_performed;
             m_actions.Gameplay.Attack.started -= Attack_started;
             m_actions.Gameplay.Attack.canceled -= Attack_canceled;
+            m_actions.Gameplay.SecondaryAttack.started -= SecondaryAttack_started;
+            m_actions.Gameplay.SecondaryAttack.canceled -= SecondaryAttack_canceled;
             m_actions.Gameplay.Pause.performed -= Pause_performed;
             m_actions.Disable();
         }

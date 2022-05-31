@@ -13,7 +13,6 @@ namespace RLS.Generic.VFXManager
             if (s_instance == null)
             {
                 s_instance = this;
-                DontDestroyOnLoad(s_instance);
                 s_instance.gameObject.name = "VFXManager";
             }
             else
@@ -30,7 +29,6 @@ namespace RLS.Generic.VFXManager
                 {
                     GameObject GO = new GameObject("VFXManager");
                     s_instance = GO.AddComponent<VFXManager>();
-                    DontDestroyOnLoad(GO);
                 }
                 return s_instance;
             }
@@ -38,7 +36,7 @@ namespace RLS.Generic.VFXManager
 
         #endregion
 
-        [SerializeField]
+        [System.Serializable]
         private struct VFXData
         {
             public ParticleSystem VFXPrefab;

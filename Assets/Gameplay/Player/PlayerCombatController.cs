@@ -22,6 +22,6 @@ namespace RLS.Gameplay.Player
         public virtual void HandleAttackStartedInput()
         { }
 
-
+        public virtual void HandleSecondaryAttackStartedInput() { }
     }
 }
