@@ -9,7 +9,7 @@ namespace RLS.Gameplay.Player
         [SerializeField]
         private Upgrades.PlayerStatsData m_playerStatsData;
         [SerializeField]
-        private UI.PlayerUIManager m_UIManager;
+        private UI.PlayerUIManagersManager m_playerUIManagersManager;
 
         private int m_currentLevel;
 
@@ -18,10 +18,7 @@ namespace RLS.Gameplay.Player
         private float m_currentExpAmount;
         private float m_expAmountForNextLevel;
 
-        public UI.PlayerUIManager UIManager { get => m_UIManager; set => m_UIManager = value; }
-
-        public Action<float> OnExpChanged;
-        public Action<int> OnLevelChanged;
+        public UI.PlayerUIManagersManager PlayerUIManagersManager { get => m_playerUIManagersManager; set => m_playerUIManagersManager = value; }
 
         public float CurrentExpAmount
         {
@@ -30,7 +27,7 @@ namespace RLS.Gameplay.Player
             {
                 m_currentExpAmount = value;
                 CheckForNextLevel();
-                OnExpChanged?.Invoke(m_currentExpAmount / m_expAmountForNextLevel);
+                m_playerUIManagersManager.ExpUIManager.SetExpBarValue(m_currentExpAmount / m_expAmountForNextLevel);
             }
         }
 
@@ -40,7 +37,7 @@ namespace RLS.Gameplay.Player
             set
             {
                 m_currentLevel = value;
-                OnLevelChanged?.Invoke(m_currentLevel);
+                m_playerUIManagersManager.ExpUIManager.SetLevelText(m_currentLevel);
             }
         }
 
@@ -50,6 +47,16 @@ namespace RLS.Gameplay.Player
         {
             CurrentLevel = GetStartLevel();
             CurrentExpAmount = 0;
+        }
+
+        public void RegisterEvents()
+        {
+            PlayerUIManagersManager.RegisterEvents();
+        }
+
+        public void UnregisterEvents()
+        {
+            PlayerUIManagersManager.UnregisterEvents();
         }
 
         /// <summary>
@@ -69,6 +76,31 @@ namespace RLS.Gameplay.Player
         }
 
         public void HandleUpgradeOneInput()
+        {
+
+        }
+
+        public void HandleUpgradeTwoInput()
+        {
+
+        }
+
+        public void HandleUpgradeThreeInput()
+        {
+
+        }
+
+        public void HandleUpgradeFourInput()
+        {
+
+        }
+
+        public void HandleUpgradeFiveInput()
+        {
+
+        }
+
+        public void HandleUpgradeSixInput()
         {
 
         }
