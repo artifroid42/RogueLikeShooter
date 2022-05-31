@@ -10,5 +10,12 @@ namespace RLS.Gameplay.Player
         void HandleAttackStartedInput() { }
         void HandleAttackCanceledInput() { }
         void HandleJumpInput() { }
+        
+        void HandleUpgradeOneInput() { }
+        void HandleUpgradeTwoInput() { }
+        void HandleUpgradeThreeInput() { }
+        void HandleUpgradeFourInput() { }
+        void HandleUpgradeFiveInput() { }
+        void HandleUpgradeSixInput() { }
     }
 }
