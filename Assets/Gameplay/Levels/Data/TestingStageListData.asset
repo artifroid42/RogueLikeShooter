@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TestingStageListData
   m_EditorClassIdentifier: 
   m_stageData:
-  - StageData: {fileID: 11400000, guid: 76db153585ac87644b6f56321b670aea, type: 2}
+  - StageData: {fileID: 11400000, guid: c2cd0136d1151c14380eca380216ad4a, type: 2}
     SpawnWeight: 1

@@ -9,7 +9,6 @@ namespace RLS.Gameplay.Ennemy.Animations
         private CloseRangeMonsterAI m_owner = null;
         public void StopAttacking()
         {
-            Debug.Log("Stop attacking notified");
             m_owner.WeaponDamageDealer.CanDoDamage = false;
         }
     }
