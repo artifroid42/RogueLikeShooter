@@ -196,6 +196,60 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""OneUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""9083c3b4-a021-4028-a154-2c28f993f8cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TwoUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""77c92660-c5c1-4d28-907e-8a97c40be678"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThreeUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""c81dc3dd-effc-49ee-87c4-2897f57a3561"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FourUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e96dbe4-973b-472d-b238-25f4caf07923"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FiveUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""af983dd2-95d3-4e65-baf5-c80a48e7b255"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SixUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""14490d06-e7b5-46c8-afd9-01307bb63976"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -352,6 +406,72 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                     ""action"": ""LookAround"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""06a9da8d-266a-4c48-ae17-50c7cd1ba42c"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OneUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""09264089-40af-48f8-9a6f-e0ee8f95b3ff"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TwoUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c8876aa-7d3c-465c-991a-95aa5868bfeb"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThreeUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2ea691c5-c069-4be8-9a88-8863028d1da3"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FourUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85d8d92d-48a3-4e49-950d-9afdf9de9039"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FiveUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7cb0b43e-2291-4930-ad45-2c117efd64f9"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SixUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -397,6 +517,12 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
         m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_LookAround = m_Gameplay.FindAction("LookAround", throwIfNotFound: true);
+        m_Gameplay_OneUpgrade = m_Gameplay.FindAction("OneUpgrade", throwIfNotFound: true);
+        m_Gameplay_TwoUpgrade = m_Gameplay.FindAction("TwoUpgrade", throwIfNotFound: true);
+        m_Gameplay_ThreeUpgrade = m_Gameplay.FindAction("ThreeUpgrade", throwIfNotFound: true);
+        m_Gameplay_FourUpgrade = m_Gameplay.FindAction("FourUpgrade", throwIfNotFound: true);
+        m_Gameplay_FiveUpgrade = m_Gameplay.FindAction("FiveUpgrade", throwIfNotFound: true);
+        m_Gameplay_SixUpgrade = m_Gameplay.FindAction("SixUpgrade", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -502,6 +628,12 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Jump;
     private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_LookAround;
+    private readonly InputAction m_Gameplay_OneUpgrade;
+    private readonly InputAction m_Gameplay_TwoUpgrade;
+    private readonly InputAction m_Gameplay_ThreeUpgrade;
+    private readonly InputAction m_Gameplay_FourUpgrade;
+    private readonly InputAction m_Gameplay_FiveUpgrade;
+    private readonly InputAction m_Gameplay_SixUpgrade;
     public struct GameplayActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -511,6 +643,12 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
         public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @LookAround => m_Wrapper.m_Gameplay_LookAround;
+        public InputAction @OneUpgrade => m_Wrapper.m_Gameplay_OneUpgrade;
+        public InputAction @TwoUpgrade => m_Wrapper.m_Gameplay_TwoUpgrade;
+        public InputAction @ThreeUpgrade => m_Wrapper.m_Gameplay_ThreeUpgrade;
+        public InputAction @FourUpgrade => m_Wrapper.m_Gameplay_FourUpgrade;
+        public InputAction @FiveUpgrade => m_Wrapper.m_Gameplay_FiveUpgrade;
+        public InputAction @SixUpgrade => m_Wrapper.m_Gameplay_SixUpgrade;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -535,6 +673,24 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                 @LookAround.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
                 @LookAround.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
                 @LookAround.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLookAround;
+                @OneUpgrade.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOneUpgrade;
+                @OneUpgrade.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOneUpgrade;
+                @OneUpgrade.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnOneUpgrade;
+                @TwoUpgrade.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTwoUpgrade;
+                @TwoUpgrade.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTwoUpgrade;
+                @TwoUpgrade.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTwoUpgrade;
+                @ThreeUpgrade.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnThreeUpgrade;
+                @ThreeUpgrade.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnThreeUpgrade;
+                @ThreeUpgrade.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnThreeUpgrade;
+                @FourUpgrade.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFourUpgrade;
+                @FourUpgrade.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFourUpgrade;
+                @FourUpgrade.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFourUpgrade;
+                @FiveUpgrade.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFiveUpgrade;
+                @FiveUpgrade.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFiveUpgrade;
+                @FiveUpgrade.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFiveUpgrade;
+                @SixUpgrade.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSixUpgrade;
+                @SixUpgrade.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSixUpgrade;
+                @SixUpgrade.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSixUpgrade;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -554,6 +710,24 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
                 @LookAround.started += instance.OnLookAround;
                 @LookAround.performed += instance.OnLookAround;
                 @LookAround.canceled += instance.OnLookAround;
+                @OneUpgrade.started += instance.OnOneUpgrade;
+                @OneUpgrade.performed += instance.OnOneUpgrade;
+                @OneUpgrade.canceled += instance.OnOneUpgrade;
+                @TwoUpgrade.started += instance.OnTwoUpgrade;
+                @TwoUpgrade.performed += instance.OnTwoUpgrade;
+                @TwoUpgrade.canceled += instance.OnTwoUpgrade;
+                @ThreeUpgrade.started += instance.OnThreeUpgrade;
+                @ThreeUpgrade.performed += instance.OnThreeUpgrade;
+                @ThreeUpgrade.canceled += instance.OnThreeUpgrade;
+                @FourUpgrade.started += instance.OnFourUpgrade;
+                @FourUpgrade.performed += instance.OnFourUpgrade;
+                @FourUpgrade.canceled += instance.OnFourUpgrade;
+                @FiveUpgrade.started += instance.OnFiveUpgrade;
+                @FiveUpgrade.performed += instance.OnFiveUpgrade;
+                @FiveUpgrade.canceled += instance.OnFiveUpgrade;
+                @SixUpgrade.started += instance.OnSixUpgrade;
+                @SixUpgrade.performed += instance.OnSixUpgrade;
+                @SixUpgrade.canceled += instance.OnSixUpgrade;
             }
         }
     }
@@ -588,5 +762,11 @@ public partial class @PlayerInputsActions : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnLookAround(InputAction.CallbackContext context);
+        void OnOneUpgrade(InputAction.CallbackContext context);
+        void OnTwoUpgrade(InputAction.CallbackContext context);
+        void OnThreeUpgrade(InputAction.CallbackContext context);
+        void OnFourUpgrade(InputAction.CallbackContext context);
+        void OnFiveUpgrade(InputAction.CallbackContext context);
+        void OnSixUpgrade(InputAction.CallbackContext context);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RLS.Gameplay.Player
 {
-    public class PlayerSpirit : MonoBehaviour
+    public class PlayerSpirit : MonoBehaviour, IPlayerInputsObserver
     {
         [Header("Components Refs")]
         [SerializeField]
@@ -22,7 +22,6 @@ namespace RLS.Gameplay.Player
 
         public Action<float> OnExpChanged;
         public Action<int> OnLevelChanged;
-
 
         public float CurrentExpAmount
         {
@@ -66,6 +65,12 @@ namespace RLS.Gameplay.Player
         public void HandleGameLevelChanged()
         {
             CurrentPlayer = FindObjectOfType<Player>();
+            CurrentPlayer.GetComponent<PlayerInputsHandler>().RegisterNewObserver(this);
+        }
+
+        public void HandleUpgradeOneInput()
+        {
+
         }
 
         #region Experience

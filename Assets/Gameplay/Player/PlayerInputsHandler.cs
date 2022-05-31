@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RLS.Gameplay.Player
 {
@@ -17,6 +19,13 @@ namespace RLS.Gameplay.Player
             m_actions.Gameplay.Attack.started += Attack_started;
             m_actions.Gameplay.Attack.canceled += Attack_canceled;
             m_actions.Gameplay.Pause.performed += Pause_performed;
+
+            m_actions.Gameplay.OneUpgrade.performed += OneUpgrade_performed;
+            m_actions.Gameplay.TwoUpgrade.performed += TwoUpgrade_performed;
+            m_actions.Gameplay.ThreeUpgrade.performed += ThreeUpgrade_performed;
+            m_actions.Gameplay.FourUpgrade.performed += FourUpgrade_performed;
+            m_actions.Gameplay.FiveUpgrade.performed += FiveUpgrade_performed;
+            m_actions.Gameplay.SixUpgrade.performed += SixUpgrade_performed;
         }
 
         public void RegisterNewObserver(IPlayerInputsObserver a_newObserver)
@@ -42,6 +51,30 @@ namespace RLS.Gameplay.Player
         private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             m_observers?.ForEach(x => x.HandleJumpInput());
+        }
+        private void OneUpgrade_performed(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleUpgradeOneInput());
+        }
+        private void TwoUpgrade_performed(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleUpgradeTwoInput());
+        }
+        private void ThreeUpgrade_performed(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleUpgradeThreeInput());
+        }
+        private void FourUpgrade_performed(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleUpgradeFourInput());
+        }
+        private void FiveUpgrade_performed(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleUpgradeFiveInput());
+        }
+        private void SixUpgrade_performed(InputAction.CallbackContext obj)
+        {
+            m_observers?.ForEach(x => x.HandleUpgradeSixInput());
         }
 
         private void read_continuous_inputs()
