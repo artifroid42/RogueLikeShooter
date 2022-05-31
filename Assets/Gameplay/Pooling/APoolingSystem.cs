@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +5,9 @@ namespace RLS.Gameplay.Pooling
 {
     public abstract class APoolingSystem : MonoBehaviour
     {
+        public int ID = -1;
     }
-    public abstract class APoolingSystem<T> : APoolingSystem where T : MonoBehaviour
+    public abstract class APoolingSystem<T> : APoolingSystem where T : Component
     {
         private List<T> m_instantiatedObjects = new List<T>();
 
