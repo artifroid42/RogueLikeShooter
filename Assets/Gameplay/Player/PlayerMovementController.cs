@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
@@ -8,6 +9,8 @@ namespace RLS.Gameplay.Player
         [SerializeField]
         private CharacterController m_characterController;
         [SerializeField]
+        protected GameObject m_model = null;
+        [SerializeField]
         private Transform m_cameraTarget;
         [SerializeField]
         private Transform m_topHead = null;
@@ -16,7 +19,8 @@ namespace RLS.Gameplay.Player
 
         [Header("Gameplay Params")]
         [SerializeField]
-        private float m_speed = 5f;
+        protected float m_baseSpeed = 5f;
+        protected float m_speed = 5f;
         [SerializeField]
         private float m_jumpCooldown = 1f;
         protected float JumpCooldown => m_jumpCooldown;
@@ -48,6 +52,7 @@ namespace RLS.Gameplay.Player
         private void Start()
         {
             GetComponent<PlayerInputsHandler>()?.RegisterNewObserver(this);
+            m_speed = m_baseSpeed;
         }
 
         private void OnDestroy()
@@ -72,6 +77,10 @@ namespace RLS.Gameplay.Player
 
         public void HandleMovementInput(Vector2 a_moveInputs) 
         {
+            if(m_directionIsBlocked)
+            {
+                return;
+            }
             m_movementDirection = transform.forward * a_moveInputs.y + transform.right * a_moveInputs.x;
             if(m_movementDirection.sqrMagnitude > 1f)
             {
@@ -95,6 +104,8 @@ namespace RLS.Gameplay.Player
             }
         }
 
+        public virtual void HandleSecondaryAttackStartedInput() { }
+
         private void check_if_grounded()
         {
             m_isGrounded = m_characterController.isGrounded;
@@ -102,30 +113,35 @@ namespace RLS.Gameplay.Player
 
         private void apply_movement()
         {
-            if(m_isHeadTouchingCeiling)
-            {
-                if(m_verticalVelocity > 0f)
-                {
-                    m_verticalVelocity = 0f;
-                }
-                
-            }
-            if(m_isGrounded && m_verticalVelocity < 0f)
-            {
-                m_verticalVelocity = -1f;
-            }
-            else
-            {
-                m_verticalVelocity -= m_gravity * Time.deltaTime;
-            }
-
 
             Vector3 movementToApply = default;
 
             movementToApply += m_movementDirection * m_speed;
 
+            if (!m_verticalVelocityIsLocked)
+            {
+                if (m_isHeadTouchingCeiling)
+                {
+                    if (m_verticalVelocity > 0f)
+                    {
+                        m_verticalVelocity = 0f;
+                    }
+
+                }
+                if (m_isGrounded && m_verticalVelocity < 0f)
+                {
+                    m_verticalVelocity = -1f;
+                }
+                else
+                {
+                    m_verticalVelocity -= m_gravity * Time.deltaTime;
+                }
+                
+            }
+
             movementToApply += m_verticalVelocity * Vector3.up;
-            
+
+
             m_characterController.Move(movementToApply * Time.deltaTime);
         }
 
@@ -156,7 +172,42 @@ namespace RLS.Gameplay.Player
         #region Specific Generic Actions
         protected virtual void Jump()
         {
+            if (m_verticalVelocityIsLocked) return;
             m_verticalVelocity = m_jumpSpeed;
+        }
+
+        private bool m_directionIsBlocked = false;
+        private Coroutine m_blockDirectionCoroutine = null;
+        protected void BlockDirectionFor(float a_duration)
+        {
+            if(m_blockDirectionCoroutine != null)
+            {
+                StopCoroutine(m_blockDirectionCoroutine);
+            }
+            m_blockDirectionCoroutine = StartCoroutine(BlockDirectionRoutine(a_duration));
+        }
+        private IEnumerator BlockDirectionRoutine(float a_duration)
+        {
+            m_directionIsBlocked = true;
+            yield return new WaitForSeconds(a_duration);
+            m_directionIsBlocked = false;
+        }
+
+        private bool m_verticalVelocityIsLocked = false;
+        private Coroutine m_lockVerticalVelocityCoroutine = null;
+        protected void LockVerticalVelocityFor(float a_duration)
+        {
+            if (m_lockVerticalVelocityCoroutine != null)
+            {
+                StopCoroutine(m_lockVerticalVelocityCoroutine);
+            }
+            m_lockVerticalVelocityCoroutine = StartCoroutine(LockVerticalVelocityRoutine(a_duration));
+        }
+        private IEnumerator LockVerticalVelocityRoutine(float a_duration)
+        {
+            m_verticalVelocityIsLocked = true;
+            yield return new WaitForSeconds(a_duration);
+            m_verticalVelocityIsLocked = false;
         }
         #endregion
 

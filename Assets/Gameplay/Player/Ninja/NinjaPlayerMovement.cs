@@ -1,3 +1,5 @@
+using RLS.Generic.VFXManager;
+using System.Collections;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player.Ninja
@@ -8,6 +10,50 @@ namespace RLS.Gameplay.Player.Ninja
         [SerializeField]
         private int m_numberOfJumps = 2;
         private int m_numberOfJumpsSinceGroundLeft = 0;
+        [SerializeField]
+        private float m_dashCooldown = 2f;
+        [SerializeField]
+        private float m_dashMultiplier = 5f;
+        private float m_timeOfLastDash = 0f;
+        [SerializeField]
+        private float m_dashDuration = 1f;
+        [SerializeField]
+        private Rigidbody
+            m_poofNinjaPropPrefab = null;
+
+        private Coroutine m_dashCoroutine = null;
+
+
+        public override void HandleSecondaryAttackStartedInput()
+        {
+            base.HandleSecondaryAttackStartedInput();
+            if (Time.time - m_timeOfLastDash < m_dashCooldown) return;
+            m_timeOfLastDash = Time.time;
+
+            if(m_dashCoroutine != null)
+            { 
+                StopCoroutine(m_dashCoroutine);
+            }
+
+            m_dashCoroutine = StartCoroutine(DashRoutine());
+        }
+
+        private IEnumerator DashRoutine()
+        {
+            m_speed *= m_dashMultiplier;
+            m_movementDirection.Normalize();
+            m_model.SetActive(false);
+            BlockDirectionFor(m_dashDuration);
+            LockVerticalVelocityFor(m_dashDuration);
+            VFXManager.Instance.PlayFXAt(0, transform.position + Vector3.up, Quaternion.identity);
+            Pooling.PoolingManager.Instance.GetPoolingSystem<PoofNinjaPropPoolingSystem>().
+                GetObject(m_poofNinjaPropPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
+            yield return new WaitForSeconds(m_dashDuration);
+            m_speed /= m_dashMultiplier;
+            m_model.SetActive(true);
+            VFXManager.Instance.PlayFXAt(0, transform.position + Vector3.up, Quaternion.identity);
+        }
+
         public override void HandleJumpInput()
         {
             if (!m_canMove) return;

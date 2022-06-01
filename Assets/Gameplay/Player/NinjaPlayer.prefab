@@ -88,6 +88,7 @@ MonoBehaviour:
   m_seeablePositions:
   - {fileID: 5166181558521296363}
   - {fileID: 2327484567987499437}
+  m_class: 0
 --- !u!143 &4821283550271304148
 CharacterController:
   m_ObjectHideFlags: 0
@@ -119,15 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterController: {fileID: 4821283550271304148}
+  m_model: {fileID: 1316349343311491587}
   m_cameraTarget: {fileID: 7556922361629318152}
   m_topHead: {fileID: 1163245471654477836}
-  m_speed: 5
+  m_baseSpeed: 5
   m_jumpCooldown: 0.2
   m_gravity: 30
   m_jumpSpeed: 10
   m_cameraSensitivity: {x: 30, y: 30}
   m_cameraClamping: {x: -60, y: 60}
   m_numberOfJumps: 2
+  m_dashCooldown: 1.7
+  m_dashMultiplier: 1.3
+  m_dashDuration: 0.4
+  m_poofNinjaPropPrefab: {fileID: 6398985519266001977, guid: 289d80d5295fc7f42bdbe48178b0e37f, type: 3}
 --- !u!114 &3157961856507274194
 MonoBehaviour:
   m_ObjectHideFlags: 0
