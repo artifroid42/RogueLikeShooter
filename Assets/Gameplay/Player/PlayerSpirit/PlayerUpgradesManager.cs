@@ -27,6 +27,8 @@ namespace RLS.Gameplay.Player
 
         public int m_upgradesAppliedCount = 0;
 
+        public Action OnPlayerUpgraded;
+
         [SerializeField]
         private List<ClassUpgrades> m_classesUpgrades;
 
@@ -113,7 +115,7 @@ namespace RLS.Gameplay.Player
             var upgradeLevel = m_classesUpgrades.Find(x => x.Class == a_class).UpgradeLevels.Find(x => x.Type == a_upgrade);
             upgradeLevel.Level++;
             m_upgradesAppliedCount++;
-            Debug.Log("AMELIORATION : " + a_upgrade + " POUR LA CLASSE " + a_class);
+            OnPlayerUpgraded?.Invoke();
         }
 
         private void UpdateUpgradesSliders()

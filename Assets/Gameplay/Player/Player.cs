@@ -1,4 +1,5 @@
 using RLS.Gameplay.Player.Upgrades;
+using System;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
@@ -18,6 +19,16 @@ namespace RLS.Gameplay.Player
         [Header("Class")]
         [SerializeField]
         private EClass m_class;
-        public EClass Class => m_class; 
+        public EClass Class => m_class;
+
+        public void GetControllers()
+        {
+            // GetComponents for get diferents controllers and then upgrade their stats
+        }
+
+        public void RefreshStats()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
