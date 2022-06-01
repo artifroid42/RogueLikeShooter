@@ -231,8 +231,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5459367400584898223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.545, y: 1.2, z: 0}
+  m_LocalRotation: {x: 0.15959415, y: -0.000000029802322, z: -0.000000007450581, w: 0.98718274}
+  m_LocalPosition: {x: 0.14, y: 1.626, z: 0.425}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -628,9 +628,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterController: {fileID: 649389849166449284}
+  m_model: {fileID: 0}
   m_cameraTarget: {fileID: 2536704859441882968}
   m_topHead: {fileID: 6615531594651892572}
-  m_speed: 5
+  m_baseSpeed: 5
   m_jumpCooldown: 0.2
   m_gravity: 30
   m_jumpSpeed: 10
