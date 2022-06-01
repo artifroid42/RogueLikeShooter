@@ -11,14 +11,18 @@ namespace RLS.Gameplay.Combat.Weapon
         [SerializeField]
         private Explosion m_explosion = null;
 
+        [SerializeField]
+        private GameObject m_bulletFX = null;
+
         private CombatController m_owner = null;
         private bool m_exploding;
 
         public void SetChargeRatio(float a_chargeRatio)
         {
             a_chargeRatio = Mathf.Clamp01(a_chargeRatio);
-
+            m_bulletFX.SetActive(true);
             transform.localScale = Vector3.one * a_chargeRatio;
+            m_bulletFX.transform.localScale = Vector3.one * a_chargeRatio;
             m_explosion.SetDamageToDeal(Mathf.RoundToInt(m_explosionDamage * a_chargeRatio));
             m_exploding = false;
         }
@@ -31,6 +35,7 @@ namespace RLS.Gameplay.Combat.Weapon
 
         private void Explode()
         {
+            m_bulletFX.SetActive(false);
             m_exploding = true;
             m_explosion.Execute(m_explosionRadius);
             m_explosion.gameObject.SetActive(true);
