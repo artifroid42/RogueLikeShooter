@@ -17,6 +17,8 @@ namespace RLS.Gameplay.Combat.Weapon
         [SerializeField]
         private PowerShotBullet m_powerShotBullerPrefab = null;
         [SerializeField]
+        private GameObject m_powerShotChargeFX = null; 
+        [SerializeField]
         private Transform m_bulletSource = null;
         [SerializeField]
         private float m_attackSpeed = 1.2f;
@@ -47,6 +49,7 @@ namespace RLS.Gameplay.Combat.Weapon
             if (m_isShooting) return;
             m_isLoadingPowerShot = true;
             m_timeOfStartToLoadPowerShot = Time.time;
+            m_powerShotChargeFX.SetActive(true);
         }
 
         public override void HandleSecondaryAttackCanceledInput()
@@ -55,6 +58,7 @@ namespace RLS.Gameplay.Combat.Weapon
             if (!m_isLoadingPowerShot) return;
             m_isLoadingPowerShot = false;
             ShootPowerShot((Time.time - m_timeOfStartToLoadPowerShot) / m_loadingPowerShotDuration);
+            m_powerShotChargeFX.SetActive(false);
         }
 
         private void Update()
@@ -84,6 +88,7 @@ namespace RLS.Gameplay.Combat.Weapon
                 return;
             }
             Debug.Log($"SHOT POWERRRR : {a_chargeRatio}");
+            m_powerShotChargeFX.SetActive(false);
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<PowerShotBulletPoolingSystem>().
