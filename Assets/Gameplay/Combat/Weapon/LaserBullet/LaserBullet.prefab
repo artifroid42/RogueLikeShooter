@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8220576271903553520}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8220576271965004308}
   - component: {fileID: 8220576271965004307}
   - component: {fileID: 1092832116617412767}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LaserBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 8220576273065834901}
   - component: {fileID: 8220576273065834903}
   - component: {fileID: 8220576273065834902}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RLS.Gameplay.Combat.Weapon
 {
     [RequireComponent(typeof(SphereCollider))]
-    public class BarrelExplosion : DamageDealer
+    public class Explosion : DamageDealer
     {
         private const float EXPLOSION_PROPAGATION_SPEED = 10f;
 

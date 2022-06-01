@@ -548,8 +548,10 @@ MonoBehaviour:
   m_animationHandler: {fileID: 185469101642403948}
   m_weaponPositionTween: {fileID: 7558945721015803294}
   m_laserBulletPrefab: {fileID: 8220576271965004309, guid: e3e9bdee06fa44b4fad38d4e816cfa81, type: 3}
+  m_powerShotBullerPrefab: {fileID: 7244570700761779915, guid: 3da87701bea6ebb41892e525b41ab50e, type: 3}
   m_bulletSource: {fileID: 3271815815102323151}
   m_attackSpeed: 1.2
+  m_loadingPowerShotDuration: 4
 --- !u!114 &185469101642403948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -956,6 +958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8851026871253989046}
   - component: {fileID: 8851026871246199134}
+  - component: {fileID: 6706942743924646595}
   m_Layer: 9
   m_Name: Characters
   m_TagString: Untagged
@@ -1001,6 +1004,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6706942743924646595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8851026871253494422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05577f86bd58ae74db132dee463675d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8851026871253494424
 GameObject:
   m_ObjectHideFlags: 0

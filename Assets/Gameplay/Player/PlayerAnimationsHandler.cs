@@ -25,7 +25,7 @@ namespace RLS.Gameplay.Player
 
         public void GunShoot()
         {
-            m_animator.SetTrigger(GUN_SHOOT_TRIGGER);
+            //m_animator.SetTrigger(GUN_SHOOT_TRIGGER);
         }
     }
 }

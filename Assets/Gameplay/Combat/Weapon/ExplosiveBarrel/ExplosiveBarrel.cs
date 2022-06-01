@@ -9,7 +9,7 @@ namespace RLS.Gameplay.Combat.Weapon
         [SerializeField]
         private float m_explosionRadius = 3f;
         [SerializeField]
-        private BarrelExplosion m_explosion = null;
+        private Explosion m_explosion = null;
         [SerializeField]
         private GameObject m_barilModel = null;
         [SerializeField]

@@ -30,6 +30,11 @@ namespace RLS.Gameplay.Combat
         [SerializeField]
         private CombatController m_owner = null;
 
+        public void SetDamageToDeal(int a_damageToDeal)
+        {
+            m_damageToDeal = a_damageToDeal;
+        }
+
         public void SetOwner(CombatController a_owner)
         {
             m_owner = a_owner;

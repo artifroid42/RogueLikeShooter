@@ -15,6 +15,8 @@ namespace RLS.Gameplay.Combat.Weapon
         [SerializeField]
         private LaserBullet m_laserBulletPrefab = null;
         [SerializeField]
+        private PowerShotBullet m_powerShotBullerPrefab = null;
+        [SerializeField]
         private Transform m_bulletSource = null;
         [SerializeField]
         private float m_attackSpeed = 1.2f;
@@ -77,7 +79,29 @@ namespace RLS.Gameplay.Combat.Weapon
 
         private void ShootPowerShot(float a_chargeRatio)
         {
+            if(a_chargeRatio < 0.2f)
+            {
+                return;
+            }
             Debug.Log($"SHOT POWERRRR : {a_chargeRatio}");
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
+            {
+                var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<PowerShotBulletPoolingSystem>().
+                    GetObject(m_powerShotBullerPrefab,
+                    m_bulletSource.position,
+                    Quaternion.LookRotation(hitInfo.point - m_bulletSource.position));
+                bullet.SetOwner(this);
+                bullet.SetChargeRatio(a_chargeRatio);
+            }
+            else
+            {
+                var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<PowerShotBulletPoolingSystem>().
+                    GetObject(m_powerShotBullerPrefab,
+                    m_bulletSource.position,
+                    GetComponent<Player.PlayerMovementController>().CameraTarget.rotation);
+                bullet.SetOwner(this);
+                bullet.SetChargeRatio(a_chargeRatio);
+            }
         }
 
         private void ShootLaserBullet()
