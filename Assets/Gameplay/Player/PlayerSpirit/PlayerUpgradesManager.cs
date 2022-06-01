@@ -136,6 +136,7 @@ namespace RLS.Gameplay.Player
         {
             if (m_upgradeState == EUpgradeState.ClassUpgrade)
             {
+                m_upgradeState = EUpgradeState.Idle; 
                 ShowClassSelection();
             }
         }
