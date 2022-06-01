@@ -551,7 +551,7 @@ MonoBehaviour:
   m_powerShotBullerPrefab: {fileID: 7244570700761779915, guid: 3da87701bea6ebb41892e525b41ab50e, type: 3}
   m_bulletSource: {fileID: 3271815815102323151}
   m_attackSpeed: 1.2
-  m_loadingPowerShotDuration: 4
+  m_loadingPowerShotDuration: 3
 --- !u!114 &185469101642403948
 MonoBehaviour:
   m_ObjectHideFlags: 0
