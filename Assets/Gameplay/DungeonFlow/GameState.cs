@@ -13,23 +13,24 @@ namespace RLS.Gameplay.DungeonFlow
 
         private List<Ennemy.MonsterAI> m_ennemies = new List<Ennemy.MonsterAI>();
 
+        private Player.UI.PlayerPanel m_playerPanel;
+        private Player.UI.Debug.PlayerDebugPanel m_debugPlayerPanel;
+
         #region Life Cycle
         internal override void RegisterReferences()
         {
             base.RegisterReferences();
             m_currentPlayer = FindObjectOfType<Player.Player>();
             m_currentStage = FindObjectOfType<Levels.Stage>();
-            var playerPanel = GetPanel<Player.UI.PlayerPanel>();
-            var debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();
-            m_gamemode.Players[0].UIManager.Init(playerPanel, debugPlayerPanel);
-            
+            m_playerPanel = GetPanel<Player.UI.PlayerPanel>();
+            m_debugPlayerPanel = GetPanel<Player.UI.Debug.PlayerDebugPanel>();           
         }
 
         internal override void RegisterEvents()
         {
             base.RegisterEvents();
             m_currentStage.EndPortal.OnPlayerEnteredPortal += OnPlayerEnteredEndPortal;
-            m_gamemode.Players[0].UIManager.RegisterEvents();
+            m_gamemode.Players[0].RegisterEvents();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().RegisterNewObserver(this);
             Cursor.lockState = CursorLockMode.Locked;
@@ -44,7 +45,8 @@ namespace RLS.Gameplay.DungeonFlow
         public override void EnterState()
         {
             base.EnterState();
-            m_gamemode.Players[0].UIManager.RefreshPlayerInfos();
+            var playerExpManager = m_gamemode.Players[0].PlayerExpManager;
+            m_gamemode.Players[0].PlayerUIManagersManager.ExpUIManager.RefreshPlayerInfos(playerExpManager.CurrentLevel, playerExpManager.CurrentExpAmount, playerExpManager.ExpAmountForNextLevel);
 
             spawning_ennemies();
 
@@ -77,7 +79,7 @@ namespace RLS.Gameplay.DungeonFlow
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().UnregisterObserver(this);
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
             m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
-            m_gamemode.Players[0].UIManager.UnregisterEvents();
+            m_gamemode.Players[0].UnregisterEvents();
             base.UnregisterEvents();
         }
 

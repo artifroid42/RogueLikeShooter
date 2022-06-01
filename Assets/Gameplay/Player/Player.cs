@@ -1,3 +1,4 @@
+using RLS.Gameplay.Player.Upgrades;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
@@ -14,6 +15,9 @@ namespace RLS.Gameplay.Player
         private Transform[] m_seeablePositions = null;
         public Transform[] SeeablePositions => m_seeablePositions;
 
-            
+        [Header("Class")]
+        [SerializeField]
+        private EClass m_class;
+        public EClass Class => m_class; 
     }
 }

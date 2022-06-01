@@ -480,6 +480,7 @@ MonoBehaviour:
   m_seeablePositions:
   - {fileID: 2490538038138486247}
   - {fileID: 2987858123678350058}
+  m_class: 2
 --- !u!143 &649389849166449284
 CharacterController:
   m_ObjectHideFlags: 0

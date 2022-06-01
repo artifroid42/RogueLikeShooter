@@ -1,27 +1,34 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
 {
-    public class PlayerSpirit : MonoBehaviour, IPlayerInputsObserver
+    public class PlayerExpManager : MonoBehaviour
     {
-        [Header("Components Refs")]
         [SerializeField]
         private Upgrades.PlayerStatsData m_playerStatsData;
         [SerializeField]
-        private UI.PlayerUIManager m_UIManager;
-
-        private int m_currentLevel;
+        private UI.PlayerUIManagersManager m_playerUIManagersManager;
 
         [Header("Params")]
         [SerializeField]
         private float m_currentExpAmount;
         private float m_expAmountForNextLevel;
 
-        public UI.PlayerUIManager UIManager { get => m_UIManager; set => m_UIManager = value; }
+        private int m_currentLevel;
 
-        public Action<float> OnExpChanged;
-        public Action<int> OnLevelChanged;
+        public int CurrentLevel
+        {
+            get => m_currentLevel;
+            set
+            {
+                m_currentLevel = value;
+                m_playerUIManagersManager.ExpUIManager.SetLevelText(m_currentLevel);
+            }
+        }
+
+        public float ExpAmountForNextLevel => m_expAmountForNextLevel;
 
         public float CurrentExpAmount
         {
@@ -30,48 +37,15 @@ namespace RLS.Gameplay.Player
             {
                 m_currentExpAmount = value;
                 CheckForNextLevel();
-                OnExpChanged?.Invoke(m_currentExpAmount / m_expAmountForNextLevel);
+                m_playerUIManagersManager.ExpUIManager.SetExpBarValue(m_currentExpAmount / m_expAmountForNextLevel);
             }
         }
 
-        public int CurrentLevel
-        {
-            get => m_currentLevel;
-            set
-            {
-                m_currentLevel = value;
-                OnLevelChanged?.Invoke(m_currentLevel);
-            }
-        }
-
-        public float ExpAmountForNextLevel => m_expAmountForNextLevel;
-
-        public void InitPlayer()
+        public void Init()
         {
             CurrentLevel = GetStartLevel();
             CurrentExpAmount = 0;
-        }
-
-        /// <summary>
-        /// Last level reached / 2
-        /// </summary>
-        private int GetStartLevel()
-        {
-            return 1; //TODO : return Last level reached / 2
-        }
-
-        public Player CurrentPlayer { private set; get; } = null;
-
-        public void HandleGameLevelChanged()
-        {
-            CurrentPlayer = FindObjectOfType<Player>();
-            CurrentPlayer.GetComponent<PlayerInputsHandler>().RegisterNewObserver(this);
-        }
-
-        public void HandleUpgradeOneInput()
-        {
-
-        }
+        } 
 
         #region Experience
         public void EarnExp(float a_expAmount)
@@ -96,6 +70,15 @@ namespace RLS.Gameplay.Player
         {
             CurrentLevel++;
             CheckForNextLevel();
+            m_playerUIManagersManager.UpgradesManager.ShowClassSelection();  
+        }
+
+        /// <summary>
+        /// Last level reached / 2
+        /// </summary>
+        private int GetStartLevel()
+        {
+            return 1; //TODO : return Last level reached / 2
         }
 
 #if UNITY_EDITOR
@@ -110,4 +93,5 @@ namespace RLS.Gameplay.Player
 #endif
         #endregion
     }
+
 }
