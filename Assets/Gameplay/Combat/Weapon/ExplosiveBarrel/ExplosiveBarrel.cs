@@ -29,15 +29,20 @@ namespace RLS.Gameplay.Combat.Weapon
 
         private void OnCollisionEnter(Collision collision)
         {
-            Detonate(collision.GetContact(0).point);
+            PlaceBarrel(collision.GetContact(0));
         }
 
-        private void Detonate(Vector3 a_collisionPoint)
+        private void PlaceBarrel(ContactPoint a_contactPoint)
         {
             m_rigidbody.isKinematic = true;
-            m_explosion.transform.position = a_collisionPoint;
+            m_explosion.transform.position = a_contactPoint.point;
+            m_barilModel.transform.up = a_contactPoint.normal;
+        }
+
+        public void Detonate()
+        {
             m_barilModel.SetActive(false);
-            VFXManager.Instance.PlayFXAt(0, a_collisionPoint, Quaternion.identity);
+            VFXManager.Instance.PlayFXAt(0, m_explosion.transform.position, Quaternion.identity);
             StartCoroutine(DetonatingRoutine());
         }
 

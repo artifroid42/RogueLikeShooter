@@ -17,6 +17,7 @@ namespace RLS.Gameplay.Player.Pirate
         [SerializeField]
         private Transform m_projectileSource = null;
 
+        private ExplosiveBarrel m_explosiveBarrelInstantiated = null;
         public PirateSword PirateSword => m_pirateSword;
 
         [Header("Params")]
@@ -42,17 +43,27 @@ namespace RLS.Gameplay.Player.Pirate
         public override void HandleSecondaryAttackStartedInput()
         {
             base.HandleSecondaryAttackStartedInput();
-            if (Time.time - m_timeOfLastBarrelAttack < m_barrelAttackCooldown) return;
-            m_timeOfLastBarrelAttack = Time.time;
+            if(m_explosiveBarrelInstantiated)
+            {
+                m_explosiveBarrelInstantiated.Detonate();
+                m_explosiveBarrelInstantiated = null;
+            }
+            else
+            {
+                if (Time.time - m_timeOfLastBarrelAttack < m_barrelAttackCooldown) return;
+                m_timeOfLastBarrelAttack = Time.time;
 
-            m_animationHandler.ThrowExplosiveBarrel();
-            var newBarrel = Pooling.PoolingManager.Instance.GetPoolingSystem<ExplosiveBarrelPoolingSystem>().
-                GetObject(m_explosiveBarrelPrefab, 
-                m_projectileSource.position, 
-                GetComponent<PlayerMovementController>().CameraTarget.rotation);
-            newBarrel.SetOwner(this);
-            newBarrel.PrepareToThrow();
-            newBarrel.Rigidbody.AddForce(newBarrel.transform.forward * m_barrelThrowForce, ForceMode.VelocityChange);
+                m_animationHandler.ThrowExplosiveBarrel();
+                m_explosiveBarrelInstantiated = Pooling.PoolingManager.Instance.GetPoolingSystem<ExplosiveBarrelPoolingSystem>().
+                    GetObject(m_explosiveBarrelPrefab,
+                    m_projectileSource.position,
+                    GetComponent<PlayerMovementController>().CameraTarget.rotation);
+                m_explosiveBarrelInstantiated.SetOwner(this);
+                m_explosiveBarrelInstantiated.PrepareToThrow();
+                m_explosiveBarrelInstantiated.Rigidbody.AddForce(m_explosiveBarrelInstantiated.transform.forward * m_barrelThrowForce, ForceMode.VelocityChange);
+            }
+
+            
         }
     }
 }
