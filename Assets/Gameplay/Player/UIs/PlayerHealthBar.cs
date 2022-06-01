@@ -36,7 +36,7 @@ namespace RLS.Gameplay.Player.UI
             }
         }
 
-        public void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
             {

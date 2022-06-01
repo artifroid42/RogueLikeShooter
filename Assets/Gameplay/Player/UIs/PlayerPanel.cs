@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using RLS.Gameplay.Player.Upgrades;
@@ -9,14 +7,17 @@ namespace RLS.Gameplay.Player.UI
     public class PlayerPanel : Panel
     {
         [SerializeField]
-        private ExpBar m_expBar;
+        private ExpBar m_expBar = null;
         [SerializeField]
-        private TextMeshProUGUI m_playerLevelText;
+        private TextMeshProUGUI m_playerLevelText = null;
         [SerializeField]
-        private ClassUpgradesModule m_classUpgradesModule;
+        private ClassUpgradesModule m_classUpgradesModule = null;
+        [SerializeField]
+        private PlayerHealthBar m_healthBar = null;
 
         public ExpBar ExpBar => m_expBar;
         public TextMeshProUGUI PlayerLevelText => m_playerLevelText;
-        public ClassUpgradesModule ClassUpgradesModule => m_classUpgradesModule; 
+        public ClassUpgradesModule ClassUpgradesModule => m_classUpgradesModule;
+        public PlayerHealthBar HealthBar => m_healthBar;
     }
 }

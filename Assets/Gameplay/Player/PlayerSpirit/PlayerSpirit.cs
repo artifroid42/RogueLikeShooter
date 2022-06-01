@@ -1,5 +1,4 @@
 using RLS.Gameplay.Player.Upgrades;
-using System;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
@@ -15,6 +14,8 @@ namespace RLS.Gameplay.Player
         private PlayerExpManager m_playerExpManager;
         [SerializeField]
         private PlayerUpgradesManager m_playerUpgradesManager;
+        [SerializeField]
+        private PlayerCombatInfosManager m_combatInfosManager = null;
 
         public UI.PlayerUIManagersManager PlayerUIManagersManager { get => m_playerUIManagersManager; set => m_playerUIManagersManager = value; }
 
@@ -48,6 +49,7 @@ namespace RLS.Gameplay.Player
             CurrentPlayer = FindObjectOfType<Player>();
             CurrentPlayer.GetComponent<PlayerInputsHandler>().RegisterNewObserver(this);
             m_currentClass = CurrentPlayer.Class;
+            m_combatInfosManager.SetCombatControllerRef(CurrentPlayer.GetComponent<PlayerCombatController>());
         }
 
         public void HandleUpgradeOneInput()

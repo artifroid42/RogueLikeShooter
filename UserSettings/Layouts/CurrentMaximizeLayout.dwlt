@@ -186,8 +186,8 @@ MonoBehaviour:
     y: 0
     width: 489.6
     height: 380.8
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 6}
@@ -226,7 +226,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 1207f4ff8621f4ff0833f8ff6a79f8ff08eefaff0617fbffdc39fbff2c67fbffa604ffffc208ffff6cf2ffffc2faffffcafaffffccfaffff
+      m_ExpandedIDs: 52eef1ff56eef1ff40eff1ff1207f4ff8621f4ff0833f8ff6a79f8ff08eefaff0617fbffdc39fbff2c67fbffa604ffffc208ffff6cf2ffffc2faffffcafaffffccfaffffb6d90300
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -525,9 +525,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.03825764, y: -0.41909176, z: -0.07683852}
+    m_Target: {x: -25.070507, y: 0.68924177, z: 12.15845}
     speed: 2
-    m_Value: {x: 0.03825764, y: -0.41909176, z: -0.07683852}
+    m_Value: {x: -25.070507, y: 0.68924177, z: 12.15845}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -574,13 +574,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.006241686, y: 0.96531874, z: -0.2600029, w: 0.023168107}
+    m_Target: {x: -0.10064962, y: 0.8058468, z: -0.14339565, w: -0.56562865}
     speed: 2
-    m_Value: {x: 0.0062416317, y: 0.96531034, z: -0.26000065, w: 0.023167906}
+    m_Value: {x: -0.10064874, y: 0.8058398, z: -0.1433944, w: -0.5656237}
   m_Size:
-    m_Target: 0.92610687
+    m_Target: 9.445994
     speed: 2
-    m_Value: 0.92610687
+    m_Value: 9.445994
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -722,15 +722,15 @@ MonoBehaviour:
     y: 380.8
     width: 1208
     height: 350
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 11}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
   - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -772,22 +772,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Gameplay/Player/Ninja
+    - Assets/Gameplay/Player/UIs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Gameplay/Player/Ninja
+  - Assets/Gameplay/Player/UIs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Megascar\Documents\GitHub\RogueLikeShooter
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 1387}
-    m_SelectedIDs: ac860000
-    m_LastClickedID: 34476
-    m_ExpandedIDs: 00000000087900000a7900000c7900000e790000107900001279000016790000187900001e79000022790000247900002a7900002c790000307900003279000074860000a48600005c8a00005e8a00008e8a0000f08b0000a0da000000ca9a3b
+    scrollPos: {x: 0, y: 1067}
+    m_SelectedIDs: b2860000
+    m_LastClickedID: 34482
+    m_ExpandedIDs: 00000000087900000a7900000c7900000e790000107900001279000016790000187900001e79000022790000247900002a7900002c790000307900003279000074860000a4860000a0da000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -815,7 +815,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000087900000a7900000c7900000e79000010790000127900001479000016790000187900001a7900001c7900001e79000020790000227900002479000026790000287900002a7900002c7900002e790000307900003279000000ca9a3b
+    m_ExpandedIDs: 00000000087900000a7900000c7900000e790000107900001279000016790000187900001e79000022790000247900002a7900002c790000307900003279000074860000a4860000a0da000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -946,8 +946,8 @@ MonoBehaviour:
     y: 0
     width: 328
     height: 730.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}

@@ -259,6 +259,7 @@ Transform:
   - {fileID: 3665738101444974307}
   - {fileID: 450162264394775776}
   - {fileID: 3344581408693227523}
+  - {fileID: 7319780128656333502}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -278,6 +279,7 @@ MonoBehaviour:
   m_playerUIManagersManager: {fileID: 5285931302102386877}
   m_playerExpManager: {fileID: 3252481301142045450}
   m_playerUpgradesManager: {fileID: 3252481301142045449}
+  m_combatInfosManager: {fileID: 5280791533256030118}
 --- !u!1 &5166138840343302454
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,3 +324,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7a7875ad7da2745834fa36e9504fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6119237268976631876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7319780128656333502}
+  - component: {fileID: 5280791533256030118}
+  m_Layer: 0
+  m_Name: PlayerCombatInfosManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7319780128656333502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119237268976631876}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3252481300606486641}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5280791533256030118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119237268976631876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2aba0838b9ff5749994b0f11508db94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UIManager: {fileID: 5285931302102386877}
