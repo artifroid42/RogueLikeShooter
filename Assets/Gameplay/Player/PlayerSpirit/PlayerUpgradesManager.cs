@@ -182,7 +182,7 @@ namespace RLS.Gameplay.Player
 
         public void ShowClassSelection()
         {
-            if (m_upgradeState != EUpgradeState.ClassSelection)
+            if (m_upgradeState == EUpgradeState.Idle)
             {
                 m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.ShowClassSelection();
                 m_upgradeState = EUpgradeState.ClassSelection;
