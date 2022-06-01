@@ -167,6 +167,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SecondaryAttack",
+                    "type": "Button",
+                    "id": "3a41dbbd-52bb-47f2-be33-cc8c33ba85b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "LookAround",
                     "type": "Value",
                     "id": "7b64423c-e31b-4bc0-b33c-1a7bd7da87fa",
@@ -448,6 +457,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SixUpgrade",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8ab1bd1e-bf82-43a6-aac5-9d1ae9aec088",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0d91a92f-b18d-44be-8f00-d41f54f37695",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

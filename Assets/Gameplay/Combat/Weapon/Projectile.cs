@@ -5,17 +5,17 @@ namespace RLS.Gameplay.Combat.Weapon
     public class Projectile : MonoBehaviour
     {
         [SerializeField]
-        private float m_speed = 12f;
+        protected float m_speed = 12f;
         [SerializeField]
-        private float m_lifeTime = 10f;
+        protected float m_lifeTime = 10f;
         private float m_timeOfStart = 0f;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             m_timeOfStart = Time.time;
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             transform.position += transform.forward * m_speed * Time.deltaTime;
             if(Time.time - m_timeOfStart > m_lifeTime)
@@ -24,9 +24,10 @@ namespace RLS.Gameplay.Combat.Weapon
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             gameObject.SetActive(false);
         }
+
     }
 }
