@@ -181,6 +181,7 @@ MonoBehaviour:
   m_seeablePositions:
   - {fileID: 2490538038138486247}
   - {fileID: 2987858123678350058}
+  m_class: 2
 --- !u!143 &649389849166449284
 CharacterController:
   m_ObjectHideFlags: 0
@@ -246,8 +247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_teamIndex: 0
   m_maxLifePoints: 100
-  m_shurikenPrefab: {fileID: 5192912602141883991, guid: e5f135aa64c771942997499c25368440, type: 3}
-  m_shurikenSource: {fileID: 3271815815102323151}
 --- !u!114 &185469101642403948
 MonoBehaviour:
   m_ObjectHideFlags: 0

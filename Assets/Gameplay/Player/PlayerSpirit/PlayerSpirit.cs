@@ -1,3 +1,4 @@
+using RLS.Gameplay.Player.Upgrades;
 using System;
 using UnityEngine;
 
@@ -20,10 +21,14 @@ namespace RLS.Gameplay.Player
         public PlayerExpManager PlayerExpManager => m_playerExpManager;
         public PlayerUpgradesManager PlayerUpgradesManager => m_playerUpgradesManager;
 
+        private EClass m_currentClass;
+        public EClass CurrentClass => m_currentClass;
+
         public void InitPlayer()
         {
             m_playerUIManagersManager.Init();
             m_playerExpManager.Init();
+            m_playerUpgradesManager.Init();
         }
 
         public void RegisterEvents()
@@ -42,36 +47,37 @@ namespace RLS.Gameplay.Player
         {
             CurrentPlayer = FindObjectOfType<Player>();
             CurrentPlayer.GetComponent<PlayerInputsHandler>().RegisterNewObserver(this);
+            m_currentClass = CurrentPlayer.Class;
         }
 
         public void HandleUpgradeOneInput()
         {
-
+            PlayerUpgradesManager.UpgradeInputDown(1);
         }
 
         public void HandleUpgradeTwoInput()
         {
-
+            PlayerUpgradesManager.UpgradeInputDown(2);
         }
 
         public void HandleUpgradeThreeInput()
         {
-
+            PlayerUpgradesManager.UpgradeInputDown(3);
         }
 
         public void HandleUpgradeFourInput()
         {
-
+            PlayerUpgradesManager.UpgradeInputDown(4);
         }
 
         public void HandleUpgradeFiveInput()
         {
-
+            PlayerUpgradesManager.UpgradeInputDown(5);
         }
 
         public void HandleUpgradeSixInput()
         {
-
+            PlayerUpgradesManager.UpgradeInputDown(6);
         }
     }
 }

@@ -15,6 +15,9 @@ namespace RLS.Gameplay.Player.Upgrades
     [CreateAssetMenu(fileName = "ClassStatsData", menuName = "RLS/Gameplay/Upgrades/Class Stats Data")]
     public class ClassStatsData : ScriptableObject
     {
+        [SerializeField]
+        private int m_maxUpgradesCount = 10;
+
         [Header("Start stats")]
         [SerializeField]
         private float m_startHealth = 10;
@@ -55,7 +58,8 @@ namespace RLS.Gameplay.Player.Upgrades
         public float MoveSpeedIncrement => m_moveSpeedIncrement;
 
         public EClass Class => m_class;
-        public Sprite ClassSprite => m_classSprite; 
-    }
+        public Sprite ClassSprite => m_classSprite;
 
+        public int MaxUpgradesCount => m_maxUpgradesCount; 
+    }
 }

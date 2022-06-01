@@ -70,7 +70,7 @@ namespace RLS.Gameplay.Player
         {
             CurrentLevel++;
             CheckForNextLevel();
-            m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.Init();
+            m_playerUIManagersManager.UpgradesManager.ShowClassSelection();  
         }
 
         /// <summary>

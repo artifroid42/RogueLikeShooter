@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b846ec1f4695dc344b01b199f57b6396, type: 3}
+  m_Name: UpgradeReprensentationsData
+  m_EditorClassIdentifier: 
+  UpgradeRepresentations:
+  - Upgrade: 0
+    UpgradeColor: {r: 0.9960785, g: 0.30588236, b: 0.30588236, a: 0.9019608}
+    UpgradeSprite: {fileID: 21300000, guid: 93dd834a8d85c2248976bc80d75e6878, type: 3}
+  - Upgrade: 1
+    UpgradeColor: {r: 0.8679245, g: 0.35185194, b: 0.13510147, a: 0.9019608}
+    UpgradeSprite: {fileID: 21300000, guid: 99b069774e54f8c4e9e7a7c1f84d4ca0, type: 3}
+  - Upgrade: 2
+    UpgradeColor: {r: 0.9811321, g: 0.8710538, b: 0, a: 0.9019608}
+    UpgradeSprite: {fileID: 21300000, guid: 25647b2a4c9d26444922b1a8153ce086, type: 3}
+  - Upgrade: 3
+    UpgradeColor: {r: 0.081799366, g: 0.745283, b: 0, a: 0.9019608}
+    UpgradeSprite: {fileID: 21300000, guid: 6869b16ceec71df4ab0f51f396be0afd, type: 3}
+  - Upgrade: 4
+    UpgradeColor: {r: 0, g: 0.40092045, b: 0.9339623, a: 0.9019608}
+    UpgradeSprite: {fileID: 21300000, guid: 893b92b36ba0aa6408168d94a659d1bf, type: 3}

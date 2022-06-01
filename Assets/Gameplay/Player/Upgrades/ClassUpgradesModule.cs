@@ -1,15 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tween;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RLS.Gameplay.Player.Upgrades
 {
+    public enum EUpgrade
+    {
+        Health,
+        Damage, 
+        AttackSpeed,
+        MoveSpeed,
+        Power
+    }
+
     public class ClassUpgradesModule : MonoBehaviour
     {
+        [Header("Ressources")]
+        [SerializeField]
+        private UpgradeReprensentationsData m_reprensentationsData;
+
+        [Header("Refs")]       
         [SerializeField]
         private List<ClassSelectionWidget> m_classSelectionWidgets;
         public List<ClassSelectionWidget> ClassSelectionWidgets => m_classSelectionWidgets;
+
+        [SerializeField]
+        private List<UpgradeLineWidget> m_upgradeLineWidgets;
+        public List<UpgradeLineWidget> UpgradeLineWidgets => m_upgradeLineWidgets;
+
+        [SerializeField]
+        private Image m_classRepresentationImage;
 
         [SerializeField]
         private GameObject m_classSelection;
@@ -21,15 +44,35 @@ namespace RLS.Gameplay.Player.Upgrades
         [SerializeField]
         private PositionTween m_classUpgradesTween;
 
-        private bool m_isClassSelectionActive = false;
-        private bool m_isClassUpgradesActive = false;
+        internal void Init()
+        {
+            m_classSelection.SetActive(false);
+            m_classUpgrades.SetActive(false);
 
-        public void Init()
+            foreach (var upgradeLineWidget in m_upgradeLineWidgets)
+            {
+                var upgradeRepresentation = m_reprensentationsData.UpgradeRepresentations.Find(x => x.Upgrade == upgradeLineWidget.Upgrades);
+                upgradeLineWidget.Init(upgradeRepresentation.UpgradeColor, upgradeRepresentation.UpgradeSprite);
+            }
+        }
+
+        public void ShowClassSelection()
         {
             m_classSelection.SetActive(true);
             m_classUpgrades.SetActive(false);
-            m_isClassSelectionActive = true;
-            m_isClassUpgradesActive = false;
+        }
+
+        public void ShowClassUpgrades(Sprite m_classSprite)
+        {
+            m_classSelection.SetActive(false);
+            m_classUpgrades.SetActive(true);
+            m_classRepresentationImage.sprite = m_classSprite;
+        }
+
+        public void Hide()
+        {
+            m_classSelection.SetActive(false);
+            m_classUpgrades.SetActive(false);
         }
     }
 }
