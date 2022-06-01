@@ -81,7 +81,7 @@ namespace Tween
             m_isInit = true;
         }
 
-        public void StartTween(bool forward = true)
+        public void StartTween(bool a_reverse = false)
         {
             if(!m_isPlaying)
             {
@@ -92,20 +92,41 @@ namespace Tween
                 m_isPlaying = true;
                 m_onStarted?.Invoke();
                 m_onTweenStarted?.Invoke(this);
-                switch(m_loopType)
+                if(!a_reverse)
                 {
-                    case ELoopType.Once:
-                        m_coroutines.Add(TweenManager.Instance.StartCoroutine(OnceRoutine()));
-                        break;
-                    case ELoopType.Loop:
-                        m_coroutines.Add(TweenManager.Instance.StartCoroutine(LoopRoutine()));
-                        break;
-                    case ELoopType.BackAndForth:
-                        m_coroutines.Add(TweenManager.Instance.StartCoroutine(BackAndForthRoutine()));
-                        break;
-                    case ELoopType.PingPong:
-                        m_coroutines.Add(TweenManager.Instance.StartCoroutine(PingPongRoutine()));
-                        break;
+                    switch (m_loopType)
+                    {
+                        case ELoopType.Once:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(OnceRoutine()));
+                            break;
+                        case ELoopType.Loop:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(LoopRoutine()));
+                            break;
+                        case ELoopType.BackAndForth:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(BackAndForthRoutine()));
+                            break;
+                        case ELoopType.PingPong:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(PingPongRoutine()));
+                            break;
+                    }
+                } 
+                else
+                {
+                    switch (m_loopType)
+                    {
+                        case ELoopType.Once:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(OnceReverseRoutine()));
+                            break;
+                        case ELoopType.Loop:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(LoopReverseRoutine()));
+                            break;
+                        case ELoopType.BackAndForth:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(BackAndForthReverseRoutine()));
+                            break;
+                        case ELoopType.PingPong:
+                            m_coroutines.Add(TweenManager.Instance.StartCoroutine(PingPongReverseRoutine()));
+                            break;
+                    }
                 }
             }
         }
@@ -143,6 +164,7 @@ namespace Tween
             }
         }
 
+        #region ForwardRoutines
         private IEnumerator OnceRoutine()
         {
             var routine = TweenManager.Instance.StartCoroutine(ForwardRoutine());
@@ -184,7 +206,51 @@ namespace Tween
                 yield return routine;
             }
         }
+        #endregion
+        #region ReverseRoutines
+        private IEnumerator OnceReverseRoutine()
+        {
+            var routine = TweenManager.Instance.StartCoroutine(BackwardRoutine());
+            m_coroutines.Add(routine);
+            yield return routine;
+            Stop();
+        }
 
+        private IEnumerator LoopReverseRoutine()
+        {
+            while (m_isPlaying)
+            {
+                var routine = TweenManager.Instance.StartCoroutine(BackwardRoutine());
+                m_coroutines.Add(routine);
+                yield return routine;
+            }
+        }
+
+        private IEnumerator BackAndForthReverseRoutine()
+        {
+            var routine = TweenManager.Instance.StartCoroutine(BackwardRoutine());
+            m_coroutines.Add(routine);
+            yield return routine;
+            routine = TweenManager.Instance.StartCoroutine(ForwardRoutine());
+            m_coroutines.Add(routine);
+            yield return routine;
+            Stop();
+        }
+
+        private IEnumerator PingPongReverseRoutine()
+        {
+            while (m_isPlaying)
+            {
+                var routine = TweenManager.Instance.StartCoroutine(BackwardRoutine());
+                m_coroutines.Add(routine);
+                yield return routine;
+                routine = TweenManager.Instance.StartCoroutine(ForwardRoutine());
+                m_coroutines.Add(routine);
+                yield return routine;
+            }
+        }
+        #endregion
+        #region Units Routines
         private IEnumerator ForwardRoutine()
         {
             float startingTime = Time.time;
@@ -204,6 +270,7 @@ namespace Tween
                 yield return null;
             }
         }
+        #endregion
 
 
         protected virtual void SetStartingValues()
@@ -261,22 +328,27 @@ namespace Tween
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            if(GUILayout.Button("Start tween !"))
+            if(GUILayout.Button("Start tween!"))
             {
                 (target as ATween).StartTween();
             }
 
-            if (GUILayout.Button("Play all attached tweens !"))
+            if (GUILayout.Button("Start tween in reverse!"))
+            {
+                (target as ATween).StartTween(true);
+            }
+
+            if (GUILayout.Button("Play all attached tweens!"))
             {
                 (target as ATween).StartAllAttachedTweens();
             }
 
-            if (GUILayout.Button("Stop all attached tweens !"))
+            if (GUILayout.Button("Stop all attached tweens!"))
             {
                 (target as ATween).StopAllAttachedTweens();
             }
 
-            if(GUILayout.Button("Reset !"))
+            if(GUILayout.Button("Reset!"))
             {
                 (target as ATween).ResetValues();
             }
