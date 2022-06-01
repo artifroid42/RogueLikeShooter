@@ -25,13 +25,24 @@ namespace RLS.Gameplay.Player
         private EClass m_classToUpgrade;
         private ClassStatsData m_currentStatsData;
 
-        public int HealthLevel = 1;
-        public int DamagesLevel = 1;
-        public int AttackSpeedLevel = 1;
-        public int MoveSpeedLevel = 1;
-        public int PowerLevel = 1;
-
         public int m_upgradesAppliedCount = 0;
+
+        [SerializeField]
+        private List<ClassUpgrades> m_classesUpgrades;
+
+        [Serializable]
+        internal class ClassUpgrades
+        {
+            public EClass Class;
+            public List<UpgradeLevel> UpgradeLevels;
+        }
+
+        [Serializable]
+        internal class UpgradeLevel
+        {
+            public EUpgrade Type;
+            public int Level;
+        }
 
         internal void Init()
         {
@@ -88,12 +99,37 @@ namespace RLS.Gameplay.Player
                             BackToClassSelection();
                             break;
                     }
+                    UpdateUpgradesSliders();
                     if(m_upgradesAppliedCount == m_playerUIManagersManager.ExpManager.CurrentLevel - 1) // -1 car on ne veut pas upgrade au niveau 1
                     {
                         Hide();
                     }
                     break;
             }
+        }
+
+        private void Upgrade(EClass a_class, EUpgrade a_upgrade)
+        {
+            var upgradeLevel = m_classesUpgrades.Find(x => x.Class == a_class).UpgradeLevels.Find(x => x.Type == a_upgrade);
+            upgradeLevel.Level++;
+            m_upgradesAppliedCount++;
+            Debug.Log("AMELIORATION : " + a_upgrade + " POUR LA CLASSE " + a_class);
+        }
+
+        private void UpdateUpgradesSliders()
+        {
+            foreach (var lineWidget in m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.UpgradeLineWidgets)
+            {
+                var classUpgrades = m_classesUpgrades.Find(x => x.Class == m_classToUpgrade);
+                var upgradeLevel = classUpgrades.UpgradeLevels.Find(x => x.Type == lineWidget.Upgrades).Level;
+                lineWidget.SetUpgradeSliderValue((float)upgradeLevel / (float)m_currentStatsData.MaxUpgradesCount);
+                Debug.Log("" + (float)upgradeLevel / (float)m_currentStatsData.MaxUpgradesCount);
+            }
+        }
+
+        private bool CheckLevelUp(EClass a_class, EUpgrade a_upgrade)
+        {
+            return m_classesUpgrades.Find(x => x.Class == a_class).UpgradeLevels.Find(x => x.Type == a_upgrade).Level < m_currentStatsData.MaxUpgradesCount;
         }
 
         private void BackToClassSelection()
@@ -106,46 +142,41 @@ namespace RLS.Gameplay.Player
 
         private void UpgradePower()
         {
-            if (m_currentStatsData != null && PowerLevel < m_currentStatsData.MaxUpgradesCount)
+            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.Power))
             {
-                Debug.Log("PowerLevel");
-                m_upgradesAppliedCount++;
+                Upgrade(m_currentStatsData.Class, EUpgrade.Power);
             }
         }
 
         private void UpgradeMoveSpeed()
         {
-            if (m_currentStatsData != null && MoveSpeedLevel < m_currentStatsData.MaxUpgradesCount)
+            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.MoveSpeed))
             {
-                Debug.Log("MoveSpeedLevel");
-                m_upgradesAppliedCount++;
+                Upgrade(m_currentStatsData.Class, EUpgrade.MoveSpeed);
             }
         }
 
         private void UpgradeAttackSpeed()
         {
-            if (m_currentStatsData != null && AttackSpeedLevel < m_currentStatsData.MaxUpgradesCount)
+            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.AttackSpeed))
             {
-                Debug.Log("AttackSpeedLevel");
-                m_upgradesAppliedCount++;
+                Upgrade(m_currentStatsData.Class, EUpgrade.AttackSpeed);
             }
         }
 
         private void UpgradeDamages()
         {
-            if (m_currentStatsData != null && DamagesLevel < m_currentStatsData.MaxUpgradesCount)
+            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.Damage))
             {
-                Debug.Log("DamagesLevel");
-                m_upgradesAppliedCount++;
+                Upgrade(m_currentStatsData.Class, EUpgrade.Damage);
             }
         }
 
         private void UpgradeHealth()
         {
-            if (m_currentStatsData != null && HealthLevel < m_currentStatsData.MaxUpgradesCount)
+            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.Health))
             {
-                Debug.Log("HealthLevel");
-                m_upgradesAppliedCount++;
+                Upgrade(m_currentStatsData.Class, EUpgrade.Health);
             }
         }
 
@@ -164,6 +195,7 @@ namespace RLS.Gameplay.Player
             {
                 m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.ShowClassUpgrades(m_currentStatsData.ClassSprite);
                 m_upgradeState = EUpgradeState.ClassUpgrade;
+                UpdateUpgradesSliders();
             }
         }
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950977b86b8ef9d41ac1ed5b6f0f6043, type: 3}
   m_Name: Sci-Fi - ClassStatsData
   m_EditorClassIdentifier: 
+  m_maxUpgradesCount: 5
   m_startHealth: 10
   m_startDamage: 10
   m_startAttackSpeed: 10

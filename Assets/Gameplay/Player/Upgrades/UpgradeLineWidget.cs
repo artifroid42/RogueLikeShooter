@@ -31,5 +31,10 @@ namespace RLS.Gameplay.Player.Upgrades
             bgColor.a = 0.4f;
             m_backgroundImage.color = bgColor;
         }
+
+        public void SetUpgradeSliderValue(float a_value)
+        {
+            m_upgradeSlider.value = a_value;
+        }
     }
 }

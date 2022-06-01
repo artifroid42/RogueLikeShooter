@@ -46,12 +46,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerStatsData: {fileID: 11400000, guid: 241d7926a17b02d448d3bf3fcc31348d, type: 2}
   m_playerUIManagersManager: {fileID: 5285931302102386877}
-  HealthLevel: 1
-  DamagesLevel: 1
-  AttackSpeedLevel: 1
-  MoveSpeedLevel: 1
-  PowerLevel: 1
   m_upgradesAppliedCount: 0
+  m_classesUpgrades:
+  - Class: 0
+    UpgradeLevels:
+    - Type: 0
+      Level: 1
+    - Type: 1
+      Level: 1
+    - Type: 2
+      Level: 1
+    - Type: 3
+      Level: 1
+    - Type: 4
+      Level: 1
+  - Class: 1
+    UpgradeLevels:
+    - Type: 0
+      Level: 1
+    - Type: 1
+      Level: 1
+    - Type: 2
+      Level: 1
+    - Type: 3
+      Level: 1
+    - Type: 4
+      Level: 1
+  - Class: 2
+    UpgradeLevels:
+    - Type: 0
+      Level: 1
+    - Type: 1
+      Level: 1
+    - Type: 2
+      Level: 1
+    - Type: 3
+      Level: 1
+    - Type: 4
+      Level: 1
 --- !u!1 &1146402484971191205
 GameObject:
   m_ObjectHideFlags: 0

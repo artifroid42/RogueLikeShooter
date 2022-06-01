@@ -74,6 +74,8 @@ namespace RLS.Gameplay.Player.Upgrades
             m_classSelection.SetActive(false);
             m_classUpgrades.SetActive(false);
         }
+
+
     }
 }
 
