@@ -7,9 +7,6 @@ namespace RLS.MainMenu.MainScreen
     {
         private MainScreenPanel m_panel = null;
 
-        [SerializeField]
-        private LevelData m_dungeonLevelData;
-
         internal override void SetUpDependencies()
         {
             base.SetUpDependencies();
@@ -34,12 +31,12 @@ namespace RLS.MainMenu.MainScreen
 
         public void PlayGame()
         {
-            m_dungeonLevelData.LoadLevel();
+            m_gamemode.SwitchToModeSelectionScreen();
         }
 
         public void SeeOptions()
         {
-            m_gamemode.SwitchToNextState();
+            m_gamemode.SwitchToOptions();
         }
 
         public void QuitGame()
