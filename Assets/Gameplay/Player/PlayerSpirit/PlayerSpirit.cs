@@ -53,11 +53,12 @@ namespace RLS.Gameplay.Player
             CurrentPlayer.GetComponent<PlayerInputsHandler>().RegisterNewObserver(this);
             m_currentClass = CurrentPlayer.Class;
             m_combatInfosManager.SetCombatControllerRef(CurrentPlayer.GetComponent<PlayerCombatController>());
+            m_playerUpgradesManager.SetPlayerRef(CurrentPlayer);
         }
 
         private void HandlePlayerUpgraded()
         {
-            CurrentPlayer.RefreshStats();
+            m_playerUpgradesManager.RefreshStats();
         }
 
         public void HandleUpgradeOneInput()

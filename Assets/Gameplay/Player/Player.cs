@@ -20,15 +20,5 @@ namespace RLS.Gameplay.Player
         [SerializeField]
         private EClass m_class;
         public EClass Class => m_class;
-
-        public void GetControllers()
-        {
-            // GetComponents for get diferents controllers and then upgrade their stats
-        }
-
-        public void RefreshStats()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
