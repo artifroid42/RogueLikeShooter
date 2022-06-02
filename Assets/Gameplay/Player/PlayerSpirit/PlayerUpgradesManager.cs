@@ -21,11 +21,13 @@ namespace RLS.Gameplay.Player
         private UI.PlayerUIManagersManager m_playerUIManagersManager;
 
         private EUpgradeState m_upgradeState = EUpgradeState.Idle;
-
         private EClass m_classToUpgrade;
         private ClassStatsData m_currentStatsData;
+        private Player m_currentPlayer = null;
 
         public int m_upgradesAppliedCount = 0;
+
+        public Action OnPlayerUpgraded;
 
         [SerializeField]
         private List<ClassUpgrades> m_classesUpgrades;
@@ -48,6 +50,16 @@ namespace RLS.Gameplay.Player
         {
             m_upgradeState = EUpgradeState.Idle;
             m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.Init();
+        }
+
+        public void SetPlayerRef(Player a_player)
+        {
+            m_currentPlayer = a_player;
+        }
+
+        internal void RefreshStats()
+        {
+            throw new NotImplementedException();
         }
 
         internal void UpgradeInputDown(int a_inputNumber)
@@ -108,12 +120,14 @@ namespace RLS.Gameplay.Player
             }
         }
 
+
+
         private void Upgrade(EClass a_class, EUpgrade a_upgrade)
         {
             var upgradeLevel = m_classesUpgrades.Find(x => x.Class == a_class).UpgradeLevels.Find(x => x.Type == a_upgrade);
             upgradeLevel.Level++;
             m_upgradesAppliedCount++;
-            Debug.Log("AMELIORATION : " + a_upgrade + " POUR LA CLASSE " + a_class);
+            OnPlayerUpgraded?.Invoke();
         }
 
         private void UpdateUpgradesSliders()
@@ -127,7 +141,7 @@ namespace RLS.Gameplay.Player
             }
         }
 
-        private bool CheckLevelUp(EClass a_class, EUpgrade a_upgrade)
+        private bool CheckUpgrade(EClass a_class, EUpgrade a_upgrade)
         {
             return m_classesUpgrades.Find(x => x.Class == a_class).UpgradeLevels.Find(x => x.Type == a_upgrade).Level < m_currentStatsData.MaxUpgradesCount;
         }
@@ -143,7 +157,7 @@ namespace RLS.Gameplay.Player
 
         private void UpgradePower()
         {
-            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.Power))
+            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Power))
             {
                 Upgrade(m_currentStatsData.Class, EUpgrade.Power);
             }
@@ -151,7 +165,7 @@ namespace RLS.Gameplay.Player
 
         private void UpgradeMoveSpeed()
         {
-            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.MoveSpeed))
+            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.MoveSpeed))
             {
                 Upgrade(m_currentStatsData.Class, EUpgrade.MoveSpeed);
             }
@@ -159,7 +173,7 @@ namespace RLS.Gameplay.Player
 
         private void UpgradeAttackSpeed()
         {
-            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.AttackSpeed))
+            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.AttackSpeed))
             {
                 Upgrade(m_currentStatsData.Class, EUpgrade.AttackSpeed);
             }
@@ -167,7 +181,7 @@ namespace RLS.Gameplay.Player
 
         private void UpgradeDamages()
         {
-            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.Damage))
+            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Damage))
             {
                 Upgrade(m_currentStatsData.Class, EUpgrade.Damage);
             }
@@ -175,7 +189,7 @@ namespace RLS.Gameplay.Player
 
         private void UpgradeHealth()
         {
-            if (m_currentStatsData != null && CheckLevelUp(m_currentStatsData.Class, EUpgrade.Health))
+            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Health))
             {
                 Upgrade(m_currentStatsData.Class, EUpgrade.Health);
             }

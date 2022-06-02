@@ -1,4 +1,5 @@
 using RLS.Gameplay.Player.Upgrades;
+using System;
 using UnityEngine;
 
 namespace RLS.Gameplay.Player
@@ -35,11 +36,13 @@ namespace RLS.Gameplay.Player
         public void RegisterEvents()
         {
             PlayerUIManagersManager.RegisterEvents();
+            m_playerUpgradesManager.OnPlayerUpgraded += HandlePlayerUpgraded;
         }
 
         public void UnregisterEvents()
         {
             PlayerUIManagersManager.UnregisterEvents();
+            m_playerUpgradesManager.OnPlayerUpgraded -= HandlePlayerUpgraded;
         }
 
         public Player CurrentPlayer { private set; get; } = null;
@@ -50,6 +53,12 @@ namespace RLS.Gameplay.Player
             CurrentPlayer.GetComponent<PlayerInputsHandler>().RegisterNewObserver(this);
             m_currentClass = CurrentPlayer.Class;
             m_combatInfosManager.SetCombatControllerRef(CurrentPlayer.GetComponent<PlayerCombatController>());
+            m_playerUpgradesManager.SetPlayerRef(CurrentPlayer);
+        }
+
+        private void HandlePlayerUpgraded()
+        {
+            m_playerUpgradesManager.RefreshStats();
         }
 
         public void HandleUpgradeOneInput()

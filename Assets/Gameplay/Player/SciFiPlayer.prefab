@@ -628,7 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_characterController: {fileID: 649389849166449284}
-  m_model: {fileID: 0}
+  m_model: {fileID: 8851026871253494422}
   m_cameraTarget: {fileID: 2536704859441882968}
   m_topHead: {fileID: 6615531594651892572}
   m_baseSpeed: 5
