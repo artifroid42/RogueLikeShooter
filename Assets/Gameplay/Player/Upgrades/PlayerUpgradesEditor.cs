@@ -12,7 +12,7 @@ namespace RLS.Gameplay.Player.Upgrades
             base.OnInspectorGUI();
             if(GUILayout.Button("Earn Exp"))
             {
-                (target as PlayerSpirit).PlayerExpManager.EarnExp(100f);
+                (target as PlayerSpirit).PlayerExpManager.EarnExp(500f);
             }
         }
     }

@@ -1,11 +1,12 @@
 
 
+using RLS.Gameplay.Combat;
+
 namespace RLS.Gameplay.Player
 {
     public class PlayerCombatController : Combat.CombatController, IPlayerInputsObserver
     {
         protected Player m_player = null;
-
 
         protected override void Start()
         {

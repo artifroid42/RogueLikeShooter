@@ -14,10 +14,13 @@ namespace RLS.Gameplay.Player.UI
         private ClassUpgradesModule m_classUpgradesModule = null;
         [SerializeField]
         private PlayerHealthBar m_healthBar = null;
+        [SerializeField]
+        private Cursor m_cursor = null;
 
         public ExpBar ExpBar => m_expBar;
         public TextMeshProUGUI PlayerLevelText => m_playerLevelText;
         public ClassUpgradesModule ClassUpgradesModule => m_classUpgradesModule;
         public PlayerHealthBar HealthBar => m_healthBar;
+        public Cursor Cursor => m_cursor; 
     }
 }
