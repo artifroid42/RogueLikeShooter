@@ -107,9 +107,9 @@ namespace RLS.Gameplay.Player
                     }
                     else
                     {
-                        if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Power))
+                        if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, (EUpgrade)(a_inputNumber + 1)))
                         {
-                            IncreaseLevelUpgrade(m_currentStatsData.Class, EUpgrade.Power);
+                            IncreaseLevelUpgrade(m_currentStatsData.Class, (EUpgrade)(a_inputNumber + 1));
                         }
                     }     
                     
