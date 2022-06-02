@@ -22,6 +22,11 @@ namespace RLS.Gameplay.Combat.Weapon
             m_barilModel.SetActive(true);
         }
 
+        public void SetDamageToDeal(int a_damageToDeal)
+        {
+            m_explosion.SetDamageToDeal(a_damageToDeal);
+        }
+
         public void SetOwner(CombatController a_owner)
         {
             m_explosion.SetOwner(a_owner);

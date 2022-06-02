@@ -14,14 +14,14 @@ namespace RLS.Gameplay.Player
         {
             if(m_combatController != null)
             {
-                m_combatController.OnDamageTaken -= HandleDamageTaken;
+                m_combatController.OnLifeChanged -= HandleLifeChanged;
                 m_combatController.OnDied -= HandleDied;
             }
 
             m_combatController = a_combatController;
             m_UIManager.PlayerPanel.HealthBar.SetHealthSliderValue((float)a_combatController.LifePoints
                 / (float)a_combatController.MaxLifePoints);
-            m_combatController.OnDamageTaken += HandleDamageTaken;
+            m_combatController.OnLifeChanged += HandleLifeChanged;
             m_combatController.OnDied += HandleDied;
         }
 
@@ -30,7 +30,7 @@ namespace RLS.Gameplay.Player
             
         }
 
-        private void HandleDamageTaken(CombatController a_combatController)
+        private void HandleLifeChanged(CombatController a_combatController)
         {
             m_UIManager.PlayerPanel.HealthBar.SetHealthSliderValue((float) a_combatController.LifePoints 
                 / (float) a_combatController.MaxLifePoints);

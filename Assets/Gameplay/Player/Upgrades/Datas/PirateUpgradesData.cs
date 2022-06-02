@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace RLS.Gameplay.Player.Upgrades
         public struct PiratePowerUpgrade
         {
             public float BarilCouldown;
-            public float BarilDamages;
+            public int BarilDamages;
         }
 
         public List<PiratePowerUpgrade> PiratePowerUpgrades;

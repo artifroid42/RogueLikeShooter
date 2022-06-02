@@ -21,18 +21,18 @@ namespace RLS.Gameplay.Player.Pirate
         public PirateSword PirateSword => m_pirateSword;
 
         [Header("Params")]
-        [SerializeField]
-        private float m_swordAttackCooldown = 1.5f;
+        public float SwordAttackCooldown = 1.5f;
         private float m_timeOfLastSwordAttack = 0f;
-        [SerializeField]
-        private float m_barrelAttackCooldown = 5f;
+
+        public float BarrelAttackCooldown = 5f;
+        public int BarrelExplosionDamage = 5;
         private float m_timeOfLastBarrelAttack = 0f;
         [SerializeField]
         private float m_barrelThrowForce = 10f;
         public override void HandleAttackStartedInput()
         {
             base.HandleAttackStartedInput();
-            if (Time.time - m_timeOfLastSwordAttack < m_swordAttackCooldown) return;
+            if (Time.time - m_timeOfLastSwordAttack < SwordAttackCooldown) return;
             m_timeOfLastSwordAttack = Time.time;
 
 
@@ -50,7 +50,7 @@ namespace RLS.Gameplay.Player.Pirate
             }
             else
             {
-                if (Time.time - m_timeOfLastBarrelAttack < m_barrelAttackCooldown) return;
+                if (Time.time - m_timeOfLastBarrelAttack < BarrelAttackCooldown) return;
                 m_timeOfLastBarrelAttack = Time.time;
 
                 m_animationHandler.ThrowExplosiveBarrel();
@@ -60,6 +60,7 @@ namespace RLS.Gameplay.Player.Pirate
                     GetComponent<PlayerMovementController>().CameraTarget.rotation);
                 m_explosiveBarrelInstantiated.SetOwner(this);
                 m_explosiveBarrelInstantiated.PrepareToThrow();
+                m_explosiveBarrelInstantiated.SetDamageToDeal(BarrelExplosionDamage);
                 m_explosiveBarrelInstantiated.Rigidbody.AddForce(m_explosiveBarrelInstantiated.transform.forward * m_barrelThrowForce, ForceMode.VelocityChange);
             }
 

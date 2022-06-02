@@ -16,6 +16,7 @@ namespace RLS.Gameplay.Combat
         public int MaxLifePoints => m_maxLifePoints;
         public int LifePoints => m_lifePoints;
 
+        public Action<CombatController> OnLifeChanged = null;
         public Action<CombatController> OnDamageTaken = null;
         public Action<CombatController> OnDied = null;
 
@@ -48,9 +49,8 @@ namespace RLS.Gameplay.Combat
                 default:
                     break;
             }
-            OnDamageTaken?.Invoke(this);
             m_maxLifePoints = a_maxLifePoints;
-            
+            OnLifeChanged?.Invoke(this);
         }
 
         public void TakeDamage(int a_damageToDeal, CombatController a_source)
@@ -59,6 +59,7 @@ namespace RLS.Gameplay.Combat
             {
                 m_lifePoints -= a_damageToDeal;
                 OnDamageTaken?.Invoke(this);
+                OnLifeChanged?.Invoke(this);
 
                 if(a_source != null)
                 {

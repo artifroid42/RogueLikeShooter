@@ -10,15 +10,13 @@ namespace RLS.Gameplay.Player.Ninja
         private Combat.Weapon.Shuriken m_shurikenPrefab = null;
         [SerializeField]
         private Transform m_shurikenSource = null;
-
-        [Header("Params")]
-        [SerializeField]
-        private float m_attackCooldown = 1f;
+        public int ShurikenDamage = 5;
+        public float AttackCooldown = 1f;
         private float m_timeOfLastAttack = 0f;
 
         public override void HandleAttackStartedInput()
         {
-            if (Time.time - m_timeOfLastAttack < m_attackCooldown) return;
+            if (Time.time - m_timeOfLastAttack < AttackCooldown) return;
             m_timeOfLastAttack = Time.time;
 
             if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
@@ -30,6 +28,7 @@ namespace RLS.Gameplay.Player.Ninja
                 var damageDealer = newShuriken.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
+                damageDealer.SetDamageToDeal(ShurikenDamage);
             }
             else
             {
@@ -40,6 +39,7 @@ namespace RLS.Gameplay.Player.Ninja
                 var damageDealer = newShuriken.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
+                damageDealer.SetDamageToDeal(ShurikenDamage);
             }
             m_player.AnimationsHandler.ThrowShuriken();
         }

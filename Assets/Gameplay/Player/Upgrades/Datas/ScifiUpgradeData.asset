@@ -13,18 +13,8 @@ MonoBehaviour:
   m_Name: ScifiUpgradeData
   m_EditorClassIdentifier: 
   Class: 2
-  HealthLevels:
-  - 50
-  - 70
-  - 90
-  - 110
-  - 130
-  DamageLevels:
-  - 5
-  - 7
-  - 9
-  - 11
-  - 13
+  HealthLevels: 32000000460000005a0000006e00000082000000
+  DamageLevels: 0500000007000000090000000b0000000d000000
   AttackSpeedLevels:
   - 1.25
   - 1.5
@@ -32,11 +22,11 @@ MonoBehaviour:
   - 2
   - 2.25
   MoveSpeedLevels:
-  - 20
-  - 25
-  - 30
-  - 35
-  - 40
+  - 3.5
+  - 4.2
+  - 5
+  - 5.5
+  - 6
   SficiPowerUpgrades:
   - PowerShotLoadingTime: 3
     PowerShotDamages: 100

@@ -1,14 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using RLS.Gameplay.Combat.Weapon;
 using UnityEngine;
 
-namespace RLS.Gameplay.Combat.Weapon
+namespace RLS.Gameplay.Player.SciFi
 {
-    public class SciFiCombatController : Player.PlayerCombatController
+    public class SciFiCombatController : PlayerCombatController
     {
         [SerializeField]
-        private Player.PlayerAnimationsHandler m_animationHandler = null;
+        private PlayerAnimationsHandler m_animationHandler = null;
         [SerializeField]
         private Tween.PositionTween m_weaponPositionTween = null;
 
@@ -20,11 +18,11 @@ namespace RLS.Gameplay.Combat.Weapon
         private GameObject m_powerShotChargeFX = null; 
         [SerializeField]
         private Transform m_bulletSource = null;
-        [SerializeField]
-        private float m_attackSpeed = 1.2f;
+        public int LaserBulletDamage = 5;
+        public float AttackSpeed = 1.2f;
         private float m_timeOfLastShot = 0f;
-        [SerializeField]
-        private float m_loadingPowerShotDuration = 4f;
+        public int PowerShotDamage = 30;
+        public float PowerShotLoadingDuration = 4f;
         private float m_timeOfStartToLoadPowerShot = 0f;
         
         
@@ -57,7 +55,7 @@ namespace RLS.Gameplay.Combat.Weapon
             base.HandleSecondaryAttackCanceledInput();
             if (!m_isLoadingPowerShot) return;
             m_isLoadingPowerShot = false;
-            ShootPowerShot((Time.time - m_timeOfStartToLoadPowerShot) / m_loadingPowerShotDuration);
+            ShootPowerShot((Time.time - m_timeOfStartToLoadPowerShot) / PowerShotLoadingDuration);
             m_powerShotChargeFX.SetActive(false);
         }
 
@@ -65,7 +63,7 @@ namespace RLS.Gameplay.Combat.Weapon
         {
             if(m_isShooting)
             {
-                if(Time.time- m_timeOfLastShot > 1f / m_attackSpeed)
+                if(Time.time- m_timeOfLastShot > 1f / AttackSpeed)
                 {
                     ShootLaserBullet();
                     m_timeOfLastShot = Time.time;
@@ -73,7 +71,7 @@ namespace RLS.Gameplay.Combat.Weapon
             }
             if(m_isLoadingPowerShot)
             {
-                if(Time.time - m_timeOfStartToLoadPowerShot > m_loadingPowerShotDuration)
+                if(Time.time - m_timeOfStartToLoadPowerShot > PowerShotLoadingDuration)
                 {
                     ShootPowerShot(1f);
                     m_isLoadingPowerShot = false;
@@ -96,16 +94,16 @@ namespace RLS.Gameplay.Combat.Weapon
                     m_bulletSource.position,
                     Quaternion.LookRotation(hitInfo.point - m_bulletSource.position));
                 bullet.SetOwner(this);
-                bullet.SetChargeRatio(a_chargeRatio);
+                bullet.SetChargeRatio(a_chargeRatio, PowerShotDamage);
             }
             else
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<PowerShotBulletPoolingSystem>().
                     GetObject(m_powerShotBullerPrefab,
                     m_bulletSource.position,
-                    GetComponent<Player.PlayerMovementController>().CameraTarget.rotation);
+                    GetComponent<PlayerMovementController>().CameraTarget.rotation);
                 bullet.SetOwner(this);
-                bullet.SetChargeRatio(a_chargeRatio);
+                bullet.SetChargeRatio(a_chargeRatio, PowerShotDamage);
             }
         }
 
@@ -121,17 +119,19 @@ namespace RLS.Gameplay.Combat.Weapon
                 var damageDealer = bullet.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
+                damageDealer.SetDamageToDeal(LaserBulletDamage);
             }
             else
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<LaserBulletPoolingSystem>().
                     GetObject(m_laserBulletPrefab,
                     m_bulletSource.position,
-                    GetComponent<Player.PlayerMovementController>().CameraTarget.rotation);
+                    GetComponent<PlayerMovementController>().CameraTarget.rotation);
 
                 var damageDealer = bullet.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
+                damageDealer.SetDamageToDeal(LaserBulletDamage);
             }
             m_animationHandler.GunShoot();
             m_weaponPositionTween.StartTween();

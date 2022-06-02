@@ -46,6 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerStatsData: {fileID: 11400000, guid: 241d7926a17b02d448d3bf3fcc31348d, type: 2}
   m_playerUIManagersManager: {fileID: 5285931302102386877}
+  m_ninjaUpgradesData: {fileID: 11400000, guid: 2d25b2b611a70384c9f428bb28824cf0, type: 2}
+  m_pirateUpgradesData: {fileID: 11400000, guid: 28e48458125ec334fac068ad360ab622, type: 2}
+  m_scifiUpgradesData: {fileID: 11400000, guid: 9c012e63b78be2f42bd9ae80d988005c, type: 2}
   m_upgradesAppliedCount: 0
   m_classesUpgrades:
   - Class: 0
@@ -131,6 +134,7 @@ MonoBehaviour:
   m_playerStatsData: {fileID: 11400000, guid: 241d7926a17b02d448d3bf3fcc31348d, type: 2}
   m_playerUIManagersManager: {fileID: 5285931302102386877}
   m_currentExpAmount: 0
+  m_startingLevelRatio: 0.5
 --- !u!1 &3245002476042177454
 GameObject:
   m_ObjectHideFlags: 0
