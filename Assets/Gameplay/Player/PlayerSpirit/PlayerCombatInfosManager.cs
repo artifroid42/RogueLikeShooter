@@ -9,6 +9,7 @@ namespace RLS.Gameplay.Player
         private UI.PlayerUIManagersManager m_UIManager = null;
 
         private PlayerCombatController m_combatController = null;
+        public PlayerCombatController CombatController => m_combatController; 
 
         public void SetCombatControllerRef(PlayerCombatController a_combatController)
         {

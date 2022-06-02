@@ -1,3 +1,4 @@
+using RLS.Gameplay.Combat;
 using RLS.Gameplay.Player.Upgrades;
 using System;
 using UnityEngine;
@@ -37,15 +38,22 @@ namespace RLS.Gameplay.Player
         {
             PlayerUIManagersManager.RegisterEvents();
             m_playerUpgradesManager.OnPlayerUpgraded += HandlePlayerUpgraded;
+            m_combatInfosManager.CombatController.OnDamageGiven += HandleDamageGiven;
         }
 
         public void UnregisterEvents()
         {
             PlayerUIManagersManager.UnregisterEvents();
             m_playerUpgradesManager.OnPlayerUpgraded -= HandlePlayerUpgraded;
+            m_combatInfosManager.CombatController.OnDamageGiven -= HandleDamageGiven;
         }
 
         public Player CurrentPlayer { private set; get; } = null;
+
+        private void HandleDamageGiven(CombatController obj)
+        {
+            m_playerUIManagersManager.PlayerPanel.Cursor.PlayHitFeedback();
+        }
 
         public void HandleGameLevelChanged()
         {
