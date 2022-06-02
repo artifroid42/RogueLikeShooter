@@ -10,9 +10,8 @@ namespace RLS.Gameplay.Player.Ninja
         [SerializeField]
         private int m_numberOfJumps = 2;
         private int m_numberOfJumpsSinceGroundLeft = 0;
-        [SerializeField]
-        private float m_dashCooldown = 2f;
-        [SerializeField]
+        public float DashCooldown = 2f;
+
         private float m_dashMultiplier = 5f;
         private float m_timeOfLastDash = 0f;
         [SerializeField]
@@ -23,11 +22,15 @@ namespace RLS.Gameplay.Player.Ninja
 
         private Coroutine m_dashCoroutine = null;
 
+        public void SetDashRange(float a_dashRange)
+        {
+            m_dashMultiplier = a_dashRange / m_dashDuration;
+        }
 
         public override void HandleSecondaryAttackStartedInput()
         {
             base.HandleSecondaryAttackStartedInput();
-            if (Time.time - m_timeOfLastDash < m_dashCooldown) return;
+            if (Time.time - m_timeOfLastDash < DashCooldown) return;
             m_timeOfLastDash = Time.time;
 
             if(m_dashCoroutine != null)
@@ -40,7 +43,7 @@ namespace RLS.Gameplay.Player.Ninja
 
         private IEnumerator DashRoutine()
         {
-            m_speed *= m_dashMultiplier;
+            m_gameplaySpeedMultiplier = m_dashMultiplier;
             m_movementDirection.Normalize();
             m_model.SetActive(false);
             BlockDirectionFor(m_dashDuration);
@@ -49,7 +52,7 @@ namespace RLS.Gameplay.Player.Ninja
             Pooling.PoolingManager.Instance.GetPoolingSystem<PoofNinjaPropPoolingSystem>().
                 GetObject(m_poofNinjaPropPrefab, transform.position + Vector3.up * 2f, Quaternion.identity);
             yield return new WaitForSeconds(m_dashDuration);
-            m_speed /= m_dashMultiplier;
+            m_gameplaySpeedMultiplier = 1f;
             m_model.SetActive(true);
             VFXManager.Instance.PlayFXAt(0, transform.position + Vector3.up, Quaternion.identity);
         }

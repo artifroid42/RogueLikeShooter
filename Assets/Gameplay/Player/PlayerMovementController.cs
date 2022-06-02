@@ -18,11 +18,12 @@ namespace RLS.Gameplay.Player
         public Transform CameraTarget => m_cameraTarget;
 
         [Header("Gameplay Params")]
+        public float BaseSpeed = 5f;
+        protected float m_gameplaySpeedMultiplier = 1f;
+        public float Speed => BaseSpeed * m_gameplaySpeedMultiplier;
+
         [SerializeField]
-        protected float m_baseSpeed = 5f;
-        protected float m_speed = 5f;
-        [SerializeField]
-        private float m_jumpCooldown = 1f;
+        private float m_jumpCooldown = 0.1f;
         protected float JumpCooldown => m_jumpCooldown;
         protected float m_lastJumpTime = 0f;
 
@@ -52,7 +53,6 @@ namespace RLS.Gameplay.Player
         private void Start()
         {
             GetComponent<PlayerInputsHandler>()?.RegisterNewObserver(this);
-            m_speed = m_baseSpeed;
         }
 
         private void OnDestroy()
@@ -116,7 +116,7 @@ namespace RLS.Gameplay.Player
 
             Vector3 movementToApply = default;
 
-            movementToApply += m_movementDirection * m_speed;
+            movementToApply += m_movementDirection * Speed;
 
             if (!m_verticalVelocityIsLocked)
             {

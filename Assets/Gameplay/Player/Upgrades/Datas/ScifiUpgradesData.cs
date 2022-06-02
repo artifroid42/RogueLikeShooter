@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,7 @@ namespace RLS.Gameplay.Player.Upgrades
         public struct SficiPowerUpgrade
         {
             public float PowerShotLoadingTime;
-            public float PowerShotDamages;
+            public int PowerShotDamages;
         }
 
         public List<SficiPowerUpgrade> SficiPowerUpgrades;

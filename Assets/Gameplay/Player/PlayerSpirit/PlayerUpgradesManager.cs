@@ -1,6 +1,5 @@
 using RLS.Gameplay.Player.Upgrades;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +18,14 @@ namespace RLS.Gameplay.Player
         private Upgrades.PlayerStatsData m_playerStatsData;
         [SerializeField]
         private UI.PlayerUIManagersManager m_playerUIManagersManager;
+        
+        [Header("Upgrades Data")]
+        [SerializeField]
+        private NinjaUpgradesData m_ninjaUpgradesData = null;
+        [SerializeField]
+        private PirateUpgradesData m_pirateUpgradesData = null;
+        [SerializeField]
+        private ScifiUpgradesData m_scifiUpgradesData = null;
 
         private EUpgradeState m_upgradeState = EUpgradeState.Idle;
         private EClass m_classToUpgrade;
@@ -55,11 +62,16 @@ namespace RLS.Gameplay.Player
         public void SetPlayerRef(Player a_player)
         {
             m_currentPlayer = a_player;
+            RefreshStats();
         }
 
         internal void RefreshStats()
         {
-            throw new NotImplementedException();
+            SetUpHealth();
+            SetUpMoveSpeed();
+            SetUpAttackSpeed();
+            SetUpDamages();
+            SetUpPower();
         }
 
         internal void UpgradeInputDown(int a_inputNumber)
@@ -89,28 +101,18 @@ namespace RLS.Gameplay.Player
                     break;
 
                 case EUpgradeState.ClassUpgrade:
-
-                    switch (a_inputNumber)
+                    if(a_inputNumber == 6)
                     {
-                        case 1:
-                            UpgradeHealth();
-                            break;
-                        case 2:
-                            UpgradeDamages();
-                            break;
-                        case 3:
-                            UpgradeAttackSpeed();
-                            break;
-                        case 4:
-                            UpgradeMoveSpeed();
-                            break;
-                        case 5:
-                            UpgradePower();
-                            break;
-                        case 6:
-                            BackToClassSelection();
-                            break;
+                        BackToClassSelection();
                     }
+                    else
+                    {
+                        if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Power))
+                        {
+                            IncreaseLevelUpgrade(m_currentStatsData.Class, EUpgrade.Power);
+                        }
+                    }     
+                    
                     UpdateUpgradesSliders();
                     if(m_upgradesAppliedCount == m_playerUIManagersManager.ExpManager.CurrentLevel - 1) // -1 car on ne veut pas upgrade au niveau 1
                     {
@@ -122,12 +124,13 @@ namespace RLS.Gameplay.Player
 
 
 
-        private void Upgrade(EClass a_class, EUpgrade a_upgrade)
+        private UpgradeLevel IncreaseLevelUpgrade(EClass a_class, EUpgrade a_upgrade)
         {
             var upgradeLevel = m_classesUpgrades.Find(x => x.Class == a_class).UpgradeLevels.Find(x => x.Type == a_upgrade);
             upgradeLevel.Level++;
             m_upgradesAppliedCount++;
             OnPlayerUpgraded?.Invoke();
+            return upgradeLevel;
         }
 
         private void UpdateUpgradesSliders()
@@ -155,44 +158,122 @@ namespace RLS.Gameplay.Player
             }
         }
 
-        private void UpgradePower()
+
+        private void SetUpPower()
         {
-            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Power))
+            var upgradeLevel = m_classesUpgrades.Find(x => x.Class == m_currentPlayer.Class).
+                UpgradeLevels.Find(x => x.Type == EUpgrade.Power);
+            switch (m_currentPlayer.Class)
             {
-                Upgrade(m_currentStatsData.Class, EUpgrade.Power);
+                case EClass.Ninja:
+                    m_currentPlayer.GetComponent<Ninja.NinjaPlayerMovement>().DashCooldown = 
+                        m_ninjaUpgradesData.NinjaPowerUpgrades[upgradeLevel.Level - 1].DashCouldown;
+                    m_currentPlayer.GetComponent<Ninja.NinjaPlayerMovement>().
+                        SetDashRange(m_ninjaUpgradesData.NinjaPowerUpgrades[upgradeLevel.Level - 1].DashRange);
+                    break;
+                case EClass.Pirate:
+                    m_currentPlayer.GetComponent<Pirate.PirateCombatController>().BarrelAttackCooldown = 
+                        m_pirateUpgradesData.PiratePowerUpgrades[upgradeLevel.Level - 1].BarilCouldown;
+                    m_currentPlayer.GetComponent<Pirate.PirateCombatController>().BarrelExplosionDamage =
+                        m_pirateUpgradesData.PiratePowerUpgrades[upgradeLevel.Level - 1].BarilDamages;
+                    break;
+                case EClass.SciFi:
+                    m_currentPlayer.GetComponent<SciFi.SciFiCombatController>().PowerShotDamage =
+                        m_scifiUpgradesData.SficiPowerUpgrades[upgradeLevel.Level - 1].PowerShotDamages;
+                    m_currentPlayer.GetComponent<SciFi.SciFiCombatController>().PowerShotLoadingDuration =
+                        m_scifiUpgradesData.SficiPowerUpgrades[upgradeLevel.Level - 1].PowerShotLoadingTime;
+                    break;
             }
         }
 
-        private void UpgradeMoveSpeed()
+        private void SetUpMoveSpeed()
         {
-            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.MoveSpeed))
+            var upgradeLevel = m_classesUpgrades.Find(x => x.Class == m_currentPlayer.Class).
+                UpgradeLevels.Find(x => x.Type == EUpgrade.MoveSpeed);
+            switch (m_currentPlayer.Class)
             {
-                Upgrade(m_currentStatsData.Class, EUpgrade.MoveSpeed);
+                case EClass.Ninja:
+                    m_currentPlayer.GetComponent<PlayerMovementController>().BaseSpeed = m_ninjaUpgradesData.
+                        MoveSpeedLevels[upgradeLevel.Level - 1];
+                    break;
+                case EClass.Pirate:
+                    m_currentPlayer.GetComponent<PlayerMovementController>().BaseSpeed = m_pirateUpgradesData.
+                        MoveSpeedLevels[upgradeLevel.Level - 1];
+                    break;
+                case EClass.SciFi:
+                    m_currentPlayer.GetComponent<PlayerMovementController>().BaseSpeed = m_scifiUpgradesData.
+                        MoveSpeedLevels[upgradeLevel.Level - 1];
+                    break;
             }
         }
 
-        private void UpgradeAttackSpeed()
+        private void SetUpAttackSpeed()
         {
-            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.AttackSpeed))
+            var upgradeLevel = m_classesUpgrades.Find(x => x.Class == m_currentPlayer.Class).
+                UpgradeLevels.Find(x => x.Type == EUpgrade.AttackSpeed);
+            switch (m_currentPlayer.Class)
             {
-                Upgrade(m_currentStatsData.Class, EUpgrade.AttackSpeed);
+                case EClass.Ninja:
+                    m_currentPlayer.GetComponent<Ninja.NinjaCombatController>().AttackCooldown =
+                        1f / m_ninjaUpgradesData.AttackSpeedLevels[upgradeLevel.Level - 1];
+                    break;
+                case EClass.Pirate:
+                    m_currentPlayer.GetComponent<Pirate.PirateCombatController>().SwordAttackCooldown =
+                        1f / m_pirateUpgradesData.AttackSpeedLevels[upgradeLevel.Level - 1];
+                    break;
+                case EClass.SciFi:
+                    m_currentPlayer.GetComponent<SciFi.SciFiCombatController>().AttackSpeed =
+                        m_scifiUpgradesData.AttackSpeedLevels[upgradeLevel.Level - 1];
+                    break;
             }
         }
 
-        private void UpgradeDamages()
+        private void SetUpDamages()
         {
-            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Damage))
+            var upgradeLevel = m_classesUpgrades.Find(x => x.Class == m_currentPlayer.Class).
+                UpgradeLevels.Find(x => x.Type == EUpgrade.Damage);
+            switch (m_currentPlayer.Class)
             {
-                Upgrade(m_currentStatsData.Class, EUpgrade.Damage);
+                case EClass.Ninja:
+                    m_currentPlayer.GetComponent<Ninja.NinjaCombatController>().ShurikenDamage =
+                        m_ninjaUpgradesData.DamageLevels[upgradeLevel.Level - 1];
+                    break;
+                case EClass.Pirate:
+                    m_currentPlayer.GetComponent<Pirate.PirateCombatController>().PirateSword.
+                        SetDamageToDeal(m_pirateUpgradesData.DamageLevels[upgradeLevel.Level - 1]);
+                    break;
+                case EClass.SciFi:
+                    m_currentPlayer.GetComponent<SciFi.SciFiCombatController>().LaserBulletDamage =
+                        m_scifiUpgradesData.DamageLevels[upgradeLevel.Level - 1];
+                    break;
             }
         }
 
-        private void UpgradeHealth()
+        private void SetUpHealth()
         {
-            if (m_currentStatsData != null && CheckUpgrade(m_currentStatsData.Class, EUpgrade.Health))
+            var upgradeLevel = m_classesUpgrades.Find(x => x.Class == m_currentPlayer.Class).
+                UpgradeLevels.Find(x => x.Type == EUpgrade.Health);
+            switch (m_currentPlayer.Class)
             {
-                Upgrade(m_currentStatsData.Class, EUpgrade.Health);
+                case EClass.Ninja:
+                        m_currentPlayer.GetComponent<Combat.CombatController>().
+                            SetMaxLifePoints(m_ninjaUpgradesData.HealthLevels[upgradeLevel.Level - 1],
+                            Combat.ECurrentLifeBehaviourWhenChangingMaxLife.ChangeProportionally);
+                    break;
+
+                case EClass.Pirate:
+                        m_currentPlayer.GetComponent<Combat.CombatController>().
+                            SetMaxLifePoints(m_ninjaUpgradesData.HealthLevels[upgradeLevel.Level - 1],
+                            Combat.ECurrentLifeBehaviourWhenChangingMaxLife.ChangeProportionally);
+                    break;
+
+                case EClass.SciFi:
+                        m_currentPlayer.GetComponent<Combat.CombatController>().
+                            SetMaxLifePoints(m_ninjaUpgradesData.HealthLevels[upgradeLevel.Level - 1],
+                            Combat.ECurrentLifeBehaviourWhenChangingMaxLife.ChangeProportionally);
+                    break;
             }
+            
         }
 
         public void ShowClassSelection()
@@ -224,4 +305,3 @@ namespace RLS.Gameplay.Player
         }
     }
 }
-

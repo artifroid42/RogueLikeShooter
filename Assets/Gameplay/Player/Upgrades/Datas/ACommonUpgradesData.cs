@@ -8,8 +8,8 @@ namespace RLS.Gameplay.Player.Upgrades
     {
         public EClass Class;
 
-        public List<float> HealthLevels;
-        public List<float> DamageLevels;
+        public List<int> HealthLevels;
+        public List<int> DamageLevels;
         public List<float> AttackSpeedLevels;
         public List<float> MoveSpeedLevels;
     }

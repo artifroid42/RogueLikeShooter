@@ -13,7 +13,28 @@ MonoBehaviour:
   m_Name: NinjaUpgradeData
   m_EditorClassIdentifier: 
   Class: 0
-  HealthLevels: []
-  DamageLevels: []
-  AttackSpeedLevels: []
-  MoveSpeedLevels: []
+  HealthLevels: 280000003c000000500000006400000078000000
+  DamageLevels: 0a0000000f00000014000000190000001e000000
+  AttackSpeedLevels:
+  - 0.5
+  - 0.8
+  - 1.15
+  - 1.5
+  - 2
+  MoveSpeedLevels:
+  - 4.5
+  - 5
+  - 5.5
+  - 6.2
+  - 7
+  NinjaPowerUpgrades:
+  - DashCouldown: 4
+    DashRange: 2
+  - DashCouldown: 3
+    DashRange: 3
+  - DashCouldown: 2.5
+    DashRange: 3.5
+  - DashCouldown: 1.2
+    DashRange: 4
+  - DashCouldown: 0.6
+    DashRange: 4.5
