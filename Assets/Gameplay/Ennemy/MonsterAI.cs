@@ -1,4 +1,5 @@
 using RLS.Gameplay.AIs;
+using RLS.Gameplay.Combat;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -48,6 +49,9 @@ namespace RLS.Gameplay.Ennemy
         private float m_durationToLookAtAfterBeingHit = 1f;
         public float DurationToLookAtAfterBeingHit => m_durationToLookAtAfterBeingHit;
 
+        [SerializeField]
+        private float m_expReward = 500f;
+
         private DungeonFlow.DungeonGameMode m_gamemode = null;
         public Player.Player ClosestPlayer { private set; get; } = null;
 
@@ -58,6 +62,20 @@ namespace RLS.Gameplay.Ennemy
             base.EnterStateMachine();
             m_gamemode = MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>();
             SpawnPosition = transform.position;
+
+            m_combatController.OnDied += HandleMonsterDied;
+        }
+
+        internal override void ExitStateMachine()
+        {
+            m_combatController.OnDied -= HandleMonsterDied;
+
+            base.ExitStateMachine();
+        }
+
+        private void HandleMonsterDied(CombatController obj)
+        {
+            m_gamemode.Players[0].PlayerExpManager.EarnExp(m_expReward);
         }
 
         protected override void ProcessChoice()

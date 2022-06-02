@@ -183,6 +183,7 @@ MonoBehaviour:
   m_distanceToAttack: 2
   m_durationToStopFollowingPlayerAfterLosingSightOnHim: 2
   m_durationToLookAtAfterBeingHit: 0.7
+  m_expReward: 1000
   m_weaponDamageDealer: {fileID: 1964118741959200595}
 --- !u!195 &3999617753862949717
 NavMeshAgent:
