@@ -23,7 +23,7 @@ namespace RLS.Gameplay.Combat
 
         public CombatController LastControllerToHitMe { protected set; get; } = null;
         public float LastTimeControllerHitMe { protected set; get; } = 0f;
-
+        public bool IsAlive { private set; get; } = true;
 
         protected virtual void Start()
         {
@@ -56,6 +56,8 @@ namespace RLS.Gameplay.Combat
 
         public void TakeDamage(int a_damageToDeal, CombatController a_source)
         {
+            if (!IsAlive) return;
+
             if(a_source == null || a_source.TeamIndex != m_teamIndex)
             {
                 m_lifePoints -= a_damageToDeal;
@@ -72,6 +74,7 @@ namespace RLS.Gameplay.Combat
 
                 if(m_lifePoints <= 0)
                 {
+                    IsAlive = false;
                     HandleDeath();
                     OnDied?.Invoke(this);
                 }

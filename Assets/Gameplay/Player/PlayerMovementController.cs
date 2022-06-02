@@ -10,6 +10,7 @@ namespace RLS.Gameplay.Player
         private CharacterController m_characterController;
         [SerializeField]
         protected GameObject m_model = null;
+        public GameObject Model => m_model;
         [SerializeField]
         private Transform m_cameraTarget;
         [SerializeField]
