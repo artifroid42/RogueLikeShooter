@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace RLS.Gameplay.Player.UI
 {
-    public class PlayerHealthBar : MonoBehaviour
+    public class HealthBar : MonoBehaviour
     {
         [SerializeField]
         private Slider m_healthSlider;
