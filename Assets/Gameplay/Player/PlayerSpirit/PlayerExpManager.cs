@@ -16,6 +16,10 @@ namespace RLS.Gameplay.Player
         private float m_currentExpAmount;
         private float m_expAmountForNextLevel;
 
+        [Header("EASY MODE ONLY")]
+        [SerializeField]
+        private float m_startingLevelRatio = 0.5f;
+
         private int m_currentLevel;
 
         public int CurrentLevel
@@ -73,12 +77,15 @@ namespace RLS.Gameplay.Player
             m_playerUIManagersManager.UpgradesManager.ShowClassSelection();  
         }
 
-        /// <summary>
-        /// Last level reached / 2
-        /// </summary>
+
         private int GetStartLevel()
         {
-            return 1; //TODO : return Last level reached / 2
+            var modeData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
+            if (modeData.IsEasyMode)
+            {
+                return Mathf.RoundToInt(MOtter.MOtt.SAVE.MaximumLevelReached * m_startingLevelRatio);
+            }
+            return 1;
         }
 
 #if UNITY_EDITOR

@@ -22,6 +22,8 @@ namespace MOtter.Save
         public float SFXSoundSensitivity = 0.5f;
         public float MusicSoundSensitivity = 0.5f;
 
+        public int MaximumLevelReached = 0;
+
         public SaveDataManager()
         {
 

@@ -49,7 +49,27 @@ namespace RLS.Gameplay.DungeonFlow
         {
             m_levelManager.OnLoadingEnded -= OnLevelLoadingEnded;
             m_levelManager.OnLoadingStarted -= OnLevelLoadingStarted;
+
+            var modeData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
+            if(modeData.IsEasyMode)
+            {
+                MOtter.MOtt.SAVE.MaximumLevelReached = m_playerSpirit.PlayerExpManager.CurrentLevel;
+                MOtter.MOtt.SAVE.SaveSaveDataManager();
+            }
+            MOtter.MOtt.DATACONVEY.UnregisterContainer(modeData);
+
             base.ExitStateMachine();
+        }
+
+        private void OnDestroy()
+        {
+            var modeData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
+            if (modeData.IsEasyMode)
+            {
+                MOtter.MOtt.SAVE.MaximumLevelReached = m_playerSpirit.PlayerExpManager.CurrentLevel;
+                MOtter.MOtt.SAVE.SaveSaveDataManager();
+            }
+            MOtter.MOtt.DATACONVEY.UnregisterContainer(modeData);
         }
 
         private void OnLevelLoadingStarted()

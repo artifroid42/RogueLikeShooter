@@ -1,5 +1,5 @@
 using MOtter.LevelData;
-using System;
+using RLS.Generic.ModeSelection;
 using UnityEngine;
 
 namespace RLS.MainMenu.ModeSelectionScreen
@@ -40,11 +40,17 @@ namespace RLS.MainMenu.ModeSelectionScreen
 
         private void HandlePlayHardButtonClicked()
         {
+            ModeSelectedData modeSelectedData = new ModeSelectedData();
+            modeSelectedData.IsEasyMode = false;
+            MOtter.MOtt.DATACONVEY.RegisterContainer(modeSelectedData);
             PlayHardcoreGame();
         }
 
         private void HandlePlayEasyButtonClicked()
         {
+            ModeSelectedData modeSelectedData = new ModeSelectedData();
+            modeSelectedData.IsEasyMode = true;
+            MOtter.MOtt.DATACONVEY.RegisterContainer(modeSelectedData);
             PlayEasyGame();
         }
 
