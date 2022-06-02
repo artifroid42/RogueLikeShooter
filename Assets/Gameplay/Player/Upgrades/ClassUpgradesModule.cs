@@ -9,11 +9,11 @@ namespace RLS.Gameplay.Player.Upgrades
 {
     public enum EUpgrade
     {
-        Health,
-        Damage, 
-        AttackSpeed,
-        MoveSpeed,
-        Power
+        Health = 0,
+        Damage = 1, 
+        AttackSpeed = 2,
+        MoveSpeed = 3,
+        Power = 4
     }
 
     public class ClassUpgradesModule : MonoBehaviour

@@ -326,7 +326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
-  m_panels: []
+  m_panels:
+  - {fileID: 4442282104786577413}
   m_gamemode: {fileID: 1404164790}
 --- !u!1 &680014487
 GameObject:
@@ -660,7 +661,7 @@ RectTransform:
   - {fileID: 516303900}
   - {fileID: 1453166764}
   m_Father: {fileID: 4442282104786577412}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1205,6 +1206,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2727667763960155953, guid: 7815bdbeeec142241bc1dd95b178d67d, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2727667765231365875, guid: 7815bdbeeec142241bc1dd95b178d67d, type: 3}
       propertyPath: m_SizeDelta.x
       value: 1.362
@@ -1520,6 +1525,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4442282105758602820, guid: 7815bdbeeec142241bc1dd95b178d67d, type: 3}
   m_PrefabInstance: {fileID: 4442282104786577411}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4442282104786577413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3684028393990592460, guid: 7815bdbeeec142241bc1dd95b178d67d, type: 3}
+  m_PrefabInstance: {fileID: 4442282104786577411}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7b08257a4fa1743832b8a24f7980cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5685953366322926422
 PrefabInstance:
   m_ObjectHideFlags: 0
