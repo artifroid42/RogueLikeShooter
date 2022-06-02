@@ -4659,6 +4659,7 @@ GameObject:
   - component: {fileID: 4133544375240337288}
   - component: {fileID: 4042188931799446152}
   - component: {fileID: 7106755413423581454}
+  - component: {fileID: 44434065217315338}
   m_Layer: 9
   m_Name: SM_Chr_Alien_01
   m_TagString: Untagged
@@ -4716,6 +4717,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_owner: {fileID: 3832014798688534846}
+--- !u!114 &44434065217315338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128352302827374556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05577f86bd58ae74db132dee463675d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4128379380757998906
 GameObject:
   m_ObjectHideFlags: 0
