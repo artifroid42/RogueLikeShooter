@@ -63,7 +63,7 @@ namespace RLS.Gameplay.DungeonFlow
         {
             base.UpdateState();
             //Debug.LogError($"{m_currentPlayer.transform.position}");
-            if (m_currentPlayer.transform.position.y < -100f)
+            if (m_currentPlayer != null && m_currentPlayer.transform.position.y < -100f)
             {
                 if(m_reposingCoroutine == null)
                 {

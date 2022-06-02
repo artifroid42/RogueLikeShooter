@@ -1,12 +1,14 @@
-
-
-using RLS.Gameplay.Combat;
+using RLS.Generic.Ragdoll;
+using UnityEngine;
 
 namespace RLS.Gameplay.Player
 {
     public class PlayerCombatController : Combat.CombatController, IPlayerInputsObserver
     {
         protected Player m_player = null;
+
+        [SerializeField]
+        private SyncCloneFromModel m_ragdollModel = null;
 
         protected override void Start()
         {
@@ -18,6 +20,17 @@ namespace RLS.Gameplay.Player
         private void OnDestroy()
         {
             GetComponent<PlayerInputsHandler>()?.UnregisterObserver(this);
+        }
+
+        protected override void HandleDeath()
+        {
+            base.HandleDeath();
+            GetComponent<PlayerMovementController>().Model.SetActive(false);
+            Destroy(gameObject.GetComponent<Player>());
+            Destroy(gameObject.GetComponent<PlayerMovementController>());
+            Destroy(gameObject.GetComponent<PlayerInputsHandler>());
+            m_ragdollModel?.ApplyModelPositionsToClone();
+            m_ragdollModel?.gameObject.SetActive(true);
         }
 
         public virtual void HandleAttackStartedInput()
