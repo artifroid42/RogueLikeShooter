@@ -341,6 +341,7 @@ MonoBehaviour:
   m_distanceToAttack: 25
   m_durationToStopFollowingPlayerAfterLosingSightOnHim: 2
   m_durationToLookAtAfterBeingHit: 1
+  m_expReward: 1000
   m_projectileSource: {fileID: 3355578733319413620}
 --- !u!195 &8628033037785468276
 NavMeshAgent:
