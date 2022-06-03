@@ -21,13 +21,14 @@ namespace RLS.Gameplay.Combat.Weapon
             m_bulletFX.SetActive(true);
             transform.localScale = Vector3.one * a_chargeRatio;
             m_bulletFX.transform.localScale = Vector3.one * a_chargeRatio;
-            m_explosion.SetDamageToDeal(Mathf.RoundToInt(a_maxExplosionDamage * a_chargeRatio));
+            m_explosion.SetUp(m_explosionRadius * a_chargeRatio,
+                Mathf.RoundToInt(a_maxExplosionDamage * a_chargeRatio),
+                m_owner);
             m_exploding = false;
         }
 
         public void SetOwner(CombatController a_owner)
         {
-            m_explosion.SetOwner(a_owner);
             m_owner = a_owner;
         }
 
@@ -35,9 +36,8 @@ namespace RLS.Gameplay.Combat.Weapon
         {
             m_bulletFX.SetActive(false);
             m_exploding = true;
-            m_explosion.Execute(m_explosionRadius);
+            m_explosion.DealDamage();
             m_explosion.gameObject.SetActive(true);
-            m_explosion.OnExplosionFinished += HandleExplosionFinished;
         }
 
         protected override void Update()
@@ -48,8 +48,6 @@ namespace RLS.Gameplay.Combat.Weapon
 
         private void HandleExplosionFinished()
         {
-            m_explosion.OnExplosionFinished -= HandleExplosionFinished;
-
             gameObject.SetActive(false);
         }
 
