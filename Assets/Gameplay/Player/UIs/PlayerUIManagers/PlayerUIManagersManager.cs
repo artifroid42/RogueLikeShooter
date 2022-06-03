@@ -25,7 +25,6 @@ namespace RLS.Gameplay.Player.UI
         public PlayerDebugPanel PlayerDebugPanel => m_playerDebugPanel;
 
 
-
         public void RegisterEvents()
         {
 

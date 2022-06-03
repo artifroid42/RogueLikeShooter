@@ -7,6 +7,8 @@ namespace RLS.Gameplay.Player
     {
         protected Player m_player = null;
 
+        public virtual float PowerCooldownRatio => 0;
+
         [SerializeField]
         private SyncCloneFromModel m_ragdollModel = null;
 

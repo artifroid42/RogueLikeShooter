@@ -6,6 +6,8 @@ namespace RLS.Gameplay.Player.Ninja
 {
     public class NinjaPlayerMovement : PlayerMovementController
     {
+        public override float PowerCooldownRatio => (Time.time - m_timeOfLastDash) / DashCooldown;
+
         [Header("Ninja Specifics")]
         [SerializeField]
         private int m_numberOfJumps = 2;

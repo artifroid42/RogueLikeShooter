@@ -5,6 +5,8 @@ namespace RLS.Gameplay.Player.Ninja
 {
     public class NinjaCombatController : PlayerCombatController
     {
+        public override float PowerCooldownRatio => base.PowerCooldownRatio;
+
         [Header("Refs")]
         [SerializeField]
         private Combat.Weapon.Shuriken m_shurikenPrefab = null;
