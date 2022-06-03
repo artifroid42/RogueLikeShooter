@@ -46,9 +46,6 @@ namespace RLS.Gameplay.Player.Upgrades
 
         internal void Init()
         {
-            m_classSelection.SetActive(false);
-            m_classUpgrades.SetActive(false);
-
             foreach (var upgradeLineWidget in m_upgradeLineWidgets)
             {
                 var upgradeRepresentation = m_reprensentationsData.UpgradeRepresentations.Find(x => x.Upgrade == upgradeLineWidget.Upgrades);

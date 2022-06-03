@@ -27,21 +27,28 @@ namespace RLS.Gameplay.Player
         private EClass m_currentClass;
         public EClass CurrentClass => m_currentClass;
 
+        private bool m_isInitialized = false;
+
         private void Update()
         {
-            float cooldown = 0f;
-            switch (m_currentClass)
+            if (m_isInitialized)
             {
-                case EClass.Ninja:
-                    break;
-                case EClass.Pirate:
-                    cooldown = m_combatInfosManager.CombatController.PowerCooldownRatio;
-                    break;
-                case EClass.SciFi:
-                    break;
+                float cooldown = 0f;
+                switch (m_currentClass)
+                {
+                    case EClass.Ninja:
+                        if(CurrentPlayer != null)
+                            cooldown = CurrentPlayer.PlayerMovementController.PowerCooldownRatio;
+                        break;
+                    case EClass.Pirate:
+                        cooldown = m_combatInfosManager.CombatController.PowerCooldownRatio;
+                        break;
+                    case EClass.SciFi:
+                        cooldown = m_combatInfosManager.CombatController.PowerCooldownRatio;
+                        break;
+                }
+                m_playerUIManagersManager.PlayerPanel.PowerCouldownWidget.SetCouldownValue(cooldown);
             }
-            m_playerUIManagersManager.PlayerPanel.PowerCouldownWidget.SetCouldownValue(cooldown);
-            Debug.Log(cooldown);
         }
 
         public void InitPlayer()
@@ -49,6 +56,7 @@ namespace RLS.Gameplay.Player
             m_playerUIManagersManager.Init();
             m_playerExpManager.Init();
             m_playerUpgradesManager.Init();
+            m_isInitialized = true;
         }
 
         public void RegisterEvents()

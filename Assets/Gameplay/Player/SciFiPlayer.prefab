@@ -7834,6 +7834,7 @@ MonoBehaviour:
   - {fileID: 2490538038138486247}
   - {fileID: 2987858123678350058}
   m_class: 2
+  m_playerMovementController: {fileID: 5470672298810301047}
 --- !u!143 &649389849166449284
 CharacterController:
   m_ObjectHideFlags: 0

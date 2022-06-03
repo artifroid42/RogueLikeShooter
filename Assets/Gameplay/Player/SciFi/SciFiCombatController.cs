@@ -5,6 +5,8 @@ namespace RLS.Gameplay.Player.SciFi
 {
     public class SciFiCombatController : PlayerCombatController
     {
+        public override float PowerCooldownRatio => m_isLoadingPowerShot ? (Time.time - m_timeOfStartToLoadPowerShot) / PowerShotLoadingDuration : 0f;
+
         [SerializeField]
         private PlayerAnimationsHandler m_animationHandler = null;
         [SerializeField]

@@ -4213,6 +4213,7 @@ MonoBehaviour:
   - {fileID: 7901007509149373073}
   - {fileID: 4933434391868314381}
   m_class: 1
+  m_playerMovementController: {fileID: 8954102174785384649}
 --- !u!143 &4515984134157721658
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4249,6 +4250,7 @@ MonoBehaviour:
   m_topHead: {fileID: 7811478072264462818}
   BaseSpeed: 5
   m_jumpCooldown: 0.2
+  m_delayToJumpAfterLeavingGround: 0.2
   m_gravity: 30
   m_jumpSpeed: 10
   m_cameraSensitivity: {x: 30, y: 30}
