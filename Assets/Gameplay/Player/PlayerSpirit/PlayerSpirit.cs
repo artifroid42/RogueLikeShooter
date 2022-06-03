@@ -33,11 +33,13 @@ namespace RLS.Gameplay.Player
             switch (m_currentClass)
             {
                 case EClass.Ninja:
+                    cooldown = CurrentPlayer.PlayerMovementController.PowerCooldownRatio;
                     break;
                 case EClass.Pirate:
                     cooldown = m_combatInfosManager.CombatController.PowerCooldownRatio;
                     break;
                 case EClass.SciFi:
+                    cooldown = m_combatInfosManager.CombatController.PowerCooldownRatio;
                     break;
             }
             m_playerUIManagersManager.PlayerPanel.PowerCouldownWidget.SetCouldownValue(cooldown);

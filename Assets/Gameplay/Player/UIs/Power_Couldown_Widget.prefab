@@ -425,6 +425,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fx_Shine_Gem_01
       objectReference: {fileID: 0}
+    - target: {fileID: 538293598483827534, guid: 986ab369c729b4c8cb35ce78687e0538, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 538293598483827570, guid: 986ab369c729b4c8cb35ce78687e0538, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1

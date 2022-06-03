@@ -20,5 +20,11 @@ namespace RLS.Gameplay.Player
         [SerializeField]
         private EClass m_class;
         public EClass Class => m_class;
+
+        [Header("PlayerMovements")]
+        [SerializeField]
+        private PlayerMovementController m_playerMovementController;
+        public PlayerMovementController PlayerMovementController => m_playerMovementController;
+
     }
 }
