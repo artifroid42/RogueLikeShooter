@@ -19,6 +19,9 @@ namespace RLS.Gameplay.Levels
 
         private bool m_isLoadingAStage = false;
 
+        private int m_levelsCount = 1;
+        public int LevelsCount => m_levelsCount; 
+
         public void LoadNextStage()
         {
             Debug.LogError("Asking to load next stage");
@@ -30,7 +33,7 @@ namespace RLS.Gameplay.Levels
             OnLoadingStarted?.Invoke();
             m_isLoadingAStage = true;
             unload_current_stage();
-
+            m_levelsCount++;
         }
 
         private void unload_current_stage()
@@ -73,5 +76,15 @@ namespace RLS.Gameplay.Levels
             m_isLoadingAStage = false;
             OnLoadingEnded?.Invoke();
         }
+
+#if UNITY_EDITOR
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                LoadNextStage();
+            }
+        }
+#endif
     }
 }

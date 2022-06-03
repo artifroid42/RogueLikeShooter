@@ -25,8 +25,12 @@ namespace RLS.Gameplay.Combat
             }
         }
 
+       
         [SerializeField]
         private int m_damageToDeal = 5;
+        public int DamageToDeal => m_damageToDeal; 
+
+
         [SerializeField]
         private CombatController m_owner = null;
 

@@ -11,8 +11,8 @@ namespace RLS.Gameplay.Combat
         public ushort TeamIndex => m_teamIndex;
 
         [SerializeField]
-        private int m_maxLifePoints = 100;
-        private int m_lifePoints = 0;
+        protected int m_maxLifePoints = 100;
+        protected int m_lifePoints = 0;
         public int MaxLifePoints => m_maxLifePoints;
         public int LifePoints => m_lifePoints;
 
