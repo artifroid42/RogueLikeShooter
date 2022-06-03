@@ -29,12 +29,12 @@ MonoBehaviour:
   - 7
   NinjaPowerUpgrades:
   - DashCouldown: 4
-    DashRange: 2
+    DashRange: 0.5
   - DashCouldown: 3
-    DashRange: 3
+    DashRange: 1
   - DashCouldown: 2.5
-    DashRange: 3.5
+    DashRange: 1.7
   - DashCouldown: 1.2
-    DashRange: 4
+    DashRange: 2
   - DashCouldown: 0.6
-    DashRange: 4.5
+    DashRange: 3

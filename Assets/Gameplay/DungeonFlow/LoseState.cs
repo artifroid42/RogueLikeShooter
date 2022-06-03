@@ -27,6 +27,11 @@ namespace RLS.Gameplay.DungeonFlow
             m_panel.ReplayButton.onClick.AddListener(Retry);
         }
 
+        internal override void SetUpDependencies()
+        {
+            base.SetUpDependencies();
+            m_panel.SetStagesDone(MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonGameMode>().LevelManager.LevelsCount - 2);
+        }
         internal override void UnregisterEvents()
         {
             base.UnregisterEvents();

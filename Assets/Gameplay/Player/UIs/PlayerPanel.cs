@@ -18,6 +18,8 @@ namespace RLS.Gameplay.Player.UI
         private Cursor m_cursor = null;
         [SerializeField]
         private PowerCouldownWidget m_powerCouldownWidget = null;
+        [SerializeField]
+        private TextMeshProUGUI m_currentStageDisplay = null;
 
         public ExpBar ExpBar => m_expBar;
         public TextMeshProUGUI PlayerLevelText => m_playerLevelText;
@@ -25,5 +27,10 @@ namespace RLS.Gameplay.Player.UI
         public HealthBar HealthBar => m_healthBar;
         public Cursor Cursor => m_cursor;
         public PowerCouldownWidget PowerCouldownWidget => m_powerCouldownWidget; 
+
+        public void SetStageDisplay(int a_stageNumber)
+        {
+            m_currentStageDisplay.text = a_stageNumber.ToString();
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace RLS.Gameplay.DungeonFlow
             base.SetUpDependencies();
             m_gamemode.Players[0].HandleGameLevelChanged();
             m_reposingCoroutine = StartCoroutine(ReposingPlayer(m_currentPlayer.GetComponent<Player.PlayerMovementController>()));
+            m_playerPanel.SetStageDisplay(m_gamemode.LevelManager.LevelsCount);
         }
         public override void EnterState()
         {
