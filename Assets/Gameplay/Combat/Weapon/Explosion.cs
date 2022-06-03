@@ -1,43 +1,49 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RLS.Gameplay.Combat.Weapon
 {
     [RequireComponent(typeof(SphereCollider))]
-    public class Explosion : DamageDealer
+    public class Explosion : MonoBehaviour
     {
-        private const float EXPLOSION_PROPAGATION_SPEED = 10f;
-
-        private bool m_isExecuting = false;
-        private float m_maxRadius = 1f;
-        private float m_currentRadius = 0f;
-
+        private CombatController m_owner = null;
         private SphereCollider m_sphereCollider = null;
 
-        public Action OnExplosionFinished = null;
 
-        public void Execute(float a_maxRadius)
+        private List<CombatController> m_collidedControllers = new List<CombatController>();
+        private int m_damageToDeal = 5;
+
+        public void SetUp(float a_maxRadius, int a_damageToDeal, CombatController a_owner)
         {
-            m_isExecuting = true;
-            m_maxRadius = a_maxRadius;
-            m_currentRadius = 0f;
             m_sphereCollider = GetComponent<SphereCollider>();
-            CanDoDamage = true;
+            m_sphereCollider.radius = a_maxRadius;
+            m_damageToDeal = a_damageToDeal;
+            m_owner = a_owner;
         }
 
-        private void FixedUpdate()
+        public void DealDamage()
         {
-            if(m_isExecuting)
+            m_collidedControllers?.RemoveAll(x => x == null);
+            m_collidedControllers?.ForEach(x => x.TakeDamage(m_damageToDeal, m_owner));
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent<CombatController>(out CombatController l_combatController))
             {
-                m_currentRadius += EXPLOSION_PROPAGATION_SPEED * Time.fixedDeltaTime;
-                m_sphereCollider.radius = m_currentRadius;
-                if(m_currentRadius >= m_maxRadius)
-                {
-                    m_isExecuting = false;
-                    CanDoDamage = false;
-                    OnExplosionFinished?.Invoke();
-                }
+                if(!m_collidedControllers.Contains(l_combatController))
+                    m_collidedControllers.Add(l_combatController);
             }
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.TryGetComponent<CombatController>(out CombatController l_combatController))
+            {
+                if (m_collidedControllers.Contains(l_combatController))
+                    m_collidedControllers.Remove(l_combatController);
+            }
+        }
+
     }
 }

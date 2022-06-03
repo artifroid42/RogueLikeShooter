@@ -60,9 +60,7 @@ namespace RLS.Gameplay.Player.Pirate
                     GetObject(m_explosiveBarrelPrefab,
                     m_projectileSource.position,
                     GetComponent<PlayerMovementController>().CameraTarget.rotation);
-                m_explosiveBarrelInstantiated.SetOwner(this);
-                m_explosiveBarrelInstantiated.PrepareToThrow();
-                m_explosiveBarrelInstantiated.SetDamageToDeal(BarrelExplosionDamage);
+                m_explosiveBarrelInstantiated.SetUp(BarrelExplosionDamage, this);
                 m_explosiveBarrelInstantiated.Rigidbody.AddForce(m_explosiveBarrelInstantiated.transform.forward * m_barrelThrowForce, ForceMode.VelocityChange);
             }
 

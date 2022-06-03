@@ -1,5 +1,4 @@
 using RLS.Generic.VFXManager;
-using System.Collections;
 using UnityEngine;
 
 namespace RLS.Gameplay.Combat.Weapon
@@ -16,20 +15,12 @@ namespace RLS.Gameplay.Combat.Weapon
         private Rigidbody m_rigidbody = null;
         public Rigidbody Rigidbody => m_rigidbody;
 
-        public void PrepareToThrow()
+
+        public void SetUp(int a_damageToDeal, CombatController a_owner)
         {
             m_rigidbody.isKinematic = false;
             m_barilModel.SetActive(true);
-        }
-
-        public void SetDamageToDeal(int a_damageToDeal)
-        {
-            m_explosion.SetDamageToDeal(a_damageToDeal);
-        }
-
-        public void SetOwner(CombatController a_owner)
-        {
-            m_explosion.SetOwner(a_owner);
+            m_explosion.SetUp(m_explosionRadius, a_damageToDeal, a_owner);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -48,22 +39,9 @@ namespace RLS.Gameplay.Combat.Weapon
         {
             m_barilModel.SetActive(false);
             VFXManager.Instance.PlayFXAt(0, m_explosion.transform.position, Quaternion.identity);
-            StartCoroutine(DetonatingRoutine());
+            m_explosion.DealDamage();
         }
 
-        private IEnumerator DetonatingRoutine()
-        {
-            yield return null;
-            m_explosion.gameObject.SetActive(true);
-            m_explosion.Execute(m_explosionRadius);
-            m_explosion.OnExplosionFinished += HandleExplosionFinished;
-        }
 
-        private void HandleExplosionFinished()
-        {
-            m_explosion.OnExplosionFinished -= HandleExplosionFinished;
-
-            gameObject.SetActive(false);
-        }
     }
 }
