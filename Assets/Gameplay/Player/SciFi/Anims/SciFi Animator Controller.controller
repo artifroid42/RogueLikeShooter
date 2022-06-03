@@ -173,7 +173,7 @@ AnimatorStateMachine:
     m_Position: {x: 580.1714, y: 165.26567, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6449331272807386565}
-    m_Position: {x: 560, y: 260, z: 0}
+    m_Position: {x: 380, y: 240, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -260,7 +260,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SciFi Character Animator Controller
+  m_Name: SciFi Animator Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: RightValue
@@ -293,12 +293,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: GunShoot
-    m_Type: 9
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Movement
@@ -315,7 +309,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Attack
     m_StateMachine: {fileID: -3528489896942263028}
-    m_Mask: {fileID: 31900000, guid: 783c349680fc5e149ad8e3e3fd2671f0, type: 2}
+    m_Mask: {fileID: 31900000, guid: 216a46a00abedc24a924d6b1b4b9d6cb, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

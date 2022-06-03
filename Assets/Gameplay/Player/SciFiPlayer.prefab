@@ -7870,6 +7870,7 @@ MonoBehaviour:
   m_topHead: {fileID: 6615531594651892572}
   BaseSpeed: 5
   m_jumpCooldown: 0.2
+  m_delayToJumpAfterLeavingGround: 0.2
   m_gravity: 30
   m_jumpSpeed: 10
   m_cameraSensitivity: {x: 30, y: 30}
@@ -13887,7 +13888,7 @@ Animator:
   m_GameObject: {fileID: 8851026871253494422}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: c8c20564eb982f84a96a0d4d8e357cc5, type: 3}
-  m_Controller: {fileID: 9100000, guid: 6d2cb18954d64b64997634bc7ce68ee9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 02091b2f61ff8ea43ab63b34a18db3e5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
