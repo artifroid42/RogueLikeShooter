@@ -1,5 +1,6 @@
 using RLS.Gameplay.Player.Upgrades;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,7 +56,6 @@ namespace RLS.Gameplay.Player
 
         internal void Init()
         {
-            m_upgradeState = EUpgradeState.Idle;
             m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.Init();
         }
 
@@ -283,6 +283,12 @@ namespace RLS.Gameplay.Player
                 m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.ShowClassSelection();
                 m_upgradeState = EUpgradeState.ClassSelection;
             }
+        }
+
+        private IEnumerator ShowClassSelection_Routine()
+        {
+            yield return null;
+            m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.ShowClassSelection();
         }
 
         public void ShowClassUpgrades()

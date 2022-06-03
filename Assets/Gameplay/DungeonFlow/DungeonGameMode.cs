@@ -64,7 +64,7 @@ namespace RLS.Gameplay.DungeonFlow
         private void OnDestroy()
         {
             var modeData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
-            if (modeData.IsEasyMode)
+            if (modeData != null && modeData.IsEasyMode)
             {
                 MOtter.MOtt.SAVE.MaximumLevelReached = m_playerSpirit.PlayerExpManager.CurrentLevel;
                 MOtter.MOtt.SAVE.SaveSaveDataManager();

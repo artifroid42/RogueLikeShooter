@@ -47,8 +47,16 @@ namespace RLS.Gameplay.Player
 
         public void Init()
         {
-            CurrentLevel = GetStartLevel();
+            int startLevel = GetStartLevel();
             CurrentExpAmount = 0;
+            for (int i = 0; i < startLevel; i++)
+            {
+                LevelUp();
+            }
+            if(startLevel == 1)
+            {
+                m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.Hide();
+            }
         } 
 
         #region Experience
@@ -73,7 +81,6 @@ namespace RLS.Gameplay.Player
         private void LevelUp()
         {
             CurrentLevel++;
-            CheckForNextLevel();
             m_playerUIManagersManager.UpgradesManager.ShowClassSelection();  
         }
 
