@@ -37,7 +37,7 @@ namespace RLS.Gameplay.Combat.Weapon
             m_bulletFX.SetActive(false);
             m_exploding = true;
             m_explosion.DealDamage();
-            m_explosion.gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
 
         protected override void Update()
@@ -46,10 +46,6 @@ namespace RLS.Gameplay.Combat.Weapon
                 base.Update();
         }
 
-        private void HandleExplosionFinished()
-        {
-            gameObject.SetActive(false);
-        }
 
         protected override void OnTriggerEnter(Collider other)
         {

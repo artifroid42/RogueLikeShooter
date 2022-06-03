@@ -70,6 +70,7 @@ namespace RLS.Gameplay.DungeonFlow
                     m_reposingCoroutine = StartCoroutine(ReposingPlayer(m_currentPlayer.GetComponent<Player.PlayerMovementController>()));
                 }
             }
+
             m_ennemies?.ForEach(x => x.DoUpdate());
         }
 
@@ -149,6 +150,11 @@ namespace RLS.Gameplay.DungeonFlow
         {
             a_combatController.OnDied -= OnEnnemyDied;
             m_ennemies.Remove(a_combatController.GetComponent<Ennemy.MonsterAI>());
+
+            if(m_ennemies.Count == 0)
+            {
+                m_currentStage.EndPortal.AllowAccessToNextStage();
+            }
         }
         #endregion
         #endregion
