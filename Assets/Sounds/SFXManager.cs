@@ -38,6 +38,7 @@ namespace RLS
         #endregion
 
         public SoundData ShootShuriken;
+        public SoundData EnemyTouched;
     }
 
 }
