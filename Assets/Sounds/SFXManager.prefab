@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShootShuriken: {fileID: 11400000, guid: 9a9e07218919e744fb771768dadd37f7, type: 2}
+  EnemyTouched: {fileID: 11400000, guid: 7291ab62e99f11849b3cb856fc44f415, type: 2}

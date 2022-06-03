@@ -78,6 +78,7 @@ namespace RLS.Gameplay.Player
         private void HandleDamageGiven(CombatController obj)
         {
             m_playerUIManagersManager.PlayerPanel.Cursor.PlayHitFeedback();
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.EnemyTouched);
         }
 
         public void HandleGameLevelChanged()
