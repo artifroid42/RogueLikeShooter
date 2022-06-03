@@ -1,6 +1,5 @@
 using RLS.Gameplay.Player.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace RLS.Gameplay.Combat.HUD
 {
@@ -10,6 +9,7 @@ namespace RLS.Gameplay.Combat.HUD
         private CombatController m_combatController = null;
         [SerializeField]
         private HealthBar m_healthBar = null;
+        public HealthBar HealthBar => m_healthBar;
 
         private void Awake()
         {

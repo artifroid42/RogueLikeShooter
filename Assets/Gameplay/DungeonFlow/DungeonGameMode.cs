@@ -25,12 +25,14 @@ namespace RLS.Gameplay.DungeonFlow
         [SerializeField]
         private Player.PlayerSpirit m_playerSpirit = null;
 
+        public Generic.ModeSelection.ModeSelectedData ModeSelectedData { private set; get; }
         public List<Player.PlayerSpirit> Players { private set; get; } = null;
 
         public override IEnumerator LoadAsync()
         {
             m_levelManager.LoadNextStage();
-
+            ModeSelectedData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
+            MOtter.MOtt.DATACONVEY.UnregisterContainer(ModeSelectedData);
             yield return StartCoroutine(base.LoadAsync());
         }
         internal override void EnterStateMachine()
@@ -50,28 +52,28 @@ namespace RLS.Gameplay.DungeonFlow
             m_levelManager.OnLoadingEnded -= OnLevelLoadingEnded;
             m_levelManager.OnLoadingStarted -= OnLevelLoadingStarted;
 
-            var modeData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
-            if(modeData.IsEasyMode)
+            if(ModeSelectedData.IsEasyMode)
             {
                 MOtter.MOtt.SAVE.MaximumLevelReached = m_playerSpirit.PlayerExpManager.CurrentLevel;
                 MOtter.MOtt.SAVE.SaveSaveDataManager();
             }
-            MOtter.MOtt.DATACONVEY.UnregisterContainer(modeData);
 
             base.ExitStateMachine();
         }
 
         private void OnDestroy()
         {
-            var modeData = MOtter.MOtt.DATACONVEY.GetFirstContainer<Generic.ModeSelection.ModeSelectedData>();
-            if (modeData.IsEasyMode)
+            if (ModeSelectedData.IsEasyMode)
             {
                 MOtter.MOtt.SAVE.MaximumLevelReached = m_playerSpirit.PlayerExpManager.CurrentLevel;
                 MOtter.MOtt.SAVE.SaveSaveDataManager();
             }
-            MOtter.MOtt.DATACONVEY.UnregisterContainer(modeData);
         }
 
+        public void Lose()
+        {
+            SwitchToState(m_loseState);
+        }
         private void OnLevelLoadingStarted()
         {
             SwitchToState(m_loadingStageState);

@@ -1,3 +1,4 @@
+using RLS.Gameplay.Combat.HUD;
 using RLS.Generic.Ragdoll;
 using System.Collections;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace RLS.Gameplay.Ennemy
         [SerializeField]
         private GameObject m_model = null;
 
+
         protected override void HandleDeath()
         {
             base.HandleDeath();
@@ -19,6 +21,8 @@ namespace RLS.Gameplay.Ennemy
             m_model?.SetActive(false);
             m_ragdollModel?.gameObject.SetActive(true);
             StartCoroutine(WaitingToDestroyMonster(5f));
+            Destroy(GetComponent<GenericCombatHUDManager>().HealthBar.gameObject);
+            Destroy(GetComponent<GenericCombatHUDManager>());
         }
 
         private IEnumerator WaitingToDestroyMonster(float a_waitingDuration)

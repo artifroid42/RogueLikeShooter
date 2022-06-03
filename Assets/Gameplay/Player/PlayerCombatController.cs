@@ -33,6 +33,7 @@ namespace RLS.Gameplay.Player
             Destroy(gameObject.GetComponent<PlayerInputsHandler>());
             m_ragdollModel?.ApplyModelPositionsToClone();
             m_ragdollModel?.gameObject.SetActive(true);
+            MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().Lose();
         }
 
         public virtual void HandleAttackStartedInput()
