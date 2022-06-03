@@ -31,6 +31,7 @@ namespace RLS.Gameplay.Player.Ninja
                 damageDealer.SetOwner(this);
                 damageDealer.CanDoDamage = true;
                 damageDealer.SetDamageToDeal(ShurikenDamage);
+                MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.ShootShuriken);
             }
             else
             {
