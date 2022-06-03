@@ -27,6 +27,23 @@ namespace RLS.Gameplay.Player
         private EClass m_currentClass;
         public EClass CurrentClass => m_currentClass;
 
+        private void Update()
+        {
+            float cooldown = 0f;
+            switch (m_currentClass)
+            {
+                case EClass.Ninja:
+                    break;
+                case EClass.Pirate:
+                    cooldown = m_combatInfosManager.CombatController.PowerCooldownRatio;
+                    break;
+                case EClass.SciFi:
+                    break;
+            }
+            m_playerUIManagersManager.PlayerPanel.PowerCouldownWidget.SetCouldownValue(cooldown);
+            Debug.Log(cooldown);
+        }
+
         public void InitPlayer()
         {
             m_playerUIManagersManager.Init();

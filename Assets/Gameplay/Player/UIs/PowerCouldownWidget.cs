@@ -15,23 +15,28 @@ namespace RLS.Gameplay.Player.UI
         private GameObject m_powerReadyFX;
         [SerializeField]
         private Animator m_animator;
+        private bool m_isPowerActive = false;
 
         public void SetCouldownValue(float a_value)
         {
             m_couldownImage.fillAmount = a_value;
+            if(a_value >= 1f)
+            {
+                SetPowerFeedbackActive(true);
+            }
+            else if (m_powerReadyFX.activeSelf)
+            {
+                SetPowerFeedbackActive(false);
+            }
         }
 
         public void SetPowerFeedbackActive(bool a_isActive)
         {
-            m_powerReadyFX.SetActive(a_isActive);
-            //if (a_isActive)
-            //{
-            //    m_animator.SetBool("POWER", true);
-            //}
-            //else
-            //{
-            //    m_animator.SetBool("POWER", false);
-            //}
+            if (m_isPowerActive != a_isActive)
+            {
+                m_powerReadyFX.SetActive(a_isActive);
+                m_isPowerActive = a_isActive;
+            }
         }
     }
 }

@@ -5,6 +5,8 @@ namespace RLS.Gameplay.Player.Pirate
 {
     public class PirateCombatController : PlayerCombatController
     {
+        public override float PowerCooldownRatio => (Time.time - m_timeOfLastBarrelAttack) / BarrelAttackCooldown;
+
         [Header("Prefab Refs")]
         [SerializeField]
         private ExplosiveBarrel m_explosiveBarrelPrefab = null;

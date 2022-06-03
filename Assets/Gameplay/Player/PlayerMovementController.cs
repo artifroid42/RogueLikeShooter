@@ -5,6 +5,8 @@ namespace RLS.Gameplay.Player
 {
     public class PlayerMovementController : MonoBehaviour, IPlayerInputsObserver
     {
+        public virtual float PowerCooldownRatio => 0;
+
         [Header("Refs")]
         [SerializeField]
         private CharacterController m_characterController;
