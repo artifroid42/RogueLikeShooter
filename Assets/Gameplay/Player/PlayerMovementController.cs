@@ -29,6 +29,9 @@ namespace RLS.Gameplay.Player
         private float m_jumpCooldown = 0.1f;
         protected float JumpCooldown => m_jumpCooldown;
         protected float m_lastJumpTime = 0f;
+        [SerializeField]
+        protected float m_delayToJumpAfterLeavingGround = 0.2f;
+        protected float m_lastTimeGrounded = 0f;
 
         protected Vector3 m_movementDirection = default;
         protected Vector2 m_lookAroundValues = default;
@@ -100,7 +103,7 @@ namespace RLS.Gameplay.Player
         {
             if (!m_canMove) return;
 
-            if(Time.time - m_lastJumpTime > m_jumpCooldown && m_isGrounded)
+            if(Time.time - m_lastJumpTime > m_jumpCooldown && (m_isGrounded || Time.time - m_lastTimeGrounded< m_delayToJumpAfterLeavingGround))
             {
                 Jump();
                 m_lastJumpTime = Time.time;
@@ -111,7 +114,24 @@ namespace RLS.Gameplay.Player
 
         private void check_if_grounded()
         {
-            m_isGrounded = m_characterController.isGrounded;
+            m_isGrounded = false;
+            RaycastHit hitInfo;
+            if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hitInfo, 0.55f))
+            {
+                if(hitInfo.collider != gameObject)
+                    m_isGrounded = true;
+            }
+            else if (Physics.Raycast(transform.position + Vector3.up * 0.5f + transform.forward * 0.2f, Vector3.down, out hitInfo, 0.7f))
+            {
+                if (hitInfo.collider != gameObject)
+                    m_isGrounded = true;
+            }
+
+            
+            if(m_isGrounded)
+            {
+                m_lastTimeGrounded = Time.time;
+            }
         }
 
         private void apply_movement()

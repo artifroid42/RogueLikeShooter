@@ -64,9 +64,10 @@ namespace RLS.Gameplay.Player.Ninja
             if (!m_canMove) return;
 
             if (Time.time - m_lastJumpTime > JumpCooldown 
-                && (m_isGrounded || m_numberOfJumpsSinceGroundLeft < m_numberOfJumps))
+                && ((m_isGrounded || Time.time - m_lastTimeGrounded < m_delayToJumpAfterLeavingGround)
+                || m_numberOfJumpsSinceGroundLeft < m_numberOfJumps))
             {
-                if (m_isGrounded)
+                if ((m_isGrounded || Time.time - m_lastTimeGrounded < m_delayToJumpAfterLeavingGround))
                 {
                     m_numberOfJumpsSinceGroundLeft = 0;
                 }
