@@ -103,7 +103,7 @@ namespace RLS.Gameplay.Player
         {
             if (Input.GetKeyDown(KeyCode.M))
             {
-                EarnExp(500f);
+                EarnExp(5000f);
                 Debug.Log("EARN EXP");
             }
         }
