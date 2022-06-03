@@ -88,11 +88,14 @@ namespace RLS.Gameplay.Player
         private int GetStartLevel()
         {
             var modeData = MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().ModeSelectedData;
+            int startLevel = 1;
             if (modeData.IsEasyMode)
             {
-                return Mathf.RoundToInt(MOtter.MOtt.SAVE.MaximumLevelReached * m_startingLevelRatio);
+                startLevel = Mathf.RoundToInt(MOtter.MOtt.SAVE.MaximumLevelReached * m_startingLevelRatio);
+                if (startLevel < 1) startLevel = 1;
             }
-            return 1;
+            startLevel = 1;
+            return startLevel;
         }
 
 #if UNITY_EDITOR
