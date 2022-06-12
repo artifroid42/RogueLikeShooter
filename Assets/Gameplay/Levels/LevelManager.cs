@@ -19,7 +19,7 @@ namespace RLS.Gameplay.Levels
 
         private bool m_isLoadingAStage = false;
 
-        private int m_levelsCount = 1;
+        private int m_levelsCount = 0;
         public int LevelsCount => m_levelsCount; 
 
         public void LoadNextStage()

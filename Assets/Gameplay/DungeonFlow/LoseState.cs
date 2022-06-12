@@ -30,7 +30,7 @@ namespace RLS.Gameplay.DungeonFlow
         internal override void SetUpDependencies()
         {
             base.SetUpDependencies();
-            m_panel.SetStagesDone(MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonGameMode>().LevelManager.LevelsCount - 2);
+            m_panel.SetStagesDone(MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonGameMode>().LevelManager.LevelsCount - 1);
         }
         internal override void UnregisterEvents()
         {

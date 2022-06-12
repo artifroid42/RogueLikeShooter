@@ -50,13 +50,6 @@ namespace RLS.Gameplay.DungeonFlow
             m_gamemode.Players[0].PlayerUIManagersManager.ExpUIManager.RefreshPlayerInfos(playerExpManager.CurrentLevel, playerExpManager.CurrentExpAmount, playerExpManager.ExpAmountForNextLevel);
 
             spawning_ennemies();
-
-            Debug.LogError("ENTER GAME STATE");
-
-            for(int i = 0; i < SceneManager.sceneCount; ++i)
-            {
-                Debug.LogError($"{SceneManager.GetSceneAt(i).name}");
-            }
             m_ennemies?.ForEach(x => x.EnterStateMachine());
         }
 
@@ -91,7 +84,6 @@ namespace RLS.Gameplay.DungeonFlow
 
             m_currentPlayer.GetComponent<Player.PlayerMovementController>().DeactivateMovement();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
-            Debug.LogError("EXIT GAME STATE");
             base.ExitState();
         }
         #endregion
