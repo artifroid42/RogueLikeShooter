@@ -1,5 +1,6 @@
 using RLS.Gameplay.AIs;
 using RLS.Gameplay.Combat;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,9 +15,12 @@ namespace RLS.Gameplay.Ennemy
         private MonsterCombatController m_combatController = null;
         [SerializeField]
         private EnnemyAnimationsHandler m_animationsHandler = null;
+        [SerializeField]
+        private Outline m_outline = null;
         public NavMeshAgent Agent => m_agent;
         public MonsterCombatController CombatController => m_combatController;
         public EnnemyAnimationsHandler AnimationsHandler => m_animationsHandler;
+        public Outline Outline => m_outline;
 
         [Header("States Refs")]
         [SerializeField]
@@ -56,7 +60,10 @@ namespace RLS.Gameplay.Ennemy
         public Player.Player ClosestPlayer { private set; get; } = null;
         public Vector3 LastPlayerPositionKnown { set; get; } = default;
         public Vector3 SpawnPosition { private set; get; } = default;
+
         public bool HasReachedLastPlayerPositionKnown = true;
+
+        private bool m_isWatched = false;
 
         internal override void EnterStateMachine()
         {
@@ -74,9 +81,23 @@ namespace RLS.Gameplay.Ennemy
             base.ExitStateMachine();
         }
 
+        private void Awake()
+        {
+            m_outline.OutlineWidth = 0f;
+        }
+
         private void HandleMonsterDied(CombatController obj)
         {
             m_gamemode.Players[0].PlayerExpManager.EarnExp(m_expReward);
+        }
+
+        internal void SetWatched(bool a_isWatched)
+        {
+            if(a_isWatched == !m_isWatched)
+            {
+                m_outline.OutlineWidth = a_isWatched ? 4f : 0f;
+                m_isWatched = a_isWatched;
+            }
         }
 
         protected override void ProcessChoice()

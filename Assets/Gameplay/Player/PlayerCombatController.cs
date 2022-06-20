@@ -1,3 +1,4 @@
+using RLS.Gameplay.Ennemy;
 using RLS.Generic.Ragdoll;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace RLS.Gameplay.Player
 
         [SerializeField]
         private SyncCloneFromModel m_ragdollModel = null;
+
+        private MonsterAI m_lastMonsterIAWatched = null;
 
         protected override void Start()
         {
@@ -35,6 +38,35 @@ namespace RLS.Gameplay.Player
             m_ragdollModel?.gameObject.SetActive(true);
             MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Death);
             MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().Lose();
+        }
+
+        private void LateUpdate()
+        {
+            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
+            {
+                if(hitInfo.collider.TryGetComponent(out MonsterAI monster))
+                {
+                    if(m_lastMonsterIAWatched == null)
+                    {
+                        m_lastMonsterIAWatched = monster;
+                        m_lastMonsterIAWatched.SetWatched(true);
+                    }
+                    else if(m_lastMonsterIAWatched != monster)
+                    {
+                        m_lastMonsterIAWatched.SetWatched(false);
+                        m_lastMonsterIAWatched = monster;
+                        m_lastMonsterIAWatched.SetWatched(true);
+                    }
+                }
+                else
+                {
+                    if(m_lastMonsterIAWatched != null)
+                    {
+                        m_lastMonsterIAWatched.SetWatched(false);
+                        m_lastMonsterIAWatched = null;
+                    }
+                }
+            }
         }
 
         public virtual void HandleAttackStartedInput()
