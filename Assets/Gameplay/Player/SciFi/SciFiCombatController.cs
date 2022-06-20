@@ -97,8 +97,8 @@ namespace RLS.Gameplay.Player.SciFi
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<PowerShotBulletPoolingSystem>().
                     GetObject(m_powerShotBullerPrefab,
-                    m_bulletSource.position,
-                    Quaternion.LookRotation(hitInfo.point - m_bulletSource.position));
+                    Camera.main.transform.position + Camera.main.transform.forward * 1f,
+                    GetComponent<PlayerMovementController>().CameraTarget.rotation);
                 bullet.SetOwner(this);
                 bullet.SetChargeRatio(a_chargeRatio, PowerShotDamage);
             }
@@ -106,7 +106,7 @@ namespace RLS.Gameplay.Player.SciFi
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<PowerShotBulletPoolingSystem>().
                     GetObject(m_powerShotBullerPrefab,
-                    m_bulletSource.position,
+                    Camera.main.transform.position + Camera.main.transform.forward * 1f,
                     GetComponent<PlayerMovementController>().CameraTarget.rotation);
                 bullet.SetOwner(this);
                 bullet.SetChargeRatio(a_chargeRatio, PowerShotDamage);
@@ -122,8 +122,8 @@ namespace RLS.Gameplay.Player.SciFi
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<LaserBulletPoolingSystem>().
                     GetObject(m_laserBulletPrefab,
-                    m_bulletSource.position,
-                    Quaternion.LookRotation(hitInfo.point - m_bulletSource.position));
+                    Camera.main.transform.position + Camera.main.transform.forward * 1f,
+                    GetComponent<PlayerMovementController>().CameraTarget.rotation);
 
                 var damageDealer = bullet.GetComponent<Combat.DamageDealer>();
                 damageDealer.SetOwner(this);
@@ -134,7 +134,7 @@ namespace RLS.Gameplay.Player.SciFi
             {
                 var bullet = Pooling.PoolingManager.Instance.GetPoolingSystem<LaserBulletPoolingSystem>().
                     GetObject(m_laserBulletPrefab,
-                    m_bulletSource.position,
+                    Camera.main.transform.position + Camera.main.transform.forward * 1f,
                     GetComponent<PlayerMovementController>().CameraTarget.rotation);
 
                 var damageDealer = bullet.GetComponent<Combat.DamageDealer>();
