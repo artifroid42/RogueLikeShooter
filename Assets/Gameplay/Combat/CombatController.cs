@@ -54,6 +54,11 @@ namespace RLS.Gameplay.Combat
             OnLifeChanged?.Invoke(this);
         }
 
+        internal void HandleDamageReceived()
+        {
+            throw new NotImplementedException();
+        }
+
         public virtual void TakeDamage(int a_damageToDeal, CombatController a_source)
         {
             if (!IsAlive) return;
@@ -63,6 +68,7 @@ namespace RLS.Gameplay.Combat
                 m_lifePoints -= a_damageToDeal;
                 OnDamageTaken?.Invoke(this);
                 OnLifeChanged?.Invoke(this);
+                HandleDamageReceived(a_damageToDeal);
 
                 if(a_source != null)
                 {
@@ -79,6 +85,11 @@ namespace RLS.Gameplay.Combat
                     OnDied?.Invoke(this);
                 }
             }
+        }
+
+        protected virtual void HandleDamageReceived(int a_damageToDeal)
+        {
+
         }
 
         protected virtual void HandleDamageGiven(CombatController a_target)

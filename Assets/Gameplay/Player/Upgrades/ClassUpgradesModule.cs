@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Tween;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,6 +45,10 @@ namespace RLS.Gameplay.Player.Upgrades
         [SerializeField]
         private PositionTween m_classUpgradesTween;
 
+        [SerializeField]
+        private TextMeshProUGUI m_upgradesLeftCountText;
+        public TextMeshProUGUI UpgradesLeftCountText => m_upgradesLeftCountText; 
+
         internal void Init()
         {
             foreach (var upgradeLineWidget in m_upgradeLineWidgets)
@@ -57,6 +62,7 @@ namespace RLS.Gameplay.Player.Upgrades
         {
             m_classSelection.SetActive(true);
             m_classUpgrades.SetActive(false);
+            m_upgradesLeftCountText.gameObject.SetActive(true);
         }
 
         public void ShowClassUpgrades(Sprite m_classSprite)
@@ -64,15 +70,20 @@ namespace RLS.Gameplay.Player.Upgrades
             m_classSelection.SetActive(false);
             m_classUpgrades.SetActive(true);
             m_classRepresentationImage.sprite = m_classSprite;
+            m_upgradesLeftCountText.gameObject.SetActive(true);
         }
 
         public void Hide()
         {
             m_classSelection.SetActive(false);
             m_classUpgrades.SetActive(false);
+            m_upgradesLeftCountText.gameObject.SetActive(false);
         }
 
-
+        public void SetUpgradesLeftCount(int a_upgradesLeftCount)
+        {
+            m_upgradesLeftCountText.text = a_upgradesLeftCount.ToString();
+        }
     }
 }
 

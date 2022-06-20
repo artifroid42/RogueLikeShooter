@@ -24,10 +24,10 @@ namespace RLS.Gameplay.Ennemy
             m_monsterAI = GetComponent<MonsterAI>();
         }
 
-        public override void TakeDamage(int a_damageToDeal, CombatController a_source)
+        protected override void HandleDamageReceived(int a_damageToDeal)
         {
-            base.TakeDamage(a_damageToDeal, a_source);
-            if(m_monsterAI != null)
+            base.HandleDamageReceived(a_damageToDeal);
+            if (m_monsterAI != null)
             {
                 m_monsterAI.HPLostFeedback.gameObject.SetActive(true);
                 m_monsterAI.HPLostFeedback.SetLostHPAmount(a_damageToDeal);
