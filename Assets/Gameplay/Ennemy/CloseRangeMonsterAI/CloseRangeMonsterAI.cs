@@ -18,7 +18,7 @@ namespace RLS.Gameplay.Ennemy.CloseRange
         {
             base.EnterStateMachine();
             float damageFactor = MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().LevelManager.LevelsCount * m_damageImprovementOffset;
-            m_weaponDamageDealer.SetDamageToDeal((int)(m_weaponDamageDealer.DamageToDeal * damageFactor));
+            m_weaponDamageDealer.SetDamageToDeal((int)(m_weaponDamageDealer.DamageToDeal + m_weaponDamageDealer.DamageToDeal * damageFactor));
         }
     }
 }

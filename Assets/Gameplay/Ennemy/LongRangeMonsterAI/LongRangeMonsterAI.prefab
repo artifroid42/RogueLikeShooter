@@ -2180,6 +2180,7 @@ MonoBehaviour:
   m_maxLifePoints: 25
   m_ragdollModel: {fileID: 3431706214694912607}
   m_model: {fileID: 9036712122455401518}
+  m_improvementOffset: 0.2
 --- !u!114 &7327751997990664601
 MonoBehaviour:
   m_ObjectHideFlags: 0

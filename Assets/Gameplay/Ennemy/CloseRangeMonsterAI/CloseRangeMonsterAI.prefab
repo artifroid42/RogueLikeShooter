@@ -1423,6 +1423,7 @@ MonoBehaviour:
   m_durationToLookAtAfterBeingHit: 0.7
   m_expReward: 1000
   m_weaponDamageDealer: {fileID: 1964118741959200595}
+  m_damageImprovementOffset: 0.2
 --- !u!195 &3999617753862949717
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   m_maxLifePoints: 25
   m_ragdollModel: {fileID: 2228998696112859117}
   m_model: {fileID: 4128352302827374556}
+  m_improvementOffset: 0.1
 --- !u!114 &2705808933606735800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7600,6 +7602,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8783733164342930989}
     m_Modifications:
+    - target: {fileID: 5424928735834775152, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5424928735834775152, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8308560800690660833, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7703,6 +7713,14 @@ PrefabInstance:
     - target: {fileID: 8308560801400106059, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386039563691806495, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386039563691806495, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5861a83a05ee5dc498f50af8124213b7, type: 3}
