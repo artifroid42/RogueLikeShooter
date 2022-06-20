@@ -35,7 +35,6 @@ namespace RLS.Gameplay.Player
         {
             m_UIManager.PlayerPanel.HealthBar.SetHealthSliderValue((float) a_combatController.LifePoints 
                 / (float) a_combatController.MaxLifePoints);
-            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.PlayerHitted);
         }
     }
 }
