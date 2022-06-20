@@ -20,13 +20,16 @@ namespace RLS.Gameplay.Player.UI
         private PowerCouldownWidget m_powerCouldownWidget = null;
         [SerializeField]
         private TextMeshProUGUI m_currentStageDisplay = null;
+        [SerializeField]
+        private PopUp.PopUpManager m_popUpManager = null;
 
         public ExpBar ExpBar => m_expBar;
         public TextMeshProUGUI PlayerLevelText => m_playerLevelText;
         public ClassUpgradesModule ClassUpgradesModule => m_classUpgradesModule;
         public HealthBar HealthBar => m_healthBar;
         public Cursor Cursor => m_cursor;
-        public PowerCouldownWidget PowerCouldownWidget => m_powerCouldownWidget; 
+        public PowerCouldownWidget PowerCouldownWidget => m_powerCouldownWidget;
+        public PopUp.PopUpManager PopUpManager => m_popUpManager;
 
         public void SetStageDisplay(int a_stageNumber)
         {

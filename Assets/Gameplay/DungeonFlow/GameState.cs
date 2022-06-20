@@ -1,4 +1,5 @@
 using RLS.Gameplay.Combat;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,12 +30,15 @@ namespace RLS.Gameplay.DungeonFlow
         internal override void RegisterEvents()
         {
             base.RegisterEvents();
-            m_currentStage.EndPortal.OnPlayerEnteredPortal += OnPlayerEnteredEndPortal;
+            m_currentStage.EndPortal.OnPlayerEnteredPortal += HandlePlayerEnteredEndPortal;
+            m_currentStage.EndPortal.OnPlayerTriedToEnterPortalWhenDisabled += HandlePlayerTriedToEnterPortalWhenDisabled;
             m_gamemode.Players[0].RegisterEvents();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().ActivateInputs();
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().RegisterNewObserver(this);
             Cursor.lockState = CursorLockMode.Locked;
         }
+
+
 
         internal override void SetUpDependencies()
         {
@@ -73,7 +77,9 @@ namespace RLS.Gameplay.DungeonFlow
             Cursor.lockState = CursorLockMode.None;
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().UnregisterObserver(this);
             m_currentPlayer.GetComponent<Player.PlayerInputsHandler>().DeactivateInputs();
-            m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
+            m_currentStage.EndPortal.OnPlayerEnteredPortal -= HandlePlayerEnteredEndPortal;
+            m_currentStage.EndPortal.OnPlayerTriedToEnterPortalWhenDisabled -= HandlePlayerTriedToEnterPortalWhenDisabled;
+
             m_gamemode.Players[0].UnregisterEvents();
             base.UnregisterEvents();
         }
@@ -105,11 +111,15 @@ namespace RLS.Gameplay.DungeonFlow
             m_reposingCoroutine = null;
         }
 
-        private void OnPlayerEnteredEndPortal()
+        private void HandlePlayerEnteredEndPortal()
         {
-            m_currentStage.EndPortal.OnPlayerEnteredPortal -= OnPlayerEnteredEndPortal;
+            m_currentStage.EndPortal.OnPlayerEnteredPortal -= HandlePlayerEnteredEndPortal;
             m_gamemode.LevelManager.LoadNextStage();
 
+        }
+        private void HandlePlayerTriedToEnterPortalWhenDisabled()
+        {
+            m_playerPanel.PopUpManager.PopUpNotAllEnnemyDead();
         }
         #endregion
         #region Handling Pause
@@ -147,6 +157,7 @@ namespace RLS.Gameplay.DungeonFlow
             if(m_ennemies.Count == 0)
             {
                 m_currentStage.EndPortal.AllowAccessToNextStage();
+                m_playerPanel.PopUpManager.PopUpAllEnnemyDead();
             }
         }
         #endregion

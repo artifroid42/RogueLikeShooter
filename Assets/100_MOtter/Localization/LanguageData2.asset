@@ -63,6 +63,8 @@ MonoBehaviour:
     - MAINMENU_OPTIONS
     - MAINMENU_QUIT
     - GENERIC_PLAYER
+    - POP_UP_NOT_ALL_ENNEMIES_DEAD
+    - POP_UP_ALL_ENNEMIES_DEAD
     m_values:
     - ES
     - "Espa\xF1ol"
@@ -94,7 +96,7 @@ MonoBehaviour:
     - No
     - "pr\xF3ximo"
     - Anterior
-    - "Atr\xE1s"
+    - "atr\xE1s"
     - Confirmar
     - "Est\xE1s muerto !"
     - "f\xEDsico"
@@ -109,7 +111,9 @@ MonoBehaviour:
     - Pausa
     - Agrega una AI
     - "Eliminar la \xFAltima ai"
-    - 
-    - 
-    - 
-    - 
+    - Tocar
+    - "Opci\xF3n"
+    - Abandonar
+    - Jugador
+    - "\xA1Cada Ennemy debe estar muerto para ir a la siguiente etapa!"
+    - "\xA1Cada Ennemy est\xE1 muerto! \xA1La salida est\xE1 abierta!"

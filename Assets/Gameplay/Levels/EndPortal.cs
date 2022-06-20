@@ -6,6 +6,7 @@ namespace RLS.Gameplay.Levels
     public class EndPortal : MonoBehaviour
     {
         public Action OnPlayerEnteredPortal = null;
+        public Action OnPlayerTriedToEnterPortalWhenDisabled = null;
         public bool m_canGoToNextStage = false;
 
         public void AllowAccessToNextStage()
@@ -15,10 +16,18 @@ namespace RLS.Gameplay.Levels
 
         private void OnTriggerEnter(Collider other)
         {
-            if(m_canGoToNextStage && other.TryGetComponent<Player.PlayerMovementController>(out Player.PlayerMovementController l_playerController))
+            if(other.TryGetComponent(out Player.PlayerMovementController l_playerController))
             {
-                OnPlayerEnteredPortal?.Invoke();
+                if (m_canGoToNextStage)
+                {
+                    OnPlayerEnteredPortal?.Invoke();
+                }
+                else
+                {
+                    OnPlayerTriedToEnterPortalWhenDisabled?.Invoke();
+                }
             }
+            
         }
     }
 }

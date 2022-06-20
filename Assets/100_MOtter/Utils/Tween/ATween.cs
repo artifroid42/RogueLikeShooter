@@ -133,6 +133,10 @@ namespace Tween
 
         public virtual void StartAllAttachedTweens()
         {
+            if (!m_isInit)
+            {
+                Init();
+            }
             for (int i = 0; i < m_attachedTweens.Length; ++i)
             {
                 m_attachedTweens[i].StartTween();
