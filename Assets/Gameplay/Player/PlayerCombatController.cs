@@ -49,7 +49,7 @@ namespace RLS.Gameplay.Player
 
         private void LateUpdate()
         {
-            if (Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
+            if (Camera.main != null && Physics.Raycast(Camera.main.ViewportPointToRay(new Vector2(0.5f, 0.5f)), out RaycastHit hitInfo))
             {
                 if(hitInfo.collider.TryGetComponent(out MonsterAI monster))
                 {

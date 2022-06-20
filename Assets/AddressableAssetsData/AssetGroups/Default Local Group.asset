@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Assets/Gameplay/Levels/CameraSettingsScene/Sci-fiCameraSettingsScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 94a5f5fe053fbad4684a1732e97a693c
+    m_Address: Assets/Gameplay/Levels/Ninja/Ninja - LD - 2.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9ce86c5de9db08b449705939733d9896, type: 2}
   m_SchemaSet:
