@@ -46,3 +46,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShootShuriken: {fileID: 11400000, guid: 9a9e07218919e744fb771768dadd37f7, type: 2}
   EnemyTouched: {fileID: 11400000, guid: 7291ab62e99f11849b3cb856fc44f415, type: 2}
+  Death: {fileID: 11400000, guid: ea67bb1b23a0f2f479e26779b6d947d4, type: 2}
+  Jump: {fileID: 11400000, guid: 6cf19f3f43d91ec448be97544b1560f9, type: 2}
+  LevelUp: {fileID: 11400000, guid: 830f5376f1b2cec4a8d67ca1e2ba04d5, type: 2}
+  Menu: {fileID: 11400000, guid: 19d1f95e5eb5ba14ab99b955ff50bd3a, type: 2}
+  PowerNinja: {fileID: 11400000, guid: 5b6eece328e829546a0c16364da210e4, type: 2}
+  PowerPirate: {fileID: 11400000, guid: 1eb185f75e3628a4a8339cb019c15ab4, type: 2}
+  PowerSciFILoad: {fileID: 11400000, guid: 61a56188cdaf6104a983d19851f54d4b, type: 2}
+  PowerSciFIShoot: {fileID: 11400000, guid: 4e67233f683058a41a77d0d1f05b39f7, type: 2}
+  ShootPirate: {fileID: 11400000, guid: e63b85976b9dca848b99a0d5da058a2b, type: 2}
+  ShootSciFi: {fileID: 11400000, guid: 7469586215c91d84185cd0b603b96253, type: 2}
+  UpgradePerformed: {fileID: 11400000, guid: 6a359d17ebed32049bda0bc592a3e8c2, type: 2}
+  Walk: {fileID: 11400000, guid: 86d59b9bea1263c4998bbd0e9ff6c269, type: 2}
+  PlayerHitted: {fileID: 11400000, guid: 41b6fa88e50873543a2819371a554456, type: 2}

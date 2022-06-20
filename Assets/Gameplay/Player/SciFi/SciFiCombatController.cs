@@ -30,6 +30,9 @@ namespace RLS.Gameplay.Player.SciFi
         
         private bool m_isLoadingPowerShot = false;
         private bool m_isShooting = false;
+
+        private AudioSource m_loadAudio = null;
+
         public override void HandleAttackStartedInput()
         {
             base.HandleAttackStartedInput();
@@ -50,6 +53,7 @@ namespace RLS.Gameplay.Player.SciFi
             m_isLoadingPowerShot = true;
             m_timeOfStartToLoadPowerShot = Time.time;
             m_powerShotChargeFX.SetActive(true);
+            m_loadAudio = MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.PowerSciFILoad);
         }
 
         public override void HandleSecondaryAttackCanceledInput()
@@ -107,6 +111,9 @@ namespace RLS.Gameplay.Player.SciFi
                 bullet.SetOwner(this);
                 bullet.SetChargeRatio(a_chargeRatio, PowerShotDamage);
             }
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.PowerSciFIShoot);
+            if (m_loadAudio != null)
+                m_loadAudio.Stop();
         }
 
         private void ShootLaserBullet()
@@ -135,6 +142,7 @@ namespace RLS.Gameplay.Player.SciFi
                 damageDealer.CanDoDamage = true;
                 damageDealer.SetDamageToDeal(LaserBulletDamage);
             }
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.ShootSciFi);
             m_animationHandler.GunShoot();
             m_weaponPositionTween.StartTween();
         }

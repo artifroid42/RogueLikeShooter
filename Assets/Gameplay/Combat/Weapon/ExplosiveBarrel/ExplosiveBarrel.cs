@@ -40,6 +40,7 @@ namespace RLS.Gameplay.Combat.Weapon
             m_barilModel.SetActive(false);
             VFXManager.Instance.PlayFXAt(0, m_explosion.transform.position, Quaternion.identity);
             m_explosion.DealDamage();
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.PowerPirate);
         }
 
 

@@ -39,6 +39,19 @@ namespace RLS
 
         public SoundData ShootShuriken;
         public SoundData EnemyTouched;
+        public SoundData Death;
+        public SoundData Jump;
+        public SoundData LevelUp;
+        public SoundData Menu;
+        public SoundData PowerNinja;
+        public SoundData PowerPirate;
+        public SoundData PowerSciFILoad;
+        public SoundData PowerSciFIShoot;
+        public SoundData ShootPirate;
+        public SoundData ShootSciFi;
+        public SoundData UpgradePerformed;
+        public SoundData Walk;
+        public SoundData PlayerHitted;
     }
 
 }

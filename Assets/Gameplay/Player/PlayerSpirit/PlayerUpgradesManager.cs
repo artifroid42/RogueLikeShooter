@@ -130,6 +130,7 @@ namespace RLS.Gameplay.Player
             upgradeLevel.Level++;
             m_upgradesAppliedCount++;
             OnPlayerUpgraded?.Invoke();
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.UpgradePerformed);
             return upgradeLevel;
         }
 
@@ -154,6 +155,7 @@ namespace RLS.Gameplay.Player
             {
                 m_upgradeState = EUpgradeState.Idle; 
                 ShowClassSelection();
+                MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             }
         }
 
@@ -284,12 +286,6 @@ namespace RLS.Gameplay.Player
             }
         }
 
-        private IEnumerator ShowClassSelection_Routine()
-        {
-            yield return null;
-            m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.ShowClassSelection();
-        }
-
         public void ShowClassUpgrades()
         {
             if (m_upgradeState != EUpgradeState.ClassUpgrade)
@@ -297,6 +293,7 @@ namespace RLS.Gameplay.Player
                 m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.ShowClassUpgrades(m_currentStatsData.ClassSprite);
                 m_upgradeState = EUpgradeState.ClassUpgrade;
                 UpdateUpgradesSliders();
+                MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             }
         }
 

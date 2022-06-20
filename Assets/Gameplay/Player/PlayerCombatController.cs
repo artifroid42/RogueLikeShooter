@@ -33,6 +33,7 @@ namespace RLS.Gameplay.Player
             Destroy(gameObject.GetComponent<PlayerInputsHandler>());
             m_ragdollModel?.ApplyModelPositionsToClone();
             m_ragdollModel?.gameObject.SetActive(true);
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Death);
             MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().Lose();
         }
 

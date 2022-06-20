@@ -197,6 +197,7 @@ namespace RLS.Gameplay.Player
         {
             if (m_verticalVelocityIsLocked) return;
             m_verticalVelocity = m_jumpSpeed;
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Jump);
         }
 
         private bool m_directionIsBlocked = false;

@@ -31,16 +31,19 @@ namespace RLS.MainMenu.MainScreen
 
         public void PlayGame()
         {
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             m_gamemode.SwitchToModeSelectionScreen();
         }
 
         public void SeeOptions()
         {
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             m_gamemode.SwitchToOptions();
         }
 
         public void QuitGame()
         {
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             Application.Quit();
         }
     }

@@ -81,7 +81,11 @@ namespace RLS.Gameplay.Player
         private void LevelUp()
         {
             CurrentLevel++;
-            m_playerUIManagersManager.UpgradesManager.ShowClassSelection();  
+            m_playerUIManagersManager.UpgradesManager.ShowClassSelection();
+            if(CurrentLevel > 1)
+            {
+                MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.LevelUp);
+            }
         }
 
 

@@ -35,6 +35,7 @@ namespace RLS.MainMenu.ModeSelectionScreen
 
         private void HandleBackButtonClicked()
         {
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             m_gamemode.SwitchToPreviousState();
         }
 
@@ -43,6 +44,7 @@ namespace RLS.MainMenu.ModeSelectionScreen
             ModeSelectedData modeSelectedData = new ModeSelectedData();
             modeSelectedData.IsEasyMode = false;
             MOtter.MOtt.DATACONVEY.RegisterContainer(modeSelectedData);
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             PlayHardcoreGame();
         }
 
@@ -51,6 +53,7 @@ namespace RLS.MainMenu.ModeSelectionScreen
             ModeSelectedData modeSelectedData = new ModeSelectedData();
             modeSelectedData.IsEasyMode = true;
             MOtter.MOtt.DATACONVEY.RegisterContainer(modeSelectedData);
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             PlayEasyGame();
         }
 

@@ -48,6 +48,7 @@ namespace RLS.Gameplay.DungeonFlow
 
             ModeSelectedData modeSelectedData = MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().ModeSelectedData;
             MOtter.MOtt.DATACONVEY.RegisterContainer(modeSelectedData);
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             m_dungeonLevelData.LoadLevel();
         }
 
@@ -55,7 +56,7 @@ namespace RLS.Gameplay.DungeonFlow
         {
             if (m_choiceMade) return;
             m_choiceMade = true;
-
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Menu);
             m_menuLevelData.LoadLevel();
         }
     }

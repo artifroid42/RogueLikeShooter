@@ -40,6 +40,7 @@ namespace RLS.Gameplay.Player.Ninja
                 StopCoroutine(m_dashCoroutine);
             }
 
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.PowerNinja);
             m_dashCoroutine = StartCoroutine(DashRoutine());
         }
 

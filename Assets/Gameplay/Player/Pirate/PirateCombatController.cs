@@ -37,7 +37,7 @@ namespace RLS.Gameplay.Player.Pirate
             if (Time.time - m_timeOfLastSwordAttack < SwordAttackCooldown) return;
             m_timeOfLastSwordAttack = Time.time;
 
-
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.ShootPirate);
             m_animationHandler.SwordAttack();
             m_pirateSword.CanDoDamage = true;
         }
@@ -62,6 +62,7 @@ namespace RLS.Gameplay.Player.Pirate
                     GetComponent<PlayerMovementController>().CameraTarget.rotation);
                 m_explosiveBarrelInstantiated.SetUp(BarrelExplosionDamage, this);
                 m_explosiveBarrelInstantiated.Rigidbody.AddForce(m_explosiveBarrelInstantiated.transform.forward * m_barrelThrowForce, ForceMode.VelocityChange);
+                MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.ShootShuriken);
             }
 
             
