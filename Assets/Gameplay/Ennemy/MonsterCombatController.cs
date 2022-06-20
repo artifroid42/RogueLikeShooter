@@ -30,6 +30,8 @@ namespace RLS.Gameplay.Ennemy
             StartCoroutine(WaitingToDestroyMonster(5f));
             Destroy(GetComponent<GenericCombatHUDManager>().HealthBar.gameObject);
             Destroy(GetComponent<GenericCombatHUDManager>());
+            Destroy(GetComponent<Collider>());
+            Destroy(GetComponent<UnityEngine.AI.NavMeshAgent>());
         }
 
         private IEnumerator WaitingToDestroyMonster(float a_waitingDuration)
