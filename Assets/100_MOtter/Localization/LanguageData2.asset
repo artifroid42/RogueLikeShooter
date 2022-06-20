@@ -65,6 +65,8 @@ MonoBehaviour:
     - GENERIC_PLAYER
     - POP_UP_NOT_ALL_ENNEMIES_DEAD
     - POP_UP_ALL_ENNEMIES_DEAD
+    - DIFFICULTY_EASY
+    - DIFFICULTY_HARD
     m_values:
     - ES
     - "Espa\xF1ol"
@@ -117,3 +119,5 @@ MonoBehaviour:
     - Jugador
     - "\xA1Cada Ennemy debe estar muerto para ir a la siguiente etapa!"
     - "\xA1Cada Ennemy est\xE1 muerto! \xA1La salida est\xE1 abierta!"
+    - "F\xE1cil"
+    - "Dif\xEDcil"

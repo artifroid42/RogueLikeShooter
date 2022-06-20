@@ -65,6 +65,8 @@ MonoBehaviour:
     - GENERIC_PLAYER
     - POP_UP_NOT_ALL_ENNEMIES_DEAD
     - POP_UP_ALL_ENNEMIES_DEAD
+    - DIFFICULTY_EASY
+    - DIFFICULTY_HARD
     m_values:
     - FR
     - "Fran\xE7ais"
@@ -117,3 +119,5 @@ MonoBehaviour:
     - Joueur
     - "Tous les ennemis doivent \xEAtre mort pour aller \xE0 la phase suivante !"
     - Tous les ennemis sont morts ! La sortie est ouverte !
+    - Facile
+    - Difficile

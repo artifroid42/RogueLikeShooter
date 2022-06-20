@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd5a8c9a55099844b2056af6c92e215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_startDamage: 5
   m_damageToDeal: 5
   m_owner: {fileID: 0}
 --- !u!135 &3566255704268821129
@@ -248,6 +249,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5275735515000575053}
     m_Modifications:
+    - target: {fileID: 4127971478249653415, guid: 0be9cafd589e3e944b1006c6c934fa9f, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127971478249653415, guid: 0be9cafd589e3e944b1006c6c934fa9f, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4290973586123780689, guid: 0be9cafd589e3e944b1006c6c934fa9f, type: 3}
       propertyPath: m_Name
       value: Fireball_FX
