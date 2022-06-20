@@ -2188,7 +2188,9 @@ MonoBehaviour:
   m_distanceToAttack: 25
   m_durationToLookAtAfterBeingHit: 1
   m_expReward: 1000
+  HasReachedLastPlayerPositionKnown: 1
   m_projectileSource: {fileID: 3355578733319413620}
+  m_damageImprovementOffset: 0.2
 --- !u!195 &8628033037785468276
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2227,7 +2229,7 @@ MonoBehaviour:
   m_maxLifePoints: 25
   m_ragdollModel: {fileID: 3431706214694912607}
   m_model: {fileID: 9036712122455401518}
-  m_improvementOffset: 0.1
+  m_improvementOffset: 0.2
 --- !u!114 &7327751997990664601
 MonoBehaviour:
   m_ObjectHideFlags: 0

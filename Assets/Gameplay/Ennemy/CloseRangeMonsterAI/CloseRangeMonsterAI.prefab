@@ -1421,11 +1421,11 @@ MonoBehaviour:
   m_sightMaxDistance: 30
   m_ratioWidthAngle: 0.97
   m_distanceToAttack: 2
-  m_durationToStopFollowingPlayerAfterLosingSightOnHim: 7
   m_durationToLookAtAfterBeingHit: 0.7
   m_expReward: 1000
+  HasReachedLastPlayerPositionKnown: 1
   m_weaponDamageDealer: {fileID: 1964118741959200595}
-  m_damageImprovementOffset: 0.1
+  m_damageImprovementOffset: 0.2
 --- !u!195 &3999617753862949717
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_maxLifePoints: 25
   m_ragdollModel: {fileID: 2228998696112859117}
   m_model: {fileID: 4128352302827374556}
-  m_improvementOffset: 0.1
+  m_improvementOffset: 0.2
 --- !u!114 &2705808933606735800
 MonoBehaviour:
   m_ObjectHideFlags: 0
