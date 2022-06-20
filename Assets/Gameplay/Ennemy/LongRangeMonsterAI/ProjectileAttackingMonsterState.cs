@@ -21,6 +21,9 @@ namespace RLS.Gameplay.Ennemy.LongRange
                 projectile.transform.rotation = Owner.ProjectileSource.rotation;
             Owner.AnimationsHandler.CastSpell();
             var damageDealer = projectile.GetComponent<Combat.DamageDealer>();
+            float damageFactor = MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().LevelManager.LevelsCount * Owner.DamageImprovementOffset;
+            int damages = (int)(damageDealer.StartDamage + damageDealer.StartDamage * damageFactor);
+            damageDealer.SetDamageToDeal(damages);
             damageDealer.SetOwner(Owner.CombatController);
             damageDealer.CanDoDamage = true;
             return true;

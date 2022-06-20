@@ -16,7 +16,8 @@ namespace RLS.Gameplay.Ennemy
 
         protected override void Start()
         {
-            m_lifePoints = (int)(m_maxLifePoints * MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().LevelManager.LevelsCount * m_improvementOffset);
+            int lifePoints = (int)(m_maxLifePoints + m_maxLifePoints * MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().LevelManager.LevelsCount * m_improvementOffset);
+            SetMaxLifePoints(lifePoints, Combat.ECurrentLifeBehaviourWhenChangingMaxLife.SetToMaxLife);
         }
 
         protected override void HandleDeath()

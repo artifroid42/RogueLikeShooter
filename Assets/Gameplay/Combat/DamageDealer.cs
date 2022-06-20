@@ -25,10 +25,14 @@ namespace RLS.Gameplay.Combat
             }
         }
 
-       
+
+        [SerializeField]
+        private int m_startDamage = 5;
+        public int StartDamage => m_startDamage;
+
         [SerializeField]
         private int m_damageToDeal = 5;
-        public int DamageToDeal => m_damageToDeal; 
+        public int DamageToDeal => m_damageToDeal;
 
 
         [SerializeField]

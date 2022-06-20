@@ -140,7 +140,6 @@ namespace RLS.Gameplay.Player
                 var classUpgrades = m_classesUpgrades.Find(x => x.Class == m_classToUpgrade);
                 var upgradeLevel = classUpgrades.UpgradeLevels.Find(x => x.Type == lineWidget.Upgrades).Level;
                 lineWidget.SetUpgradeSliderValue((float)upgradeLevel / (float)m_currentStatsData.MaxUpgradesCount);
-                Debug.Log("" + (float)upgradeLevel / (float)m_currentStatsData.MaxUpgradesCount);
             }
         }
 
