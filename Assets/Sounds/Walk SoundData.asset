@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Walk SoundData
   m_EditorClassIdentifier: 
   m_audioClips:
-  - {fileID: 8300000, guid: f796643e8d7c6204ebcc700fd61fb711, type: 3}
+  - {fileID: 8300000, guid: 06ef05a3bc7451b45a6cb9a7b25a8924, type: 3}
   m_categoryName: 1
