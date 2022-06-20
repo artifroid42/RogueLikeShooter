@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shoot SciFi
   m_EditorClassIdentifier: 
   m_audioClips:
-  - {fileID: 8300000, guid: f796643e8d7c6204ebcc700fd61fb711, type: 3}
+  - {fileID: 8300000, guid: 23631aaa7fcb2794892e589aabaa4a56, type: 3}
   m_categoryName: 1

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Power SciFi Shoot
   m_EditorClassIdentifier: 
   m_audioClips:
-  - {fileID: 8300000, guid: c5fe3e9a24ff75743b6111c574370abe, type: 3}
+  - {fileID: 8300000, guid: 7aa986b91e2dfe842af2c1b3adfbccd6, type: 3}
   m_categoryName: 1

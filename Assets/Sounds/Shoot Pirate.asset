@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shoot Pirate
   m_EditorClassIdentifier: 
   m_audioClips:
-  - {fileID: 8300000, guid: f796643e8d7c6204ebcc700fd61fb711, type: 3}
+  - {fileID: 8300000, guid: ad59aeea0069f39409dce1a6082b65c5, type: 3}
   m_categoryName: 1
