@@ -85,6 +85,7 @@ namespace RLS.Gameplay.Player
             if(CurrentLevel > 1)
             {
                 MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.LevelUp);
+                m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.SetUpgradesLeftCount(m_currentLevel - m_playerUIManagersManager.UpgradesManager.UpgradesAppliedCount - 1);
             }
         }
 

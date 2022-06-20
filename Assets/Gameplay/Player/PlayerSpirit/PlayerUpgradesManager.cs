@@ -33,12 +33,16 @@ namespace RLS.Gameplay.Player
         private ClassStatsData m_currentStatsData;
         private Player m_currentPlayer = null;
 
-        public int m_upgradesAppliedCount = 0;
+        private int m_upgradesAppliedCount = 0;
+        public int UpgradesAppliedCount => m_upgradesAppliedCount; 
+
 
         public Action OnPlayerUpgraded;
 
         [SerializeField]
         private List<ClassUpgrades> m_classesUpgrades;
+
+
 
         [Serializable]
         internal class ClassUpgrades
@@ -131,6 +135,7 @@ namespace RLS.Gameplay.Player
             m_upgradesAppliedCount++;
             OnPlayerUpgraded?.Invoke();
             MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.UpgradePerformed);
+            m_playerUIManagersManager.PlayerPanel.ClassUpgradesModule.SetUpgradesLeftCount(m_playerUIManagersManager.ExpManager.CurrentLevel - m_upgradesAppliedCount - 1);
             return upgradeLevel;
         }
 

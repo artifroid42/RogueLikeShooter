@@ -1,3 +1,4 @@
+using RLS.Gameplay.Combat;
 using RLS.Gameplay.Ennemy;
 using RLS.Generic.Ragdoll;
 using UnityEngine;
@@ -38,6 +39,12 @@ namespace RLS.Gameplay.Player
             m_ragdollModel?.gameObject.SetActive(true);
             MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.Death);
             MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().Lose();
+        }
+
+        public override void TakeDamage(int a_damageToDeal, CombatController a_source)
+        {
+            base.TakeDamage(a_damageToDeal, a_source);
+            MOtter.MOtt.SOUND.Play2DSound(SFXManager.Instance.PlayerHitted);
         }
 
         private void LateUpdate()
