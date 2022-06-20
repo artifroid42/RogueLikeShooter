@@ -15,6 +15,7 @@ namespace RLS
             {
                 s_instance = this;
                 s_instance.gameObject.name = "SFXManager";
+                DontDestroyOnLoad(s_instance);
             }
             else
             {
@@ -28,8 +29,9 @@ namespace RLS
             {
                 if (s_instance == null)
                 {
-                    GameObject GO = new GameObject("SFXManager");
+                    GameObject GO = new GameObject("SFXManager Runtime");
                     s_instance = GO.AddComponent<SFXManager>();
+                    DontDestroyOnLoad(s_instance);
                 }
                 return s_instance;
             }
