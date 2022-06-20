@@ -141,7 +141,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3653802176930126506, guid: 046e1a60d3cd0c34d93cc69958bcc3b1, type: 3}
       propertyPath: m_key
-      value: PLay hard
+      value: DIFFICULTY_HARD
       objectReference: {fileID: 0}
     - target: {fileID: 3653802177543560904, guid: 046e1a60d3cd0c34d93cc69958bcc3b1, type: 3}
       propertyPath: m_Name
@@ -258,7 +258,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3653802176930126506, guid: 046e1a60d3cd0c34d93cc69958bcc3b1, type: 3}
       propertyPath: m_key
-      value: EASY
+      value: DIFFICULTY_EASY
       objectReference: {fileID: 0}
     - target: {fileID: 3653802177543560904, guid: 046e1a60d3cd0c34d93cc69958bcc3b1, type: 3}
       propertyPath: m_Name

@@ -65,6 +65,8 @@ MonoBehaviour:
     - GENERIC_PLAYER
     - POP_UP_NOT_ALL_ENNEMIES_DEAD
     - POP_UP_ALL_ENNEMIES_DEAD
+    - DIFFICULTY_EASY
+    - DIFFICULTY_HARD
     m_values:
     - EN
     - English
@@ -117,3 +119,5 @@ MonoBehaviour:
     - Player
     - Every ennemy must be dead to go to the next stage!
     - Every ennemy is dead! Exit is open!
+    - Easy
+    - Hard

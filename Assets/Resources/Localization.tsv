@@ -58,3 +58,6 @@ GENERIC_PLAYER	Player	Joueur	Jugador
 			
 POP_UP_NOT_ALL_ENNEMIES_DEAD	Every ennemy must be dead to go to the next stage!	Tous les ennemis doivent être mort pour aller à la phase suivante !	¡Cada Ennemy debe estar muerto para ir a la siguiente etapa!
 POP_UP_ALL_ENNEMIES_DEAD	Every ennemy is dead! Exit is open!	Tous les ennemis sont morts ! La sortie est ouverte !	¡Cada Ennemy está muerto! ¡La salida está abierta!
+			
+DIFFICULTY_EASY	Easy	Facile	Fácil
+DIFFICULTY_HARD	Hard	Difficile	Difícil
