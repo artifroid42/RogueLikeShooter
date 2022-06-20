@@ -1,6 +1,5 @@
 using RLS.Gameplay.AIs;
 using RLS.Gameplay.Combat;
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,6 +27,8 @@ namespace RLS.Gameplay.Ennemy
         private TreeBehaviourState m_walkingAroundState = null;
         [SerializeField]
         private TreeBehaviourState m_rotatingTowardLastControllerThatHitMe = null;
+        [SerializeField]
+        private TreeBehaviourState m_goingToLastPlayerPositionKnown = null;
 
         [Header("Sight")]
         [SerializeField]
@@ -42,8 +43,7 @@ namespace RLS.Gameplay.Ennemy
         [Header("Params")]
         [SerializeField]
         private float m_distanceToAttack = 3f;
-        [SerializeField]
-        private float m_durationToStopFollowingPlayerAfterLosingSightOnHim = 2f;
+
         private float m_lastTimePlayerSeen = 0f;
         [SerializeField]
         private float m_durationToLookAtAfterBeingHit = 1f;
@@ -54,8 +54,9 @@ namespace RLS.Gameplay.Ennemy
 
         private DungeonFlow.DungeonGameMode m_gamemode = null;
         public Player.Player ClosestPlayer { private set; get; } = null;
-
+        public Vector3 LastPlayerPositionKnown { set; get; } = default;
         public Vector3 SpawnPosition { private set; get; } = default;
+        public bool HasReachedLastPlayerPositionKnown = true;
 
         internal override void EnterStateMachine()
         {
@@ -91,19 +92,29 @@ namespace RLS.Gameplay.Ennemy
                 {
                     RequestState(m_gettingCloseToPlayerState);
                 }
+                HasReachedLastPlayerPositionKnown = false;
             }
             else
             {
-                if(has_been_hit_recently())
+                if(HasReachedLastPlayerPositionKnown)
                 {
-                    RequestState(m_rotatingTowardLastControllerThatHitMe);
+                    if (has_been_hit_recently())
+                    {
+                        RequestState(m_rotatingTowardLastControllerThatHitMe);
+                    }
+                    else
+                    {
+                        RequestState(m_walkingAroundState);
+                    }
                 }
                 else
                 {
-                    RequestState(m_walkingAroundState);
+                    RequestState(m_goingToLastPlayerPositionKnown);
                 }
             }
         }
+
+
 
         private bool has_been_hit_recently()
         {
@@ -143,7 +154,7 @@ namespace RLS.Gameplay.Ennemy
                     }
                 }
             }
-            return ClosestPlayer != null || Time.time - m_lastTimePlayerSeen < m_durationToStopFollowingPlayerAfterLosingSightOnHim;
+            return ClosestPlayer != null;
         }
 
         protected bool is_close_enough_to_attack()

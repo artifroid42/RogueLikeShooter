@@ -13,8 +13,14 @@ namespace RLS.Gameplay.Ennemy
             if (Time.time - m_lastTimeOfPathUpdate > UPDATE_PATH_DELAY && Owner.ClosestPlayer != null)
             {
                 Owner.Agent.SetDestination(Owner.ClosestPlayer.transform.position);
+                Owner.LastPlayerPositionKnown = Owner.ClosestPlayer.transform.position;
                 m_lastTimeOfPathUpdate = Time.time;
             }
+        }
+
+        public override void ExitState()
+        {
+            base.ExitState();
         }
     }
 }

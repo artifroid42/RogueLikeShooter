@@ -681,6 +681,52 @@ Transform:
   m_Father: {fileID: 7201306269464872280}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2787193856729023806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771456388092400821}
+  - component: {fileID: 6768955971070038754}
+  m_Layer: 9
+  m_Name: GoingToLastPlayerPositionKnownState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1771456388092400821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787193856729023806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3811034031214931429}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6768955971070038754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787193856729023806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5ec782ae69e2a041bd0aa6cb805b2c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nextState: {fileID: 0}
+  m_owner: {fileID: 6834788468426035347}
 --- !u!1 &2809945236887461306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1827,7 @@ Transform:
   - {fileID: 7272313362428468455}
   - {fileID: 791934460354693614}
   - {fileID: 625230082289656109}
+  - {fileID: 1771456388092400821}
   m_Father: {fileID: 4169075121344686092}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2131,6 +2178,7 @@ MonoBehaviour:
   m_gettingCloseToPlayerState: {fileID: 4724523464544527453}
   m_walkingAroundState: {fileID: 5315065285381485211}
   m_rotatingTowardLastControllerThatHitMe: {fileID: 7821138893710074957}
+  m_goingToLastPlayerPositionKnown: {fileID: 6768955971070038754}
   m_sightSource: {fileID: 1259716644509143270}
   m_sightLayerMask:
     serializedVersion: 2
@@ -2138,7 +2186,6 @@ MonoBehaviour:
   m_sightMaxDistance: 60
   m_ratioWidthAngle: 0.97
   m_distanceToAttack: 25
-  m_durationToStopFollowingPlayerAfterLosingSightOnHim: 2
   m_durationToLookAtAfterBeingHit: 1
   m_expReward: 1000
   m_projectileSource: {fileID: 3355578733319413620}
@@ -2180,6 +2227,7 @@ MonoBehaviour:
   m_maxLifePoints: 25
   m_ragdollModel: {fileID: 3431706214694912607}
   m_model: {fileID: 9036712122455401518}
+  m_improvementOffset: 0.1
 --- !u!114 &7327751997990664601
 MonoBehaviour:
   m_ObjectHideFlags: 0
