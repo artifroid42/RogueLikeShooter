@@ -54,7 +54,7 @@ namespace RLS.Gameplay.Combat
             OnLifeChanged?.Invoke(this);
         }
 
-        public void TakeDamage(int a_damageToDeal, CombatController a_source)
+        public virtual void TakeDamage(int a_damageToDeal, CombatController a_source)
         {
             if (!IsAlive) return;
 

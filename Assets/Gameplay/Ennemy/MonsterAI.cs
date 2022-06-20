@@ -17,10 +17,13 @@ namespace RLS.Gameplay.Ennemy
         private EnnemyAnimationsHandler m_animationsHandler = null;
         [SerializeField]
         private Outline m_outline = null;
+        [SerializeField]
+        private HPLostFeedback m_HPLostFeedback = null;
         public NavMeshAgent Agent => m_agent;
         public MonsterCombatController CombatController => m_combatController;
         public EnnemyAnimationsHandler AnimationsHandler => m_animationsHandler;
         public Outline Outline => m_outline;
+        public HPLostFeedback HPLostFeedback => m_HPLostFeedback;
 
         [Header("States Refs")]
         [SerializeField]

@@ -1,3 +1,4 @@
+using RLS.Gameplay.Combat;
 using RLS.Gameplay.Combat.HUD;
 using RLS.Generic.Ragdoll;
 using System.Collections;
@@ -14,10 +15,23 @@ namespace RLS.Gameplay.Ennemy
         [SerializeField]
         private float m_improvementOffset = 0.1f;
 
+        private MonsterAI m_monsterAI = null;
+
         protected override void Start()
         {
             int lifePoints = (int)(m_maxLifePoints + m_maxLifePoints * MOtter.MOtt.GM.GetCurrentMainStateMachine<DungeonFlow.DungeonGameMode>().LevelManager.LevelsCount * m_improvementOffset);
             SetMaxLifePoints(lifePoints, Combat.ECurrentLifeBehaviourWhenChangingMaxLife.SetToMaxLife);
+            m_monsterAI = GetComponent<MonsterAI>();
+        }
+
+        public override void TakeDamage(int a_damageToDeal, CombatController a_source)
+        {
+            base.TakeDamage(a_damageToDeal, a_source);
+            if(m_monsterAI != null)
+            {
+                m_monsterAI.HPLostFeedback.gameObject.SetActive(true);
+                m_monsterAI.HPLostFeedback.SetLostHPAmount(a_damageToDeal);
+            }
         }
 
         protected override void HandleDeath()
