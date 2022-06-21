@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7871198, g: 0.5970096, b: 0.9811321, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -144,6 +144,18 @@ PrefabInstance:
     - target: {fileID: 2273631126995656553, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
       propertyPath: m_Name
       value: BackToMenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7170174655463060922, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
       propertyPath: m_key
@@ -262,6 +274,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: OptionsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7170174655463060922, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
       propertyPath: m_key
       value: GENERIC_OPTIONS
@@ -379,6 +403,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuitGameButton
       objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7170174655463060922, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
       propertyPath: m_key
       value: GENERIC_QUIT_GAME
@@ -495,6 +531,18 @@ PrefabInstance:
     - target: {fileID: 2273631126995656553, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
       propertyPath: m_Name
       value: KeepPlayingButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.b
+      value: 0.514151
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3771292655781146175, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7465963
       objectReference: {fileID: 0}
     - target: {fileID: 7218975066081328241, guid: 07343bba5794a3a47aba5c758e0612ce, type: 3}
       propertyPath: m_Pivot.x

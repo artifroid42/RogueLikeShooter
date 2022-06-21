@@ -60,7 +60,11 @@ namespace RLS.Gameplay.Levels
         private void load_next_stage()
         {
             Debug.LogError("Loading Next Stage");
-            m_currentStageData = m_gameConfiguration.StageListData.GetRandomStageData();
+            var lastStage = m_currentStageData;
+            do
+            {
+                m_currentStageData = m_gameConfiguration.StageListData.GetRandomStageData();
+            } while (m_currentStageData == lastStage);
 
             m_currentStageData.OnStageLoaded += HandleStageLoaded;
             m_currentStageData.LoadStage();

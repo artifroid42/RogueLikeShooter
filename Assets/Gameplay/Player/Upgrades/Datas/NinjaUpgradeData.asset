@@ -16,25 +16,25 @@ MonoBehaviour:
   HealthLevels: 280000003c000000500000006400000078000000
   DamageLevels: 0a0000000f00000014000000190000001e000000
   AttackSpeedLevels:
-  - 0.5
-  - 0.8
-  - 1.15
-  - 1.5
-  - 2
+  - 1
+  - 1.3
+  - 1.6
+  - 1.9
+  - 2.2
   MoveSpeedLevels:
+  - 4
   - 4.5
   - 5
   - 5.5
-  - 6.2
-  - 7
+  - 6
   NinjaPowerUpgrades:
   - DashCouldown: 4
-    DashRange: 0.5
+    DashRange: 1.2
+  - DashCouldown: 3.5
+    DashRange: 1.4
   - DashCouldown: 3
-    DashRange: 1
+    DashRange: 1.6
   - DashCouldown: 2.5
-    DashRange: 1.7
-  - DashCouldown: 1.2
+    DashRange: 1.8
+  - DashCouldown: 2
     DashRange: 2
-  - DashCouldown: 0.6
-    DashRange: 3

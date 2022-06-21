@@ -16,11 +16,11 @@ MonoBehaviour:
   HealthLevels: 32000000460000005a0000006e00000082000000
   DamageLevels: 0500000007000000090000000b0000000d000000
   AttackSpeedLevels:
-  - 1.25
   - 1.5
-  - 1.75
   - 2
-  - 2.25
+  - 2.5
+  - 3
+  - 3.5
   MoveSpeedLevels:
   - 3.5
   - 4.2
@@ -29,12 +29,12 @@ MonoBehaviour:
   - 6
   SficiPowerUpgrades:
   - PowerShotLoadingTime: 3
-    PowerShotDamages: 100
+    PowerShotDamages: 50
   - PowerShotLoadingTime: 2.5
-    PowerShotDamages: 120
+    PowerShotDamages: 80
   - PowerShotLoadingTime: 2
-    PowerShotDamages: 140
+    PowerShotDamages: 110
   - PowerShotLoadingTime: 1.5
-    PowerShotDamages: 160
+    PowerShotDamages: 140
   - PowerShotLoadingTime: 1
-    PowerShotDamages: 180
+    PowerShotDamages: 170

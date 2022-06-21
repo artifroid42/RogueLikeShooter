@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PirateUpgradeData
   m_EditorClassIdentifier: 
   Class: 0
-  HealthLevels: 5000000064000000780000008c000000a0000000
+  HealthLevels: 780000008c000000a0000000b4000000c8000000
   DamageLevels: 14000000190000001e000000230000002d000000
   AttackSpeedLevels:
   - 0.9
@@ -28,13 +28,13 @@ MonoBehaviour:
   - 6.2
   - 7
   PiratePowerUpgrades:
-  - BarilCouldown: 5
-    BarilDamages: 20
   - BarilCouldown: 4
-    BarilDamages: 25
-  - BarilCouldown: 3
+    BarilDamages: 20
+  - BarilCouldown: 3.5
     BarilDamages: 30
-  - BarilCouldown: 2
+  - BarilCouldown: 3
     BarilDamages: 40
-  - BarilCouldown: 1
+  - BarilCouldown: 2.5
+    BarilDamages: 50
+  - BarilCouldown: 2
     BarilDamages: 60
