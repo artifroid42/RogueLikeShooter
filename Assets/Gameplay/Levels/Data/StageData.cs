@@ -11,10 +11,18 @@ namespace RLS.Gameplay.Levels.Data
     [CreateAssetMenu(fileName = "StageData", menuName = "RLS/Gameplay/Levels/Stage Data")]
     public class StageData : ScriptableObject
     {
+        private enum EPlayerType
+        {
+            Ninja,
+            Pirate,
+            Scifi
+        }
         [SerializeField]
         private AssetReference m_stageScene = null;
         [SerializeField]
         private AssetReference m_cameraSettingsScene = null;
+        [SerializeField]
+        private EPlayerType m_playerType = EPlayerType.Ninja;
 
         public Action<AsyncOperationHandle<SceneInstance>, AsyncOperationHandle<SceneInstance>> OnStageLoaded = null;
         public Action OnStageUnloaded = null;
@@ -36,6 +44,26 @@ namespace RLS.Gameplay.Levels.Data
             {
                 yield return null;
             }
+            yield return null;
+            string playerKey = "";
+            switch(m_playerType)
+            {
+                case EPlayerType.Ninja:
+                    playerKey = "NinjaPlayer";
+                    break;
+                case EPlayerType.Pirate:
+                    playerKey = "PiratePlayer";
+                    break;
+                case EPlayerType.Scifi:
+                    playerKey = "ScifiPlayer";
+                    break;
+            }
+            var objPlayer = Addressables.LoadAssetAsync<GameObject>(playerKey);
+            while(!objPlayer.IsDone)
+            {
+                yield return null;
+            }
+            Instantiate(objPlayer.Result, FindObjectOfType<Stage>().transform);
             yield return null;
             if (obj.Status == AsyncOperationStatus.Succeeded && obj2.Status == AsyncOperationStatus.Succeeded)
             {

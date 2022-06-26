@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Players
+  m_EditorClassIdentifier: 
+  m_GroupName: Players
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1adca0702aaa1324a98909da40189d48
+  m_SerializeEntries:
+  - m_GUID: fb9a192a1f76e1b41b1d8a1e69e32fe3
+    m_Address: Assets/Gameplay/Player/NinjaPlayer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - NinjaPlayer
+  - m_GUID: 6c1f8efa6f134bc49adc1c8ad7b4d818
+    m_Address: Assets/Gameplay/Player/PiratePlayer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - PiratePlayer
+  - m_GUID: e2dfe6b05d5ecd445b87ac7e26cc8dca
+    m_Address: Assets/Gameplay/Player/SciFiPlayer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ScifiPlayer
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9ce86c5de9db08b449705939733d9896, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: e9f003b9096a87242836bdcc41517f02, type: 2}
+    - {fileID: 11400000, guid: a1ad8af97ff93fa469baff98e7dcc7bd, type: 2}

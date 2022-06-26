@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Camera Scenes
+  m_EditorClassIdentifier: 
+  m_GroupName: Camera Scenes
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 214c081c0da821a4988586f22c73eb11
+  m_SerializeEntries:
+  - m_GUID: b787a9d1f396a724184d15479f26e7d2
+    m_Address: Assets/Gameplay/Levels/CameraSettingsScene/DefaultCameraSettingsScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ea0b111d396ebab4a8c39e3afdc6a03e
+    m_Address: Assets/Gameplay/Levels/CameraSettingsScene/Sci-fiCameraSettingsScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9ce86c5de9db08b449705939733d9896, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 967f83fb62af9b544852c361ad2f543f, type: 2}
+    - {fileID: 11400000, guid: 6565bf47d66dc6f4181d528a640b00fe, type: 2}

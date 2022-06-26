@@ -3,7 +3,14 @@ guid: f987e78d9b8f20c4aa40d2d355c0619a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_ragdollModel: {instanceID: 0}
+  - m_animationHandler: {instanceID: 0}
+  - m_weaponPositionTween: {instanceID: 0}
+  - m_laserBulletPrefab: {fileID: 8220576271965004309, guid: e3e9bdee06fa44b4fad38d4e816cfa81, type: 3}
+  - m_powerShotBullerPrefab: {fileID: 7244570700761779915, guid: 3da87701bea6ebb41892e525b41ab50e, type: 3}
+  - m_powerShotChargeFX: {instanceID: 0}
+  - m_bulletSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

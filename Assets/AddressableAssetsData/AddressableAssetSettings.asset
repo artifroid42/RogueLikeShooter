@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: 37fdbb9c00997904f9ae3dee83bc5979
+  m_DefaultGroup: 5a7f507abe8f3d04787f6634d4bcd18f
   m_CachedHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -42,7 +42,9 @@ MonoBehaviour:
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 29f9e1150cec9744ab7aa4006c63c4b8, type: 2}
-  - {fileID: 11400000, guid: 1350e6298985d4a4bbf8066ec372fc0f, type: 2}
+  - {fileID: 11400000, guid: ba603c1bbbd42a04ab22ccf0e8e3fb53, type: 2}
+  - {fileID: 11400000, guid: 5f7be8699081e8742b50a3621e276871, type: 2}
+  - {fileID: 11400000, guid: 3173c6df397b17a4a83ad75d2c491b9e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -84,6 +86,9 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - PiratePlayer
+    - NinjaPlayer
+    - ScifiPlayer
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 674935aac6cc5c1469ac1728d6b6b7ce, type: 2}

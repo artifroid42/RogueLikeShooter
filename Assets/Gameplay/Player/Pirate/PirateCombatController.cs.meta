@@ -3,7 +3,12 @@ guid: 18a69562bf93a1546af1191c79c2f9e0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_ragdollModel: {instanceID: 0}
+  - m_explosiveBarrelPrefab: {fileID: 3077012682955767921, guid: 607c28ffbd6403044bab829d6accd35d, type: 3}
+  - m_pirateSword: {instanceID: 0}
+  - m_animationHandler: {instanceID: 0}
+  - m_projectileSource: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

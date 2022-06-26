@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: GameplayScenes
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: GameplayScenes
   m_Data:
     m_SerializedData: []
-  m_GUID: 37fdbb9c00997904f9ae3dee83bc5979
+  m_GUID: 5a7f507abe8f3d04787f6634d4bcd18f
   m_SerializeEntries:
   - m_GUID: 0215b9337061940499cb7df95222ba47
     m_Address: Assets/Gameplay/Levels/Ninja/Ninja - LD - 1.unity
@@ -29,18 +29,6 @@ MonoBehaviour:
     m_Address: Assets/Gameplay/Levels/Sci-fi/Sci-Fi - LD - 1.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 916eaf2dcec93664d9c7eb76d5d17156
-    m_Address: Assets/Gameplay/Levels/Test/CustomPhysicsSceneTest/CustomPhysicsSceneTest.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: b787a9d1f396a724184d15479f26e7d2
-    m_Address: Assets/Gameplay/Levels/CameraSettingsScene/DefaultCameraSettingsScene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: ea0b111d396ebab4a8c39e3afdc6a03e
-    m_Address: Assets/Gameplay/Levels/CameraSettingsScene/Sci-fiCameraSettingsScene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 94a5f5fe053fbad4684a1732e97a693c
     m_Address: Assets/Gameplay/Levels/Ninja/Ninja - LD - 2.unity
     m_ReadOnly: 0
@@ -49,5 +37,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 9ce86c5de9db08b449705939733d9896, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: cf2e5b09fb752cc4495614a568565cd3, type: 2}
-    - {fileID: 11400000, guid: f2c9db54a0e9a524f87e9e8c5f5f05ec, type: 2}
+    - {fileID: 11400000, guid: 1926826c3aa364c4cb486dd4ecc95c89, type: 2}
+    - {fileID: 11400000, guid: 7843bba426e4fbe47a6f135d2a93c736, type: 2}

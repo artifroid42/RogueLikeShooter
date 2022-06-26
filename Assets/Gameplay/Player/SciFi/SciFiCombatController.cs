@@ -33,6 +33,7 @@ namespace RLS.Gameplay.Player.SciFi
 
         private AudioSource m_loadAudio = null;
 
+
         public override void HandleAttackStartedInput()
         {
             base.HandleAttackStartedInput();
@@ -89,6 +90,8 @@ namespace RLS.Gameplay.Player.SciFi
         {
             if(a_chargeRatio < 0.2f)
             {
+                if (m_loadAudio != null)
+                    m_loadAudio.Stop();
                 return;
             }
             Debug.Log($"SHOT POWERRRR : {a_chargeRatio}");
