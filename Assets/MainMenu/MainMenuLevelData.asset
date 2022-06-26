@@ -18,8 +18,8 @@ MonoBehaviour:
     m_SceneName: MainMenu
   m_additionalScenes: []
   m_loadingScreen:
-    m_SceneAsset: {fileID: 0}
-    m_SceneName: 
+    m_SceneAsset: {fileID: 102900000, guid: 1a78bd9526d13214e8cad681a4dd891e, type: 3}
+    m_SceneName: LoadingScene
   m_defaultLoadMode: 0
   m_levelName: 
   m_additionalDataInLevels: []

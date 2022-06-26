@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Gameplay/DungeonFlow/DungeonGameplay.unity
     guid: 74dfc7af8b13fab4da22036b272f5bd9
+  - enabled: 1
+    path: Assets/LoadingScene/LoadingScene.unity
+    guid: 1a78bd9526d13214e8cad681a4dd891e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 1bab99839bf510d4ab6f1a209b04fd8a, type: 2}
